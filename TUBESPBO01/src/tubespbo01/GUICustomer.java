@@ -540,8 +540,8 @@ public class GUICustomer extends javax.swing.JFrame {
     public void setTfIdPsnPSN (String id){
         tfIdPsnPSN.setText("P-"+id);
     } 
-    public void setLsPaketWisataPSN (){
-        
+    public void setLsPaketWisataPSN (String[] list){
+        lsPaketWisataPSN.setListData(list);
     }
     public void setTfTotalHargaPSN(String totalHarga){
         tfTotalHargaPSN.setText(totalHarga);
@@ -613,6 +613,7 @@ public class GUICustomer extends javax.swing.JFrame {
     }
     
     //TAB LIHAT PAKET WISATA
+    
     
     //TAB LIHAT TOUR GUIDE
     
