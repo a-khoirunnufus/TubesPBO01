@@ -5,6 +5,8 @@
  */
 package tubespbo01;
 
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -84,7 +86,7 @@ public class GuiAdmin extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         IdTempatDelete = new java.awt.TextField();
         btnSearchDelete = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
+        tfIdTempatDelete = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTable7 = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
@@ -126,7 +128,7 @@ public class GuiAdmin extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
-        btnPaketDelete = new javax.swing.JButton();
+        btnSeacrhPaketDelete = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -492,7 +494,7 @@ public class GuiAdmin extends javax.swing.JFrame {
 
         btnSearchDelete.setText("Search");
 
-        btnDelete.setText("Delete");
+        tfIdTempatDelete.setText("Delete");
 
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -520,7 +522,7 @@ public class GuiAdmin extends javax.swing.JFrame {
                                 .addComponent(IdTempatDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSearchDelete))
-                            .addComponent(btnDelete))
+                            .addComponent(tfIdTempatDelete))
                         .addGap(0, 51, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -535,7 +537,7 @@ public class GuiAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(btnDelete)
+                .addComponent(tfIdTempatDelete)
                 .addContainerGap(123, Short.MAX_VALUE))
         );
 
@@ -802,7 +804,7 @@ public class GuiAdmin extends javax.swing.JFrame {
             jTable4.getColumnModel().getColumn(5).setHeaderValue("Kontak");
         }
 
-        btnPaketDelete.setText("Delete");
+        btnSeacrhPaketDelete.setText("Delete");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -818,7 +820,7 @@ public class GuiAdmin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPaketDelete))
+                    .addComponent(btnSeacrhPaketDelete))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -832,7 +834,7 @@ public class GuiAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(btnPaketDelete)
+                .addComponent(btnSeacrhPaketDelete)
                 .addContainerGap(123, Short.MAX_VALUE))
         );
 
@@ -936,7 +938,159 @@ public class GuiAdmin extends javax.swing.JFrame {
 
   
     
+    //TourGate
+   public void setIdTourgate (int id) {
+       tfId.setText("T-"+id);
+   }
+   public String getNamaTourgate () {
+       return tfNama.getText();
+   }
+   public void getJenisKelaminTourgate (int id) {
+      
+        rbLaki.setText("laki-laki");
+   }   
+   public String getUmurTourgate () {
+       return tfUmur.getText ();
+   }
+   public String getAlamatTourgate () {
+       return tfAlamat.getText();
+   }
+   public String getKontakTourgate () {
+       return tfKontak.getText();
+   }
+   public JButton getBtnSaveTourgate() {
+       return btnInput;
+   }
+   public void addActionListener (ActionListener a1) {
+       btnInput.addActionListener(a1);
+   }
+   public void resetViewTourgate() {
+       tfNama.setText("");
+       tfUmur.setText("");
+       tfAlamat.setText("");
+       tfAlamat.setText("");
+   }
+   public String getIdTourgate(){
+        return tfId.getText(); 
+   }
+   
     
+ //TourGate
+   
+
+//TempatWisataInput
+   public void setIdTempatWisata (int id) {
+       tfIdTempat.setText("TEMPAT-"+id);
+   }
+   public String getNamaTempatWisata () {
+       return tfNamaTempat.getText();
+   }
+   public String getAlamatTempatWisata () {
+       return tfAlamatTempat.getText();
+   }
+  public int getTempatRatting() {
+       return slTempat.getValue();
+   }
+  public String getIdTempat(){
+        return tfIdTempat.getText(); 
+   }
+  public JButton getBtnSaveTempatWisata() {
+       return btnInputTempat;
+   }
+    public void resetViewTempat() {
+       tfNamaTempat.setText("");
+       tfAlamatTempat.setText("");
+       slTempat.setValue(0);
+   }
+ //TempatWIsataInput
+    
+//TempatWisataEdit
+     
+   public String getNamaTempatWisataEdit () {
+       return tfNamaTempat.getText();
+   }
+   public String getAlamatTempatWisataEdit () {
+       return tfAlamatTempat.getText();
+   }
+  public int getTempatRattingEdit() {
+       return slTempat.getValue();
+   }
+  public String getIdTemaptaBaru(){
+        return tfIdTempatLama.getText(); 
+   }
+  public JButton getBtnSaveTempatWisataEdit() {
+       return btnTempatUpdate;
+   }
+//TempatWisataEdit
+  
+//TempatWisataDelete
+  public String getIdTemaptaDelete(){
+        return tfIdTempatDelete.getText(); 
+   }
+  public JButton getBtnSaveTempatWisataSearch() {
+       return btnSearchDelete;
+   }
+  public JButton getBtnSaveTempatWisataDelete() {
+       return tfIdTempatDelete;
+   }
+//TempatWisataDelete
+  
+    
+   //PaketWIsata
+    public void setfIdPaketWisata (int id) {
+       tfIdTempat.setText("TEMPAT-"+id);
+   }
+   public String getNamaPaketWisata () {
+       return tfNamaTempat.getText();
+   }
+   public String getHargaPaketWisata () {
+       return tfHargaPaket.getText();
+   }
+  public String getTanggalBeranglkat() {
+       return tfTanggalBerangkat.getText();
+   }
+  public String getTanggalPulang(){
+        return tfTanggalPulang.getText(); 
+   }
+  public JButton getBtnSavePaketWisata() {
+       return btnInputPaket;
+   }
+ //paketWisata
+  
+//paketWisataEdit
+public void setfIdPaketWisataEdit (int id) {
+       tfIdPaketLama.setText("TEMPAT-"+id);
+   }
+   public String getNamaPaketWisataEdit () {
+       return tfNamaPaketBaru.getText();
+   }
+   public String getHargaPaketWisataEdit () {
+       return tfHargaPaketBaru.getText();
+   }
+  public String getTanggalBeranglkatEdit() {
+       return tfTanggalBerangkatPaketBaru.getText();
+   }
+  public String getTanggalPulangEdit(){
+        return tfTanggalPulangPaketBaru.getText(); 
+   }
+  public JButton getBtnSavePaketWisataEdit() {
+       return btnPaketUpdate;
+   }
+//paketWisataEdit  
+   
+  
+ //PaketWisataDelete
+  public String getIdPaketDelete(){
+        return tfIdTempatDelete.getText(); 
+   }
+  public JButton getBtnDeletePaketWisataSearch() {
+       return btnSeacrhPaketDelete;
+   }
+  public JButton getBtnDeletePaketyWisataDelete() {
+       return btnSeacrhPaketDelete;
+   }
+//TempatWisataDelete
+
     
     
     
@@ -945,12 +1099,11 @@ public class GuiAdmin extends javax.swing.JFrame {
     private java.awt.TextField IdPaketDelete;
     private java.awt.TextField IdTempatBaru;
     private java.awt.TextField IdTempatDelete;
-    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnInput;
     private javax.swing.JButton btnInputPaket;
     private javax.swing.JButton btnInputTempat;
-    private javax.swing.JButton btnPaketDelete;
     private javax.swing.JButton btnPaketUpdate;
+    private javax.swing.JButton btnSeacrhPaketDelete;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSearchDelete;
     private javax.swing.JButton btnSearchPaket;
@@ -1029,6 +1182,7 @@ public class GuiAdmin extends javax.swing.JFrame {
     private java.awt.TextField tfIdPaket;
     private java.awt.TextField tfIdPaketLama;
     private java.awt.TextField tfIdTempat;
+    private javax.swing.JButton tfIdTempatDelete;
     private java.awt.TextField tfIdTempatLama;
     private java.awt.TextField tfKontak;
     private java.awt.TextField tfNama;

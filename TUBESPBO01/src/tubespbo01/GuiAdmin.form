@@ -830,7 +830,7 @@
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="btnSearchDelete" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="btnDelete" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tfIdTempatDelete" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="51" max="32767" attributes="0"/>
                                   </Group>
@@ -851,7 +851,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane7" min="-2" pref="72" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                              <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfIdTempatDelete" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="123" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -870,7 +870,7 @@
                         <Property name="text" type="java.lang.String" value="Search"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnDelete">
+                    <Component class="javax.swing.JButton" name="tfIdTempatDelete">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Delete"/>
                       </Properties>
@@ -1390,7 +1390,7 @@
                                       <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane4" alignment="0" min="-2" pref="299" max="-2" attributes="0"/>
-                                  <Component id="btnPaketDelete" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnSeacrhPaketDelete" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="18" max="32767" attributes="0"/>
                           </Group>
@@ -1408,7 +1408,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane4" min="-2" pref="77" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="btnPaketDelete" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSeacrhPaketDelete" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="123" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -1487,7 +1487,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JButton" name="btnPaketDelete">
+                    <Component class="javax.swing.JButton" name="btnSeacrhPaketDelete">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Delete"/>
                       </Properties>
