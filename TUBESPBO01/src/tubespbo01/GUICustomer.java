@@ -76,8 +76,14 @@ public class GUICustomer extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         tfIdUDP = new javax.swing.JTextField();
         pLihatPaketWisata = new javax.swing.JPanel();
+        spTabelLPW = new javax.swing.JScrollPane();
+        tbLPW = new javax.swing.JTable();
         pLihatTourGuide = new javax.swing.JPanel();
+        spTabelLTG = new javax.swing.JScrollPane();
+        tbLTG = new javax.swing.JTable();
         pLihatTempatWisata = new javax.swing.JPanel();
+        spTabelLTW = new javax.swing.JScrollPane();
+        tbLTW = new javax.swing.JTable();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -206,7 +212,7 @@ public class GUICustomer extends javax.swing.JFrame {
                     .addComponent(tfKontakReg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnRegistrasiReg)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Registrasi", pRegistrasi);
@@ -277,7 +283,7 @@ public class GUICustomer extends javax.swing.JFrame {
                 .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(tfTanggalPesanPSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(btnPesanPSN)
                 .addContainerGap())
         );
@@ -386,46 +392,118 @@ public class GUICustomer extends javax.swing.JFrame {
                     .addComponent(tfKontakUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addComponent(btnUpdateUDP)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Ubah Data Pribadi", pUbahDataPribadi);
+
+        tbLPW.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Nama", "Harga", "List Guide", "List Tujuan", "Tgll Berangkat", "Tgl Pulang"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        spTabelLPW.setViewportView(tbLPW);
 
         javax.swing.GroupLayout pLihatPaketWisataLayout = new javax.swing.GroupLayout(pLihatPaketWisata);
         pLihatPaketWisata.setLayout(pLihatPaketWisataLayout);
         pLihatPaketWisataLayout.setHorizontalGroup(
             pLihatPaketWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGroup(pLihatPaketWisataLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(spTabelLPW, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pLihatPaketWisataLayout.setVerticalGroup(
             pLihatPaketWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 291, Short.MAX_VALUE)
+            .addGroup(pLihatPaketWisataLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(spTabelLPW, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Lihat Paket Wisata", pLihatPaketWisata);
+
+        tbLTG.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nama", "Umur", "Jenis Kelamin", "Alamat", "Kontak"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        spTabelLTG.setViewportView(tbLTG);
 
         javax.swing.GroupLayout pLihatTourGuideLayout = new javax.swing.GroupLayout(pLihatTourGuide);
         pLihatTourGuide.setLayout(pLihatTourGuideLayout);
         pLihatTourGuideLayout.setHorizontalGroup(
             pLihatTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGroup(pLihatTourGuideLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(spTabelLTG, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pLihatTourGuideLayout.setVerticalGroup(
             pLihatTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 291, Short.MAX_VALUE)
+            .addGroup(pLihatTourGuideLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(spTabelLTG, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Lihat Tour Guide", pLihatTourGuide);
+
+        tbLTW.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Nama", "Alamat", "Rating"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        spTabelLTW.setViewportView(tbLTW);
 
         javax.swing.GroupLayout pLihatTempatWisataLayout = new javax.swing.GroupLayout(pLihatTempatWisata);
         pLihatTempatWisata.setLayout(pLihatTempatWisataLayout);
         pLihatTempatWisataLayout.setHorizontalGroup(
             pLihatTempatWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGroup(pLihatTempatWisataLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(spTabelLTW, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pLihatTempatWisataLayout.setVerticalGroup(
             pLihatTempatWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 291, Short.MAX_VALUE)
+            .addGroup(pLihatTempatWisataLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(spTabelLTW, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Lihat Tempat Wisata", pLihatTempatWisata);
@@ -611,12 +689,34 @@ public class GUICustomer extends javax.swing.JFrame {
     }
     
     //TAB LIHAT PAKET WISATA
-    
+    //SETTER
+    public void setTbLPW (String[] list){
+        
+    }
+    //GETTER
+    public List getTbLPW (){
+        return null;
+    }
     
     //TAB LIHAT TOUR GUIDE
+    //SETTER
+    public void setTbLTG (String[] list){
+        
+    }
+    //GETTER
+    public List getTbLTG (){
+        return null;
+    }
     
     //TAB LIHAT TEMPAT WISATA
-
+    //SETTER
+    public void setTbLTW (String[] list){
+        
+    }
+    //GETTER
+    public List getTbLTW (){
+        return null;
+    }
     
     public static void main(String args[]) {
     /* Set the Nimbus look and feel */
@@ -686,6 +786,12 @@ public class GUICustomer extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbLakiUDP;
     private javax.swing.JRadioButton rbPerempuanReg;
     private javax.swing.JRadioButton rbPerempuanUDP;
+    private javax.swing.JScrollPane spTabelLPW;
+    private javax.swing.JScrollPane spTabelLTG;
+    private javax.swing.JScrollPane spTabelLTW;
+    private javax.swing.JTable tbLPW;
+    private javax.swing.JTable tbLTG;
+    private javax.swing.JTable tbLTW;
     private java.awt.TextField tfAlamatReg;
     private java.awt.TextField tfAlamatUDP;
     private javax.swing.JTextField tfIdPsnPSN;

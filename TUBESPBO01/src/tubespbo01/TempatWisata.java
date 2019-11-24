@@ -13,6 +13,7 @@ public class TempatWisata {
     private String id;
     private String nama;
     private String alamat;
+    private int rating;
     
     public TempatWisata(String nama, String alamat){
         this.nama = nama;
@@ -30,6 +31,10 @@ public class TempatWisata {
     public String getAlamat() {
         return alamat;
     }
+    
+    public int getRating() {
+        return rating;
+    }
 
     public void setId(String id) {
         this.id = id;
@@ -43,6 +48,9 @@ public class TempatWisata {
         this.alamat = alamat;
     }
     
+    public void setRating(int rating){
+        this.rating = rating;
+    }
     
-    
+       
 }
