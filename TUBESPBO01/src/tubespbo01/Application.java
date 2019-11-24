@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 // untuk admin
 public class Application {
-    private static List<Customer> daftarCustomer = new ArrayList<>();
+    private List<Customer> daftarCustomer = new ArrayList<>();
     private static List<TourGuide> daftarTourGuide = new ArrayList<>();
     private static List<PaketWisata> daftarPaketWisata = new ArrayList<>();
     private static List<TempatWisata> daftarTempatWisata = new ArrayList<>();
@@ -21,17 +21,17 @@ public class Application {
         for(TourGuide tg: daftarTourGuide){
             System.out.println("Nama : "+tg.getNama());
             System.out.println("Jenis Kelamin : "+tg.getJenisKelamin());
-            System.out.println("Tanggal Lahir : "+tg.getTglLahir());
+            System.out.println("Umur : "+tg.getUmur());
             System.out.println("Alamat : "+tg.getAlamat());
             System.out.println("Kontak : "+tg.getKontak());
             System.out.print("\n");
         }
     }  
-    public static void editTourGuide(String id, String nama, String jk, String tgl, String alamat, String kontak){
+    public static void editTourGuide(String id, String nama, String jk, String umur, String alamat, String kontak){
         TourGuide tg = Application.getTourGuide(id);
         tg.setNama(nama);
         tg.setJenisKelamin(jk);
-        tg.setTglLahir(tgl);
+        tg.setUmur(umur);
         tg.setAlamat(alamat);
         tg.setKontak(kontak);
     }   
@@ -48,28 +48,31 @@ public class Application {
     }
     
     //CUSTOMER
-    public static void inputCustomer(Customer c){
+    public List<Customer> getDaftarCs(){
+        return daftarCustomer;
+    }
+    public void inputCustomer(Customer c){
         daftarCustomer.add(c);
     }
-    public static void viewCustomer(){
+    public void viewCustomer(){
         for(Customer c: daftarCustomer){
             System.out.println("Nama : "+c.getNama());
             System.out.println("Jenis Kelamin : "+c.getJenisKelamin());
-            System.out.println("Tanggal Lahir : "+c.getTglLahir());
+            System.out.println("Tanggal Lahir : "+c.getUmur());
             System.out.println("Alamat : "+c.getAlamat());
             System.out.println("Kontak : "+c.getKontak());
             System.out.print("\n");
         }
     }
-    public static void editCustomer(String id, String nama,String jk, String tgl, String alamat, String kontak){
-        Customer c = Application.getCustomer(id);
-        c.setNama(nama);
-        c.setJenisKelamin(jk);
-        c.setTglLahir(tgl);
-        c.setAlamat(alamat);
-        c.setKontak(kontak);
+    public void editCustomer(String id, String nama,String jk, String umur, String alamat, String kontak){
+//        Customer c = new Application.getCustomer(id);
+//        c.setNama(nama);
+//        c.setJenisKelamin(jk);
+//        c.setUmur(umur);
+//        c.setAlamat(alamat);
+//        c.setKontak(kontak);
     }
-    public static Customer getCustomer(String id){
+    public Customer getCustomer(String id){
         Customer cs = null;
         
         for(Customer c: daftarCustomer){

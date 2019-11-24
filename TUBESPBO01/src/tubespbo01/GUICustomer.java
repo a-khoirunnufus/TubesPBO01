@@ -17,8 +17,11 @@ public class GUICustomer extends javax.swing.JFrame {
     /**
      * Creates new form GUICustomer
      */
+    private Controller ctrl;
+    
     public GUICustomer() {
         initComponents();
+        ctrl = new Controller(this);
     }
 
     /**
@@ -548,6 +551,7 @@ public class GUICustomer extends javax.swing.JFrame {
 
     private void btnRegistrasiRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrasiRegActionPerformed
         //if error JOptionPane.showMessageDialog(null, "Hello!");
+        ctrl.regist();
     }//GEN-LAST:event_btnRegistrasiRegActionPerformed
 
     private void rbLakiRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLakiRegActionPerformed
@@ -592,9 +596,9 @@ public class GUICustomer extends javax.swing.JFrame {
     }
     public String getRbJKReg(){
         if(rbLakiReg.isSelected()){
-            return "l";
+            return "Laki-Laki";
         }else{
-            return "p";
+            return "Perempuan";
         }
     }
     public String getTfUmurReg (){

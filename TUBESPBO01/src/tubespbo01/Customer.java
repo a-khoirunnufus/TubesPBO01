@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class Customer extends Person{
     private List<Pemesanan> listPesanan;
     
-    public Customer(String id,String nama, String jenisKelamin, String tglLahir,
+    public Customer(String id,String nama, String jenisKelamin, String umur,
                   String alamat, String kontak){
-        super(id,nama,jenisKelamin,tglLahir,
+        super(id,nama,jenisKelamin,umur,
                   alamat,kontak);
     }
 

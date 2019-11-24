@@ -13,16 +13,16 @@ public abstract class Person {
     private String id;
     private String nama;
     private String jenisKelamin;
-    private String tglLahir;
+    private String umur;
     private String alamat;
     private String kontak;
     
-    public Person(String id, String nama, String jenisKelamin, String tglLahir,
+    public Person(String id, String nama, String jenisKelamin, String umur,
                   String alamat, String kontak){
         this.id = id;
         this.nama = nama;
         this.jenisKelamin = jenisKelamin;
-        this.tglLahir = tglLahir;
+        this.umur = umur;
         this.alamat = alamat;
         this.kontak = kontak;
     }
@@ -37,8 +37,8 @@ public abstract class Person {
     public void setJenisKelamin(String jenisKelamin) {
         this.jenisKelamin = jenisKelamin;
     }
-    public void setTglLahir(String tglLahir) {
-        this.tglLahir = tglLahir;
+    public void setUmur(String umur) {
+        this.umur = umur;
     }
     public void setAlamat(String alamat) {
         this.alamat = alamat;
@@ -57,8 +57,8 @@ public abstract class Person {
     public String getJenisKelamin() {
         return jenisKelamin;
     }
-    public String getTglLahir() {
-        return tglLahir;
+    public String getUmur() {
+        return umur;
     }
     public String getAlamat() {
         return alamat;
