@@ -6,7 +6,10 @@ package tubespbo01;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -34,7 +37,6 @@ public class GUICustomer extends javax.swing.JFrame {
     private void initComponents() {
 
         bgJKReg = new javax.swing.ButtonGroup();
-        jDialog1 = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         pRegistrasi = new javax.swing.JPanel();
@@ -54,15 +56,15 @@ public class GUICustomer extends javax.swing.JFrame {
         tfIdReg = new javax.swing.JTextField();
         pPemesanan = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        tfIdPsnPSN = new javax.swing.JTextField();
+        tfIdPsnPsn = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        lsPaketWisataPSN = new javax.swing.JList<>();
-        jLabel16 = new javax.swing.JLabel();
-        tfTotalHargaPSN = new javax.swing.JTextField();
-        btnPesanPSN = new javax.swing.JButton();
+        lsPaketWisataPsn = new javax.swing.JList<>();
+        btnPesanPsn = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
-        tfTanggalPesanPSN = new javax.swing.JTextField();
+        tfTglPesanPsn = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        tfIdCsPsn = new javax.swing.JTextField();
         pUbahDataPribadi = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btnUpdateUDP = new javax.swing.JButton();
@@ -87,17 +89,6 @@ public class GUICustomer extends javax.swing.JFrame {
         pLihatTempatWisata = new javax.swing.JPanel();
         spTabelLTW = new javax.swing.JScrollPane();
         tbLTW = new javax.swing.JTable();
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,6 +130,7 @@ public class GUICustomer extends javax.swing.JFrame {
 
         jLabel12.setText("ID");
 
+        tfIdReg.setEditable(false);
         tfIdReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfIdRegActionPerformed(evt);
@@ -215,33 +207,45 @@ public class GUICustomer extends javax.swing.JFrame {
                     .addComponent(tfKontakReg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnRegistrasiReg)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Registrasi", pRegistrasi);
 
         jLabel14.setText("Id Pemesanan");
 
-        jLabel15.setText("Paket Wisata");
-
-        lsPaketWisataPSN.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "paket1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(lsPaketWisataPSN);
-
-        jLabel16.setText("Total Harga");
-
-        tfTotalHargaPSN.addActionListener(new java.awt.event.ActionListener() {
+        tfIdPsnPsn.setEditable(false);
+        tfIdPsnPsn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfTotalHargaPSNActionPerformed(evt);
+                tfIdPsnPsnActionPerformed(evt);
             }
         });
 
-        btnPesanPSN.setText("Pesan");
+        jLabel15.setText("Paket Wisata");
+
+        lsPaketWisataPsn.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "paket 1", "paket 2", "paket 3" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(lsPaketWisataPsn);
+
+        btnPesanPsn.setText("Pesan");
+        btnPesanPsn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesanPsnActionPerformed(evt);
+            }
+        });
 
         jLabel17.setText("Tanggal Pesan");
+
+        jLabel18.setText("Id Anda");
+
+        tfIdCsPsn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIdCsPsnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pPemesananLayout = new javax.swing.GroupLayout(pPemesanan);
         pPemesanan.setLayout(pPemesananLayout);
@@ -250,45 +254,46 @@ public class GUICustomer extends javax.swing.JFrame {
             .addGroup(pPemesananLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPesanPsn)
+                    .addGroup(pPemesananLayout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addGap(18, 18, 18)
+                        .addComponent(tfTglPesanPsn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pPemesananLayout.createSequentialGroup()
                         .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14)
                             .addComponent(jLabel15)
-                            .addComponent(jLabel16))
+                            .addComponent(jLabel18))
                         .addGap(18, 18, 18)
                         .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfIdPsnPSN, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfTotalHargaPSN, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnPesanPSN)
-                    .addGroup(pPemesananLayout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfTanggalPesanPSN, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(tfIdCsPsn, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfIdPsnPsn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)))))
                 .addContainerGap(330, Short.MAX_VALUE))
         );
         pPemesananLayout.setVerticalGroup(
             pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pPemesananLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(11, 11, 11)
+                .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(tfIdCsPsn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(tfIdPsnPSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfIdPsnPsn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(tfTotalHargaPSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(tfTanggalPesanPSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(btnPesanPSN)
-                .addContainerGap())
+                    .addComponent(tfTglPesanPsn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addComponent(btnPesanPsn)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pemesanan", pPemesanan);
@@ -431,7 +436,7 @@ public class GUICustomer extends javax.swing.JFrame {
             pLihatPaketWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLihatPaketWisataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spTabelLPW, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addComponent(spTabelLPW, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -468,7 +473,7 @@ public class GUICustomer extends javax.swing.JFrame {
             pLihatTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLihatTourGuideLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spTabelLTG, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addComponent(spTabelLTG, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -505,7 +510,7 @@ public class GUICustomer extends javax.swing.JFrame {
             pLihatTempatWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLihatTempatWisataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spTabelLTW, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addComponent(spTabelLTW, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -551,7 +556,7 @@ public class GUICustomer extends javax.swing.JFrame {
 
     private void btnRegistrasiRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrasiRegActionPerformed
         //if error JOptionPane.showMessageDialog(null, "Hello!");
-        ctrl.regist();
+        ctrl.registReg();
     }//GEN-LAST:event_btnRegistrasiRegActionPerformed
 
     private void rbLakiRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLakiRegActionPerformed
@@ -566,15 +571,21 @@ public class GUICustomer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfIdRegActionPerformed
 
-    private void tfTotalHargaPSNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTotalHargaPSNActionPerformed
+    private void btnPesanPsnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesanPsnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfTotalHargaPSNActionPerformed
+        ctrl.pesanPsn();
+    }//GEN-LAST:event_btnPesanPsnActionPerformed
+
+    private void tfIdCsPsnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdCsPsnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIdCsPsnActionPerformed
+
+    private void tfIdPsnPsnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdPsnPsnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIdPsnPsnActionPerformed
     
     //TAB REGISTRASI
     //SETTER
-    public void setTfIdReg (String id){
-        tfIdReg.setText("C-"+id);
-    }
     public void setTfNamaReg (String nama){
         tfNamaReg.setText(nama);
     }
@@ -588,8 +599,8 @@ public class GUICustomer extends javax.swing.JFrame {
         tfKontakReg.setText(kontak);
     }
     //GETTER
-    public String getTfIdReg (){
-        return tfIdReg.getText();
+    public JTextField getTfIdReg (){
+        return tfIdReg;
     }
     public String getTfNamaReg (){
         return tfNamaReg.getText();
@@ -610,42 +621,43 @@ public class GUICustomer extends javax.swing.JFrame {
     public String getTfKontakReg (){
         return tfKontakReg.getText();
     }
-    //LISTENER
-    public void addActionListenerReg(ActionListener al){
-        btnRegistrasiReg.addActionListener(al);
+    public void resetViewReg(){
+        tfIdReg.setText("C-"+Customer.getSidC());
+        tfNamaReg.setText("");
+        bgJKReg.clearSelection();
+        tfUmurReg.setText("");
+        tfAlamatReg.setText("");
+        tfKontakReg.setText("");
     }
     
     //TAB PEMESANAN
     //SETTER
-    public void setTfIdPsnPSN (String id){
-        tfIdPsnPSN.setText("P-"+id);
-    } 
-    public void setLsPaketWisataPSN (String[] list){
-        lsPaketWisataPSN.setListData(list);
+    public void setLsPaketWisataPsn (String[] list){
+        lsPaketWisataPsn.setListData(list);
     }
-    public void setTfTotalHargaPSN(String totalHarga){
-        tfTotalHargaPSN.setText(totalHarga);
-    }
-    public void setTfTanggalPesanPSN(String tglPesan){
-        tfTanggalPesanPSN.setText(tglPesan);
+    public void setTfTgllPesanPsn(String tglPesan){
+        tfTglPesanPsn.setText(tglPesan);
     }
     //GETTER
-    public String getTfIdPSN (){
-        return tfIdPsnPSN.getText();
+    public String getTfIdCsPsn(){
+        return tfIdCsPsn.getText();
     }
-    public List getLsPaketWisataPSN (){
-        return null;
+    public JTextField getTfIdPsnPsn (){
+        return tfIdPsnPsn;
     }
-    public String getTfTotalHargaPSN (){
-        return tfTotalHargaPSN.getText();
+    public JList<String> getLsPaketWisataPsn (){
+        return lsPaketWisataPsn;
     }
-    public String getTfTanggalPesanPSN(){
-        return tfTanggalPesanPSN.getText();
+    public String getTfTglPesanPsn(){
+        return tfTglPesanPsn.getText();
     }
-    //LISTENER
-    public void addActionListenerPSN(ActionListener al){
-        btnPesanPSN.addActionListener(al);
-    } 
+    public void resetViewPsn(){
+        tfIdCsPsn.setText("");
+        tfIdPsnPsn.setText("P-"+Pemesanan.getSidP());
+        lsPaketWisataPsn.clearSelection();
+        tfTglPesanPsn.setText("");
+    }
+
     
     //TAB UBAH DATA PRIBADI
     //SETTER
@@ -756,10 +768,9 @@ public class GUICustomer extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgJKReg;
-    private javax.swing.JButton btnPesanPSN;
+    private javax.swing.JButton btnPesanPsn;
     private javax.swing.JButton btnRegistrasiReg;
     private javax.swing.JButton btnUpdateUDP;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -767,8 +778,8 @@ public class GUICustomer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -779,7 +790,7 @@ public class GUICustomer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JList<String> lsPaketWisataPSN;
+    private javax.swing.JList<String> lsPaketWisataPsn;
     private javax.swing.JPanel pLihatPaketWisata;
     private javax.swing.JPanel pLihatTempatWisata;
     private javax.swing.JPanel pLihatTourGuide;
@@ -798,15 +809,15 @@ public class GUICustomer extends javax.swing.JFrame {
     private javax.swing.JTable tbLTW;
     private java.awt.TextField tfAlamatReg;
     private java.awt.TextField tfAlamatUDP;
-    private javax.swing.JTextField tfIdPsnPSN;
+    private javax.swing.JTextField tfIdCsPsn;
+    private javax.swing.JTextField tfIdPsnPsn;
     private javax.swing.JTextField tfIdReg;
     private javax.swing.JTextField tfIdUDP;
     private java.awt.TextField tfKontakReg;
     private java.awt.TextField tfKontakUDP;
     private java.awt.TextField tfNamaReg;
     private java.awt.TextField tfNamaUDP;
-    private javax.swing.JTextField tfTanggalPesanPSN;
-    private javax.swing.JTextField tfTotalHargaPSN;
+    private javax.swing.JTextField tfTglPesanPsn;
     private java.awt.TextField tfUmurReg;
     private java.awt.TextField tfUmurUDP;
     // End of variables declaration//GEN-END:variables

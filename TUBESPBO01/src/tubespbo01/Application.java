@@ -56,6 +56,7 @@ public class Application {
     }
     public void viewCustomer(){
         for(Customer c: daftarCustomer){
+            System.out.println("Id : "+c.getId());
             System.out.println("Nama : "+c.getNama());
             System.out.println("Jenis Kelamin : "+c.getJenisKelamin());
             System.out.println("Tanggal Lahir : "+c.getUmur());
@@ -76,7 +77,7 @@ public class Application {
         Customer cs = null;
         
         for(Customer c: daftarCustomer){
-            if(c.getId() == id){
+            if(c.getId().equals(id)){
                 cs = c;
                 break;
             }

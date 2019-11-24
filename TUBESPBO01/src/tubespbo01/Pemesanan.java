@@ -12,21 +12,31 @@ import java.util.ArrayList;
  */
 public class Pemesanan {
     private String id;
+    private static int sidP = 1;
+    private String PW;
     private List<PaketWisata> listPaket = new ArrayList();
     private double totalHarga;
     private String tglPesan; //BUAT OBJEK DATE
 
-    public Pemesanan(String id, String tglPesan) {
-        this.id = id;
+    public Pemesanan(String PW, String tglPesan) {
+        this.id = "P-"+sidP;
+        this.PW = PW;
         this.tglPesan = tglPesan;
+        sidP++;
     }
     
+    public static int getSidP(){
+        return sidP;
+    }
     public void addPaketWisata (PaketWisata pw){//DIBUAT DILUAR
         listPaket.add(pw);
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+    public void setPW(String PW){
+        this.PW = PW;
     }
     public void setListPaket(List<PaketWisata> listPaket) {
         this.listPaket = listPaket;
@@ -40,6 +50,9 @@ public class Pemesanan {
     public String getId() {
         return id;
     }
+    public String getPW(){
+        return PW;
+    }
     public List<PaketWisata> getListPaket() {
         return listPaket;
     }
@@ -48,5 +61,12 @@ public class Pemesanan {
     }
     public String getTglPesan() {
         return tglPesan;
-    } 
+    }
+    
+    public void viewPsn(){
+        System.out.println("Id Pemesanan : "+id);
+        System.out.println("Paket : "+PW);
+        System.out.println("Tanggal Pesan : "+tglPesan);
+        System.out.println("");
+    }
 }

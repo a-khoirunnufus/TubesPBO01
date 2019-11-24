@@ -11,12 +11,19 @@ import java.util.ArrayList;
  * @author Lenovo
  */
 public class Customer extends Person{
+    private static int sidC = 1;
     private List<Pemesanan> listPesanan;
     
-    public Customer(String id,String nama, String jenisKelamin, String umur,
+    public Customer(String nama, String jenisKelamin, String umur,
                   String alamat, String kontak){
-        super(id,nama,jenisKelamin,umur,
+        super("C-"+sidC,nama,jenisKelamin,umur,
                   alamat,kontak);
+        listPesanan = new ArrayList<>();
+        sidC++;
+    }
+    
+    public static int getSidC(){
+        return sidC;
     }
 
     public void setListPesanan(List<Pemesanan> listPesanan) {
@@ -28,8 +35,8 @@ public class Customer extends Person{
     }
     
     
-    public void createPemesanan(String id, String tglPesan){
-        Pemesanan pesanan = new Pemesanan(id,tglPesan);
+    public void createPemesanan(String PW, String tglPesan){
+        Pemesanan pesanan = new Pemesanan(PW,tglPesan);
         
         listPesanan.add(pesanan);
     }
