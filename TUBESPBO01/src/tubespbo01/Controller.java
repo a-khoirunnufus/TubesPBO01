@@ -5,6 +5,7 @@
  */
 package tubespbo01;
 
+import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,5 +45,38 @@ public class Controller {
             JOptionPane.showMessageDialog(viewCs, "Id Customer Tidak Tersedia!");
         }
         viewCs.resetViewPsn();
+    }
+    
+    public void cariIdCsUDP(){
+        String idCs = viewCs.getTfIdCsUDP();
+        Customer cs = model.getCustomer(idCs);
+        if(cs != null){
+            viewCs.getTfNamaUDP().setText(cs.getNama());
+            if(cs.getJenisKelamin() == "Laki-Laki"){
+                viewCs.getRbLakiUDP().setSelected(true);
+            }else{
+                viewCs.getRbPerempuanUDP().setSelected(true);
+            }
+            viewCs.getTfUmurUDP().setText(cs.getUmur());
+            viewCs.getTfAlamatUDP().setText(cs.getAlamat());
+            viewCs.getTfKontakUDP().setText(cs.getKontak());
+            JOptionPane.showMessageDialog(viewCs, "Id Valid");
+        }else{
+            JOptionPane.showMessageDialog(viewCs, "Id Tidak Valid");
+        }
+    }
+    
+    public void updateUDP(){
+        Customer cs = model.getCustomer(viewCs.getTfIdCsUDP());
+        String jK;
+        if(viewCs.getRbLakiUDP().isSelected()){
+            jK = "Laki-Laki";
+        }else{
+            jK = "Perempuan";
+        }
+        model.editCustomer(cs, viewCs.getTfNamaUDP().getText(), jK, viewCs.getTfUmurUDP().getText(), viewCs.getTfAlamatUDP().getText(), viewCs.getTfKontakUDP().getText());
+        JOptionPane.showMessageDialog(viewCs, "Data Diupdate");
+        viewCs.resetViewUDP();
+        model.viewCustomer();
     }
 }

@@ -65,13 +65,12 @@ public class Application {
             System.out.print("\n");
         }
     }
-    public void editCustomer(String id, String nama,String jk, String umur, String alamat, String kontak){
-//        Customer c = new Application.getCustomer(id);
-//        c.setNama(nama);
-//        c.setJenisKelamin(jk);
-//        c.setUmur(umur);
-//        c.setAlamat(alamat);
-//        c.setKontak(kontak);
+    public void editCustomer(Customer cs, String nama,String jk, String umur, String alamat, String kontak){
+        cs.setNama(nama);
+        cs.setJenisKelamin(jk);
+        cs.setUmur(umur);
+        cs.setAlamat(alamat);
+        cs.setKontak(kontak);
     }
     public Customer getCustomer(String id){
         Customer cs = null;

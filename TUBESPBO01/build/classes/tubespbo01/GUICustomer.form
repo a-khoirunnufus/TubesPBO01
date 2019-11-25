@@ -4,6 +4,8 @@
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="bgJKReg">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="bgJKUDP">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -402,19 +404,6 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnUpdateUDP" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tfUmurUDP" min="-2" pref="178" max="-2" attributes="0"/>
-                                  <Component id="tfKontakUDP" min="-2" pref="178" max="-2" attributes="0"/>
-                                  <Component id="tfAlamatUDP" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -422,23 +411,38 @@
                                   <Component id="jLabel13" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="rbLakiUDP" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="rbPerempuanUDP" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="tfIdUDP" min="-2" pref="178" max="-2" attributes="0"/>
-                                          <Component id="tfNamaUDP" min="-2" pref="178" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="tfNamaUDP" max="32767" attributes="0"/>
+                                          <Component id="tfIdCsUDP" pref="178" max="32767" attributes="0"/>
                                       </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnCariIdCsUDP" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="tfUmurUDP" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfAlamatUDP" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfKontakUDP" alignment="0" pref="178" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="313" max="32767" attributes="0"/>
+                      <EmptySpace pref="230" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -448,28 +452,27 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfIdUDP" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfIdCsUDP" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCariIdCsUDP" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfNamaUDP" min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfNamaUDP" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="rbLakiUDP" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rbPerempuanUDP" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbLakiUDP" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbPerempuanUDP" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfUmurUDP" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfUmurUDP" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <Component id="tfAlamatUDP" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -480,7 +483,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="btnUpdateUDP" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="43" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -499,16 +502,10 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateUDPActionPerformed"/>
               </Events>
             </Component>
-            <Component class="java.awt.TextField" name="tfNamaUDP">
-            </Component>
-            <Component class="java.awt.TextField" name="tfUmurUDP">
-            </Component>
-            <Component class="java.awt.TextField" name="tfAlamatUDP">
-            </Component>
             <Component class="javax.swing.JRadioButton" name="rbLakiUDP">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="bgJKReg"/>
+                  <ComponentRef name="bgJKUDP"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Laki - Laki"/>
               </Properties>
@@ -524,7 +521,7 @@
             <Component class="javax.swing.JRadioButton" name="rbPerempuanUDP">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="bgJKReg"/>
+                  <ComponentRef name="bgJKUDP"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Perempuan"/>
               </Properties>
@@ -542,8 +539,6 @@
                 <Property name="text" type="java.lang.String" value="Jenis Kelamin :"/>
               </Properties>
             </Component>
-            <Component class="java.awt.TextField" name="tfKontakUDP">
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Umur :"/>
@@ -554,7 +549,26 @@
                 <Property name="text" type="java.lang.String" value="ID :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfIdUDP">
+            <Component class="javax.swing.JTextField" name="tfIdCsUDP">
+            </Component>
+            <Component class="javax.swing.JButton" name="btnCariIdCsUDP">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cari ID"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCariIdCsUDPActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="tfNamaUDP">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfNamaUDPActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="tfUmurUDP">
+            </Component>
+            <Component class="javax.swing.JTextField" name="tfAlamatUDP">
+            </Component>
+            <Component class="javax.swing.JTextField" name="tfKontakUDP">
             </Component>
           </SubComponents>
         </Container>

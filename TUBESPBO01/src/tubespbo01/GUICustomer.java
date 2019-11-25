@@ -5,10 +5,12 @@ package tubespbo01;
 
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 /**
@@ -37,6 +39,7 @@ public class GUICustomer extends javax.swing.JFrame {
     private void initComponents() {
 
         bgJKReg = new javax.swing.ButtonGroup();
+        bgJKUDP = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         pRegistrasi = new javax.swing.JPanel();
@@ -68,18 +71,19 @@ public class GUICustomer extends javax.swing.JFrame {
         pUbahDataPribadi = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btnUpdateUDP = new javax.swing.JButton();
-        tfNamaUDP = new java.awt.TextField();
-        tfUmurUDP = new java.awt.TextField();
-        tfAlamatUDP = new java.awt.TextField();
         rbLakiUDP = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
         rbPerempuanUDP = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        tfKontakUDP = new java.awt.TextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        tfIdUDP = new javax.swing.JTextField();
+        tfIdCsUDP = new javax.swing.JTextField();
+        btnCariIdCsUDP = new javax.swing.JButton();
+        tfNamaUDP = new javax.swing.JTextField();
+        tfUmurUDP = new javax.swing.JTextField();
+        tfAlamatUDP = new javax.swing.JTextField();
+        tfKontakUDP = new javax.swing.JTextField();
         pLihatPaketWisata = new javax.swing.JPanel();
         spTabelLPW = new javax.swing.JScrollPane();
         tbLPW = new javax.swing.JTable();
@@ -307,7 +311,7 @@ public class GUICustomer extends javax.swing.JFrame {
             }
         });
 
-        bgJKReg.add(rbLakiUDP);
+        bgJKUDP.add(rbLakiUDP);
         rbLakiUDP.setText("Laki - Laki");
         rbLakiUDP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,7 +321,7 @@ public class GUICustomer extends javax.swing.JFrame {
 
         jLabel6.setText("Alamat :");
 
-        bgJKReg.add(rbPerempuanUDP);
+        bgJKUDP.add(rbPerempuanUDP);
         rbPerempuanUDP.setText("Perempuan");
         rbPerempuanUDP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -333,6 +337,19 @@ public class GUICustomer extends javax.swing.JFrame {
 
         jLabel13.setText("ID :");
 
+        btnCariIdCsUDP.setText("Cari ID");
+        btnCariIdCsUDP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariIdCsUDPActionPerformed(evt);
+            }
+        });
+
+        tfNamaUDP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNamaUDPActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pUbahDataPribadiLayout = new javax.swing.GroupLayout(pUbahDataPribadi);
         pUbahDataPribadi.setLayout(pUbahDataPribadiLayout);
         pUbahDataPribadiLayout.setHorizontalGroup(
@@ -341,16 +358,6 @@ public class GUICustomer extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnUpdateUDP)
-                    .addComponent(jLabel6)
-                    .addGroup(pUbahDataPribadiLayout.createSequentialGroup()
-                        .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5))
-                        .addGap(37, 37, 37)
-                        .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfUmurUDP, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfKontakUDP, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfAlamatUDP, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pUbahDataPribadiLayout.createSequentialGroup()
                         .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -358,16 +365,28 @@ public class GUICustomer extends javax.swing.JFrame {
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pUbahDataPribadiLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rbLakiUDP)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rbPerempuanUDP))
                             .addGroup(pUbahDataPribadiLayout.createSequentialGroup()
                                 .addGap(7, 7, 7)
-                                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfIdUDP, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfNamaUDP, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(313, Short.MAX_VALUE))
+                                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(tfNamaUDP)
+                                    .addComponent(tfIdCsUDP, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCariIdCsUDP))))
+                    .addGroup(pUbahDataPribadiLayout.createSequentialGroup()
+                        .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(37, 37, 37)
+                        .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfUmurUDP)
+                            .addComponent(tfAlamatUDP)
+                            .addComponent(tfKontakUDP, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
         pUbahDataPribadiLayout.setVerticalGroup(
             pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,23 +394,23 @@ public class GUICustomer extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(tfIdUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tfIdCsUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCariIdCsUDP))
+                .addGap(9, 9, 9)
+                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(tfNamaUDP, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tfNamaUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rbLakiUDP)
-                        .addComponent(rbPerempuanUDP)))
-                .addGap(13, 13, 13)
-                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(rbLakiUDP)
+                    .addComponent(rbPerempuanUDP))
+                .addGap(11, 11, 11)
+                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(tfUmurUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(16, 16, 16)
+                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(tfAlamatUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -400,7 +419,7 @@ public class GUICustomer extends javax.swing.JFrame {
                     .addComponent(tfKontakUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addComponent(btnUpdateUDP)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Ubah Data Pribadi", pUbahDataPribadi);
@@ -544,6 +563,7 @@ public class GUICustomer extends javax.swing.JFrame {
 
     private void btnUpdateUDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUDPActionPerformed
         // TODO add your handling code here:
+        ctrl.updateUDP();
     }//GEN-LAST:event_btnUpdateUDPActionPerformed
 
     private void rbLakiUDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLakiUDPActionPerformed
@@ -583,6 +603,15 @@ public class GUICustomer extends javax.swing.JFrame {
     private void tfIdPsnPsnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdPsnPsnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfIdPsnPsnActionPerformed
+
+    private void btnCariIdCsUDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariIdCsUDPActionPerformed
+        // TODO add your handling code here:
+        ctrl.cariIdCsUDP();
+    }//GEN-LAST:event_btnCariIdCsUDPActionPerformed
+
+    private void tfNamaUDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNamaUDPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNamaUDPActionPerformed
     
     //TAB REGISTRASI
     //SETTER
@@ -661,8 +690,8 @@ public class GUICustomer extends javax.swing.JFrame {
     
     //TAB UBAH DATA PRIBADI
     //SETTER
-    public void setTfIdUDP (String id){
-        tfIdUDP.setText("C-"+id);
+    public void setTfIdCsUDP (String id){
+        tfIdCsUDP.setText("C-"+id);
     }
     public void setTfNamaUDP (String nama){
         tfNamaUDP.setText(nama);
@@ -677,31 +706,38 @@ public class GUICustomer extends javax.swing.JFrame {
         tfKontakUDP.setText(kontak);
     }
     //GETTER
-    public String getTfIdUDP (){
-        return tfIdUDP.getText();
+
+    public String getTfIdCsUDP (){
+        return tfIdCsUDP.getText();
     }
-    public String getTfNamaUDP (){
-        return tfNamaUDP.getText();
+    public JTextField getTfNamaUDP (){
+        return tfNamaUDP;
     }
-    public String getRbJKUDP(){
-        if(rbLakiUDP.isSelected()){
-            return "l";
-        }else{
-            return "p";
-        }
+    public JRadioButton getRbLakiUDP(){
+        return rbLakiUDP;
     }
-    public String getTfUmurUDP (){
-        return tfUmurUDP.getText();
+    public JRadioButton getRbPerempuanUDP(){
+        return rbPerempuanUDP;
     }
-    public String getTfAlamatUDP (){
-        return tfAlamatUDP.getText();
+    public ButtonGroup getBgJKUDP(){
+        return bgJKUDP;
     }
-    public String getTfKontakUDP (){
-        return tfKontakUDP.getText();
+    public JTextField getTfUmurUDP (){
+        return tfUmurUDP;
     }
-    //LISTENER
-    public void addActionListenerUDP(ActionListener al){
-        btnUpdateUDP.addActionListener(al);
+    public JTextField getTfAlamatUDP (){
+        return tfAlamatUDP;
+    }
+    public JTextField getTfKontakUDP (){
+        return tfKontakUDP;
+    }
+    public void resetViewUDP(){
+        tfIdCsUDP.setText("");
+        tfNamaUDP.setText("");
+        bgJKUDP.clearSelection();
+        tfUmurUDP.setText("");
+        tfAlamatUDP.setText("");
+        tfKontakUDP.setText("");
     }
     
     //TAB LIHAT PAKET WISATA
@@ -768,6 +804,8 @@ public class GUICustomer extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgJKReg;
+    private javax.swing.ButtonGroup bgJKUDP;
+    private javax.swing.JButton btnCariIdCsUDP;
     private javax.swing.JButton btnPesanPsn;
     private javax.swing.JButton btnRegistrasiReg;
     private javax.swing.JButton btnUpdateUDP;
@@ -808,17 +846,17 @@ public class GUICustomer extends javax.swing.JFrame {
     private javax.swing.JTable tbLTG;
     private javax.swing.JTable tbLTW;
     private java.awt.TextField tfAlamatReg;
-    private java.awt.TextField tfAlamatUDP;
+    private javax.swing.JTextField tfAlamatUDP;
     private javax.swing.JTextField tfIdCsPsn;
+    private javax.swing.JTextField tfIdCsUDP;
     private javax.swing.JTextField tfIdPsnPsn;
     private javax.swing.JTextField tfIdReg;
-    private javax.swing.JTextField tfIdUDP;
     private java.awt.TextField tfKontakReg;
-    private java.awt.TextField tfKontakUDP;
+    private javax.swing.JTextField tfKontakUDP;
     private java.awt.TextField tfNamaReg;
-    private java.awt.TextField tfNamaUDP;
+    private javax.swing.JTextField tfNamaUDP;
     private javax.swing.JTextField tfTglPesanPsn;
     private java.awt.TextField tfUmurReg;
-    private java.awt.TextField tfUmurUDP;
+    private javax.swing.JTextField tfUmurUDP;
     // End of variables declaration//GEN-END:variables
 }
