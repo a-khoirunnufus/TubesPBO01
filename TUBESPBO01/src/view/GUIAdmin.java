@@ -10,6 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import controller.*;
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButton;
+import javax.swing.table.DefaultTableModel;
 import model.*;
 
 /**
@@ -17,14 +20,16 @@ import model.*;
  * @author Lenovo
  */
 public class GUIAdmin extends javax.swing.JFrame {
-
+    
     private ControllerMainMenu ctrlMM;
     private ControllerAdmin ctrlAdm;
+    private Application model;
     
     public GUIAdmin(ControllerMainMenu ctrlMM, Application model) {
         initComponents();
         this.ctrlMM = ctrlMM;
         ctrlAdm = new ControllerAdmin(model, this);
+        this.model = model;
     }
 
     /**
@@ -186,13 +191,18 @@ public class GUIAdmin extends javax.swing.JFrame {
             new String [] {
                 "ID", "Nama", "Gender", "Umur", "Alamat", "Kontak"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         spTbViewTGTG.setViewportView(tbViewTGTG);
-        if (tbViewTGTG.getColumnModel().getColumnCount() > 0) {
-            tbViewTGTG.getColumnModel().getColumn(3).setHeaderValue("Umur");
-            tbViewTGTG.getColumnModel().getColumn(4).setHeaderValue("Alamat");
-            tbViewTGTG.getColumnModel().getColumn(5).setHeaderValue("Kontak");
-        }
+
+        tfIdTG.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -913,7 +923,7 @@ public class GUIAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_rbPerempuanTGActionPerformed
 
     private void btnInputTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInputTGActionPerformed
-        
+        ctrlAdm.inputTG();
     }//GEN-LAST:event_btnInputTGActionPerformed
 
     private void cbTempatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTempatActionPerformed
@@ -956,8 +966,60 @@ public class GUIAdmin extends javax.swing.JFrame {
     
     //TOUR GUIDE
     //GETTER
+    public JTextField getTfIdTG(){
+        return tfIdTG;
+    }
     public JTextField getTfNamaTG(){
         return tfNamaTG;
+    }
+    public ButtonGroup getBgJKTG(){
+        return bgJKTG;
+    }
+    public String getRbJKTG(){
+        if(rbLakiTG.isSelected()){
+            return "Laki-Laki";
+        }else{
+            return "Perempuan";
+        }
+    }
+    public JRadioButton getRbLakiTG(){
+        return rbLakiTG;
+    }
+    public JRadioButton getRbPerempuanTG(){
+        return rbPerempuanTG;
+    }
+    public JTextField getTfUmurTG(){
+        return tfUmurTG;
+    }
+    public JTextField getTfAlamatTG(){
+        return tfAlamatTG;
+    }
+    public JTextField getTfKontakTG(){
+        return tfKontakTG;
+    }
+    public void resetViewTG(){
+        tfIdTG.setText("TG-"+TourGuide.getSidTG());
+        tfNamaTG.setText("");
+        bgJKTG.clearSelection();
+        tfUmurTG.setText("");
+        tfAlamatTG.setText("");
+        tfKontakTG.setText("");
+        
+        DefaultTableModel tbModel = (DefaultTableModel) tbViewTGTG.getModel();
+        tbModel.setRowCount(0);
+    }
+    public void updateTableTG(){
+        DefaultTableModel tbModel = (DefaultTableModel) tbViewTGTG.getModel();
+        String[] row = new String[6];
+        for(int j = 0; j<model.getDaftarTG().size(); j++){
+            row[0] = model.getDaftarTG().get(j).getId();
+            row[1] = model.getDaftarTG().get(j).getNama();
+            row[2] = model.getDaftarTG().get(j).getJenisKelamin();
+            row[3] = model.getDaftarTG().get(j).getUmur();
+            row[4] = model.getDaftarTG().get(j).getAlamat();
+            row[5] = model.getDaftarTG().get(j).getKontak();
+            tbModel.addRow(row);           
+        }
     }
    
 

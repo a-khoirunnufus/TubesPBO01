@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package controller;
-import model.Application;
+import javax.swing.JOptionPane;
+import model.*;
 import view.GUIAdmin;
 /**
  *
@@ -17,5 +18,15 @@ public class ControllerAdmin {
     public ControllerAdmin(Application model, GUIAdmin viewAdm){
         this.viewAdm = viewAdm;
         this.model = model;
+        viewAdm.getTfIdTG().setText("TG-"+TourGuide.getSidTG());
+    }
+    
+    public void inputTG(){
+        model.inputTourGuide(new TourGuide(viewAdm.getTfNamaTG().getText(),viewAdm.getRbJKTG(),viewAdm.getTfUmurTG().getText(),viewAdm.getTfAlamatTG().getText(),viewAdm.getTfKontakTG().getText()));
+        System.out.println("jumlah tg : "+model.getDaftarTG().size());
+        model.viewTourGuide();
+        JOptionPane.showMessageDialog(viewAdm, "Data Berhasil Ditambahkan!");
+        viewAdm.resetViewTG();
+        viewAdm.updateTableTG();
     }
 }

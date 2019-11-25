@@ -22,6 +22,10 @@ public class TourGuide extends Person {
         
     }
     
+    public static int getSidTG(){
+        return sidTG;
+    }
+    
     public void setJadwalTourGuide(Date tglBerangkat, Date tglPulang){
         for(int b = tglBerangkat.getBulan()-1; b<=tglPulang.getBulan()-1; b++){
             for(int h = tglBerangkat.getHari()-1; h<=tglPulang.getHari()-1; h++){

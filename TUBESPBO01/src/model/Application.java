@@ -9,16 +9,17 @@ import java.util.ArrayList;
 // untuk admin
 public class Application {
     private List<Customer> daftarCustomer = new ArrayList<>();
-    private static List<TourGuide> daftarTourGuide = new ArrayList<>();
-    private static List<PaketWisata> daftarPaketWisata = new ArrayList<>();
-    private static List<TempatWisata> daftarTempatWisata = new ArrayList<>();
+    private List<TourGuide> daftarTourGuide = new ArrayList<>();
+    private List<PaketWisata> daftarPaketWisata = new ArrayList<>();
+    private List<TempatWisata> daftarTempatWisata = new ArrayList<>();
     
     //TOUR GUIDE
-    public static void inputTourGuide(TourGuide tg){
+    public void inputTourGuide(TourGuide tg){
         daftarTourGuide.add(tg);
     }
-    public static void viewTourGuide(){
+    public void viewTourGuide(){
         for(TourGuide tg: daftarTourGuide){
+            System.out.println("Id : "+tg.getId());
             System.out.println("Nama : "+tg.getNama());
             System.out.println("Jenis Kelamin : "+tg.getJenisKelamin());
             System.out.println("Umur : "+tg.getUmur());
@@ -27,15 +28,15 @@ public class Application {
             System.out.print("\n");
         }
     }  
-    public static void editTourGuide(String id, String nama, String jk, String umur, String alamat, String kontak){
-        TourGuide tg = Application.getTourGuide(id);
-        tg.setNama(nama);
-        tg.setJenisKelamin(jk);
-        tg.setUmur(umur);
-        tg.setAlamat(alamat);
-        tg.setKontak(kontak);
+    public void editTourGuide(String id, String nama, String jk, String umur, String alamat, String kontak){
+//        TourGuide tg = Application.getTourGuide(id);
+//        tg.setNama(nama);
+//        tg.setJenisKelamin(jk);
+//        tg.setUmur(umur);
+//        tg.setAlamat(alamat);
+//        tg.setKontak(kontak);
     }   
-    public static TourGuide getTourGuide(String id){
+    public TourGuide getTourGuide(String id){
         TourGuide tg = null;
         
         for(TourGuide t: daftarTourGuide){
@@ -45,6 +46,9 @@ public class Application {
             }
         }
         return tg;
+    }
+    public List<TourGuide> getDaftarTG(){
+        return daftarTourGuide;
     }
     
     //CUSTOMER
@@ -85,15 +89,15 @@ public class Application {
     }
     
     //PAKET WISATA
-    public static void inputPaketWisata(PaketWisata pw){
+    public void inputPaketWisata(PaketWisata pw){
         daftarPaketWisata.add(pw);
     }
-    public static void viewPaketWisata(){
+    public void viewPaketWisata(){
         for(PaketWisata pw: daftarPaketWisata){
             
         }
     }
-    public static PaketWisata getPaketWisata(String id){
+    public PaketWisata getPaketWisata(String id){
         PaketWisata pw = null;
         for(PaketWisata w: daftarPaketWisata){
             if(w.getId() == id){
@@ -103,29 +107,29 @@ public class Application {
         }
         return pw;
     }
-    public static void editPaketWisata(String id, String nama, double harga,Date tglB, Date tglP, 
+    public void editPaketWisata(String id, String nama, double harga,Date tglB, Date tglP, 
                                         List<TourGuide> listTg, List<TempatWisata> listTw){
-        PaketWisata pw = Application.getPaketWisata(id);
-        pw.setNama(nama);
-        pw.setHarga(harga);
-        pw.setTglBerangkat(tglB);
-        pw.setTglPulang(tglP);
-        pw.setListGuide(listTg);
-        pw.setListTujuan(listTw);
-        List tourGuideBertugas = new ArrayList();
+//        PaketWisata pw = Application.getPaketWisata(id);
+//        pw.setNama(nama);
+//        pw.setHarga(harga);
+//        pw.setTglBerangkat(tglB);
+//        pw.setTglPulang(tglP);
+//        pw.setListGuide(listTg);
+//        pw.setListTujuan(listTw);
+//        List tourGuideBertugas = new ArrayList();
     }
     
     
     //TEMPAT WISATA
-    public static void inputTempatWisata(TempatWisata tw){
+    public void inputTempatWisata(TempatWisata tw){
         daftarTempatWisata.add(tw);
     }
-    public static void viewTempatWisata(){
+    public void viewTempatWisata(){
         for(TempatWisata pw: daftarTempatWisata){
             
         }
     }
-    public static TempatWisata getTempatWisata(String id){
+    public TempatWisata getTempatWisata(String id){
         TempatWisata tw = null;
         for(TempatWisata t: daftarTempatWisata){
             if(t.getId() == id){
@@ -135,10 +139,8 @@ public class Application {
         }
         return tw;
     }
-    public static void editTempatWisata(String id, String nama, String alamat){
-        TempatWisata tw = Application.getTempatWisata(id);
-        tw.setNama(nama);
-        tw.setAlamat(alamat);
+    public void editTempatWisata(String id, String nama, String alamat){
+        
     }
     
 }
