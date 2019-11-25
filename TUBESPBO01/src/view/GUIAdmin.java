@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import controller.*;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.*;
 
@@ -42,8 +43,8 @@ public class GUIAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         bgJKTG = new javax.swing.ButtonGroup();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        tpAdmin = new javax.swing.JTabbedPane();
+        pTourGuide = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         rbLakiTG = new javax.swing.JRadioButton();
@@ -60,13 +61,15 @@ public class GUIAdmin extends javax.swing.JFrame {
         tfUmurTG = new javax.swing.JTextField();
         tfAlamatTG = new javax.swing.JTextField();
         tfKontakTG = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
+        pCustomer = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
+        tbViewCs = new javax.swing.JTable();
+        btnRefreshCs = new javax.swing.JButton();
+        pRekapPemesanan = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
+        tbViewRP = new javax.swing.JTable();
+        btnRefreshRP = new javax.swing.JButton();
+        pTempatWisata = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable5 = new javax.swing.JTable();
         jTabbedPane3 = new javax.swing.JTabbedPane();
@@ -100,7 +103,7 @@ public class GUIAdmin extends javax.swing.JFrame {
         tfIdTempatDelete = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTable7 = new javax.swing.JTable();
-        jPanel5 = new javax.swing.JPanel();
+        pPaketWisata = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -145,9 +148,9 @@ public class GUIAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane2.setName("coba"); // NOI18N
+        tpAdmin.setName("coba"); // NOI18N
 
-        jPanel1.setName(""); // NOI18N
+        pTourGuide.setName(""); // NOI18N
 
         jLabel2.setText("Nama :");
 
@@ -204,30 +207,30 @@ public class GUIAdmin extends javax.swing.JFrame {
 
         tfIdTG.setEditable(false);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pTourGuideLayout = new javax.swing.GroupLayout(pTourGuide);
+        pTourGuide.setLayout(pTourGuideLayout);
+        pTourGuideLayout.setHorizontalGroup(
+            pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pTourGuideLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnInputTG)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pTourGuideLayout.createSequentialGroup()
+                        .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
                         .addGap(55, 55, 55)
                         .addComponent(tfIdTG, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pTourGuideLayout.createSequentialGroup()
+                        .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfNamaTG)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(pTourGuideLayout.createSequentialGroup()
                                 .addComponent(rbLakiTG)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rbPerempuanTG))
@@ -238,35 +241,35 @@ public class GUIAdmin extends javax.swing.JFrame {
                 .addComponent(spTbViewTGTG, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pTourGuideLayout.setVerticalGroup(
+            pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pTourGuideLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(spTbViewTGTG, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(pTourGuideLayout.createSequentialGroup()
+                        .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfIdTG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(tfNamaTG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(13, 13, 13)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(rbLakiTG)
                             .addComponent(rbPerempuanTG))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(tfUmurTG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(8, 8, 8)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(tfAlamatTG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(13, 13, 13)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(tfKontakTG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39)
@@ -274,9 +277,15 @@ public class GUIAdmin extends javax.swing.JFrame {
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("TOUR GUIDE", jPanel1);
+        tpAdmin.addTab("TOUR GUIDE", pTourGuide);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        pCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pCustomerMouseClicked(evt);
+            }
+        });
+
+        tbViewCs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -284,60 +293,81 @@ public class GUIAdmin extends javax.swing.JFrame {
                 "ID", "Nama", "Gender", "Umur", "Alamat", "Kontak"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(3).setHeaderValue("Umur");
-            jTable2.getColumnModel().getColumn(4).setHeaderValue("Alamat");
-            jTable2.getColumnModel().getColumn(5).setHeaderValue("Kontak");
-        }
+        jScrollPane2.setViewportView(tbViewCs);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        btnRefreshCs.setText("Refresh");
+        btnRefreshCs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshCsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pCustomerLayout = new javax.swing.GroupLayout(pCustomer);
+        pCustomer.setLayout(pCustomerLayout);
+        pCustomerLayout.setHorizontalGroup(
+            pCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pCustomerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+                .addGroup(pCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+                    .addGroup(pCustomerLayout.createSequentialGroup()
+                        .addComponent(btnRefreshCs)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pCustomerLayout.setVerticalGroup(
+            pCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pCustomerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(btnRefreshCs)
+                .addContainerGap())
         );
 
-        jTabbedPane2.addTab("CUSTOMER", jPanel2);
+        tpAdmin.addTab("CUSTOMER", pCustomer);
 
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+        tbViewRP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Paket Wisata", "Customer", "Jumlah Pemesanan"
+                "Id Pemesanan", "Customer", "Paket Wisata", "Tanggal Pesan"
             }
         ));
-        jScrollPane6.setViewportView(jTable6);
+        jScrollPane6.setViewportView(tbViewRP);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        btnRefreshRP.setText("Refresh");
+        btnRefreshRP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshRPActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pRekapPemesananLayout = new javax.swing.GroupLayout(pRekapPemesanan);
+        pRekapPemesanan.setLayout(pRekapPemesananLayout);
+        pRekapPemesananLayout.setHorizontalGroup(
+            pRekapPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pRekapPemesananLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(192, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                .addGroup(pRekapPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+                    .addGroup(pRekapPemesananLayout.createSequentialGroup()
+                        .addComponent(btnRefreshRP)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
+        pRekapPemesananLayout.setVerticalGroup(
+            pRekapPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pRekapPemesananLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRefreshRP)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        jTabbedPane2.addTab("REKAP PEMESANAN", jPanel3);
+        tpAdmin.addTab("REKAP PEMESANAN", pRekapPemesanan);
 
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -552,28 +582,28 @@ public class GUIAdmin extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Delete", jPanel11);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout pTempatWisataLayout = new javax.swing.GroupLayout(pTempatWisata);
+        pTempatWisata.setLayout(pTempatWisataLayout);
+        pTempatWisataLayout.setHorizontalGroup(
+            pTempatWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pTempatWisataLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        pTempatWisataLayout.setVerticalGroup(
+            pTempatWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pTempatWisataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pTempatWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jTabbedPane3))
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("TEMPAT WISATA", jPanel4);
+        tpAdmin.addTab("TEMPAT WISATA", pTempatWisata);
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -849,28 +879,28 @@ public class GUIAdmin extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Delete", jPanel8);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout pPaketWisataLayout = new javax.swing.GroupLayout(pPaketWisata);
+        pPaketWisata.setLayout(pPaketWisataLayout);
+        pPaketWisataLayout.setHorizontalGroup(
+            pPaketWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPaketWisataLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        pPaketWisataLayout.setVerticalGroup(
+            pPaketWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPaketWisataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pPaketWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jTabbedPane1))
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("PAKET WISATA", jPanel5);
+        tpAdmin.addTab("PAKET WISATA", pPaketWisata);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Menu Admin");
@@ -889,7 +919,7 @@ public class GUIAdmin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane2)
+                    .addComponent(tpAdmin)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
@@ -907,7 +937,7 @@ public class GUIAdmin extends javax.swing.JFrame {
                         .addComponent(btnBMM)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tpAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -961,6 +991,18 @@ public class GUIAdmin extends javax.swing.JFrame {
     private void btnBMMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBMMActionPerformed
         ctrlMM.toMainMenu();
     }//GEN-LAST:event_btnBMMActionPerformed
+
+    private void pCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pCustomerMouseClicked
+
+    }//GEN-LAST:event_pCustomerMouseClicked
+
+    private void btnRefreshCsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshCsActionPerformed
+        ctrlAdm.updateViewCs();
+    }//GEN-LAST:event_btnRefreshCsActionPerformed
+
+    private void btnRefreshRPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshRPActionPerformed
+        ctrlAdm.updateViewRP();
+    }//GEN-LAST:event_btnRefreshRPActionPerformed
 
   
     
@@ -1020,6 +1062,18 @@ public class GUIAdmin extends javax.swing.JFrame {
             row[5] = model.getDaftarTG().get(j).getKontak();
             tbModel.addRow(row);           
         }
+    }
+    
+    //CUSTOMER
+    //GETTTER
+    public JTable getTbViewCs(){
+        return tbViewCs;
+    }
+    
+    //REKAP PEMESANAN
+    //GETTER
+    public JTable getTbViewRP(){
+        return tbViewRP;
     }
    
 
@@ -1148,6 +1202,8 @@ public void setfIdPaketWisataEdit (int id) {
     private javax.swing.JButton btnInputTG;
     private javax.swing.JButton btnInputTempat;
     private javax.swing.JButton btnPaketUpdate;
+    private javax.swing.JButton btnRefreshCs;
+    private javax.swing.JButton btnRefreshRP;
     private javax.swing.JButton btnSeacrhPaketDelete;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSearchDelete;
@@ -1186,13 +1242,8 @@ public void setfIdPaketWisataEdit (int id) {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -1204,19 +1255,23 @@ public void setfIdPaketWisataEdit (int id) {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
-    private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
+    private javax.swing.JPanel pCustomer;
+    private javax.swing.JPanel pPaketWisata;
+    private javax.swing.JPanel pRekapPemesanan;
+    private javax.swing.JPanel pTempatWisata;
+    private javax.swing.JPanel pTourGuide;
     private javax.swing.JRadioButton rbLakiTG;
     private javax.swing.JRadioButton rbPerempuanTG;
     private javax.swing.JSlider slTempat;
     private javax.swing.JSlider slTempatBaru;
     private javax.swing.JScrollPane spTbViewTGTG;
+    private javax.swing.JTable tbViewCs;
+    private javax.swing.JTable tbViewRP;
     private javax.swing.JTable tbViewTGTG;
     private java.awt.TextField tfAlamatBaru;
     private javax.swing.JTextField tfAlamatTG;
@@ -1240,5 +1295,6 @@ public void setfIdPaketWisataEdit (int id) {
     private java.awt.TextField tfTanggalPulang;
     private java.awt.TextField tfTanggalPulangPaketBaru;
     private javax.swing.JTextField tfUmurTG;
+    private javax.swing.JTabbedPane tpAdmin;
     // End of variables declaration//GEN-END:variables
 }

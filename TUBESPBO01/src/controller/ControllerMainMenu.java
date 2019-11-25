@@ -4,14 +4,17 @@ import view.*;
 import model.Application;
 
 public class ControllerMainMenu {
-    private Application model = new Application();
+    private Application model;
     private GUIMainMenu viewMM;
-    private GUIAdmin viewAdm = new GUIAdmin(this,model);
+    private GUIAdmin viewAdm;
     private GUITourGuide viewTG = new GUITourGuide(this,model);
     private GUICustomer viewCs = new GUICustomer(this,model);
     
-    public ControllerMainMenu(GUIMainMenu viewMM){
+    public ControllerMainMenu(Application model, GUIMainMenu viewMM){
+        this.model = model;
         this.viewMM = viewMM;
+        viewCs = new GUICustomer(this,model);
+        viewAdm = new GUIAdmin(this,model);
     }
     
     public void menuAdmin(){

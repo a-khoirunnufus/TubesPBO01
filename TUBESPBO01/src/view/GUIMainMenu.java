@@ -5,6 +5,7 @@
  */
 package view;
 import controller.ControllerMainMenu;
+import model.Application;
 /**
  *
  * @author Lenovo
@@ -12,10 +13,11 @@ import controller.ControllerMainMenu;
 public class GUIMainMenu extends javax.swing.JFrame {
 
     private ControllerMainMenu ctrlMM;
+    private Application model = new Application();
     
     public GUIMainMenu() {
         initComponents();
-        ctrlMM = new ControllerMainMenu(this);
+        ctrlMM = new ControllerMainMenu(model, this);
     }
 
     /**

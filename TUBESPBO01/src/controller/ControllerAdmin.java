@@ -5,6 +5,7 @@
  */
 package controller;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.*;
 import view.GUIAdmin;
 /**
@@ -28,5 +29,38 @@ public class ControllerAdmin {
         JOptionPane.showMessageDialog(viewAdm, "Data Berhasil Ditambahkan!");
         viewAdm.resetViewTG();
         viewAdm.updateTableTG();
+    }
+    
+    public void updateViewCs(){
+        DefaultTableModel tbModel = (DefaultTableModel) viewAdm.getTbViewCs().getModel();
+        tbModel.setRowCount(0);
+        String[] row = new String[6];
+        for(int j = 0; j<model.getDaftarCs().size(); j++){
+            row[0] = model.getDaftarCs().get(j).getId();
+            row[1] = model.getDaftarCs().get(j).getNama();
+            row[2] = model.getDaftarCs().get(j).getJenisKelamin();
+            row[3] = model.getDaftarCs().get(j).getUmur();
+            row[4] = model.getDaftarCs().get(j).getAlamat();
+            row[5] = model.getDaftarCs().get(j).getKontak();
+            tbModel.addRow(row);           
+        }
+    }
+    
+    public void updateViewRP(){
+        DefaultTableModel tbModel = (DefaultTableModel) viewAdm.getTbViewRP().getModel();
+        tbModel.setRowCount(0);
+        String[] row = new String[6];
+        
+        for(Customer cs: model.getDaftarCs()){
+            if(!cs.getListPesanan().isEmpty()){
+                for(int i = 0; i<cs.getListPesanan().size(); i++){
+                    row[0] = cs.getListPesanan().get(i).getId();
+                    row[1] = cs.getNama();
+                    row[2] = cs.getListPesanan().get(i).getPW();
+                    row[3] = cs.getListPesanan().get(i).getTglPesan();
+                    tbModel.addRow(row);
+                }
+            }
+        }
     }
 }
