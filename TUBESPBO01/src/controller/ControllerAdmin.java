@@ -20,6 +20,8 @@ public class ControllerAdmin {
         this.viewAdm = viewAdm;
         this.model = model;
         viewAdm.getTfIdTG().setText("TG-"+TourGuide.getSidTG());
+        viewAdm.getTfIdInputTW().setText("TW-"+TempatWisata.getSidTW());
+        viewAdm.getSlRatingInputTW().setValue(0);
     }
     
     public void inputTG(){
@@ -62,5 +64,51 @@ public class ControllerAdmin {
                 }
             }
         }
+    }
+    
+    public void inputTW(){
+        model.inputTempatWisata(new TempatWisata(viewAdm.getTfNamaInputTW().getText(),viewAdm.getTfAlamatInputTW().getText(),viewAdm.getSlRatingInputTW().getValue()));
+        JOptionPane.showMessageDialog(viewAdm, "Data Berhasil Ditambahkan!");
+        viewAdm.resetViewInputTW();
+        viewAdm.updateTableTW();
+    }
+    
+    public void searchIdEditTW(){
+        TempatWisata tw = model.getTempatWisata(viewAdm.getTfIdSearchEditTW().getText());
+        if(tw!=null){
+            viewAdm.getTfNamaEditTW().setText(tw.getNama());
+            viewAdm.getTfAlamatEditTW().setText(tw.getAlamat());
+            viewAdm.getSlRatingEditTW().setValue(tw.getRating());
+            JOptionPane.showMessageDialog(viewAdm, "ID Valid");
+        }else{
+            JOptionPane.showMessageDialog(viewAdm, "ID Tidak Valid");
+        
+        }
+    }
+    
+    public void editTW(){
+        TempatWisata tw = model.getTempatWisata(viewAdm.getTfIdSearchEditTW().getText());
+        model.editTempatWisata(tw, viewAdm.getTfNamaEditTW().getText(), viewAdm.getTfAlamatEditTW().getText(), viewAdm.getSlRatingEditTW().getValue());
+        JOptionPane.showMessageDialog(viewAdm, "Data Telah Diubah");
+        viewAdm.resetViewEditTW();
+        viewAdm.updateTableTW();
+    }
+    
+    public void searchIdDeleteTW(){
+        TempatWisata tw = model.getTempatWisata(viewAdm.getTfIdSearchDeleteTW().getText());
+        if(tw != null){
+            DefaultTableModel tbModel = (DefaultTableModel) viewAdm.getTbViewDeleteTW().getModel();
+            tbModel.addRow(new String[]{tw.getId(),tw.getNama(),tw.getAlamat(),Integer.toString(tw.getRating())});
+            JOptionPane.showMessageDialog(viewAdm, "ID Valid");
+        }else{
+            JOptionPane.showMessageDialog(viewAdm, "ID Tidak Valid");
+        }
+    }
+    
+    public void deleteTW(){
+        model.getDaftarTW().remove(model.getDaftarTW().indexOf(model.getTempatWisata(viewAdm.getTfIdSearchDeleteTW().getText())));
+        JOptionPane.showMessageDialog(viewAdm, "Data Telah Dihapus");
+        viewAdm.resetViewDeleteTW();
+        viewAdm.updateTableTW();
     }
 }

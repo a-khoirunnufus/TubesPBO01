@@ -11,13 +11,21 @@ package model;
  */
 public class TempatWisata {
     private String id;
+    private static int sidTW = 1;
     private String nama;
     private String alamat;
     private int rating;
     
-    public TempatWisata(String nama, String alamat){
+    public TempatWisata(String nama, String alamat, int rating){
+        this.id = "TW-"+sidTW;
         this.nama = nama;
         this.alamat = alamat;
+        this.rating = rating;
+        sidTW++;
+    }
+    
+    public static int getSidTW(){
+        return sidTW;
     }
 
     public String getId() {

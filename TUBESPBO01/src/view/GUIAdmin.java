@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import controller.*;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
+import javax.swing.JSlider;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.*;
@@ -31,6 +32,7 @@ public class GUIAdmin extends javax.swing.JFrame {
         this.ctrlMM = ctrlMM;
         ctrlAdm = new ControllerAdmin(model, this);
         this.model = model;
+        
     }
 
     /**
@@ -71,38 +73,36 @@ public class GUIAdmin extends javax.swing.JFrame {
         btnRefreshRP = new javax.swing.JButton();
         pTempatWisata = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        tbViewTW = new javax.swing.JTable();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel9 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
-        tfNamaTempat = new java.awt.TextField();
         jLabel23 = new javax.swing.JLabel();
-        tfAlamatTempat = new java.awt.TextField();
         jLabel26 = new javax.swing.JLabel();
-        tfIdTempat = new java.awt.TextField();
-        btnInputTempat = new javax.swing.JButton();
-        slTempat = new javax.swing.JSlider();
+        btnInputTW = new javax.swing.JButton();
+        slRatingInputTW = new javax.swing.JSlider();
         jLabel34 = new javax.swing.JLabel();
+        tfIdInputTW = new javax.swing.JTextField();
+        tfNamaInputTW = new javax.swing.JTextField();
+        tfAlamatInputTW = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
-        btnTempatUpdate = new javax.swing.JButton();
-        tfIdTempatLama = new java.awt.TextField();
-        btnSearch = new javax.swing.JButton();
-        slTempatBaru = new javax.swing.JSlider();
+        btnEditTW = new javax.swing.JButton();
+        btnSearchEditTW = new javax.swing.JButton();
+        slRatingEditTW = new javax.swing.JSlider();
         jLabel35 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        tfAlamatBaru = new java.awt.TextField();
         jLabel36 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        IdTempatBaru = new java.awt.TextField();
-        tfNamaTempatBaru = new java.awt.TextField();
+        tfIdSearchEditTW = new javax.swing.JTextField();
+        tfNamaEditTW = new javax.swing.JTextField();
+        tfAlamatEditTW = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
-        IdTempatDelete = new java.awt.TextField();
-        btnSearchDelete = new javax.swing.JButton();
-        tfIdTempatDelete = new javax.swing.JButton();
+        btnSearchDeleteTW = new javax.swing.JButton();
+        btnDeleteTW = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable7 = new javax.swing.JTable();
+        tbViewDeleteTW = new javax.swing.JTable();
+        tfIdSearchDeleteTW = new javax.swing.JTextField();
         pPaketWisata = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -369,7 +369,7 @@ public class GUIAdmin extends javax.swing.JFrame {
 
         tpAdmin.addTab("REKAP PEMESANAN", pRekapPemesanan);
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tbViewTW.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -377,20 +377,18 @@ public class GUIAdmin extends javax.swing.JFrame {
                 "ID", "Nama", "Alamat", "Rating"
             }
         ));
-        jScrollPane5.setViewportView(jTable5);
+        jScrollPane5.setViewportView(tbViewTW);
 
         jLabel21.setText("Nama :");
-
-        tfNamaTempat.setText("1");
 
         jLabel23.setText("ID :");
 
         jLabel26.setText("Alamat :");
 
-        btnInputTempat.setText("Input");
-        btnInputTempat.addActionListener(new java.awt.event.ActionListener() {
+        btnInputTW.setText("Input");
+        btnInputTW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInputTempatActionPerformed(evt);
+                btnInputTWActionPerformed(evt);
             }
         });
 
@@ -410,64 +408,70 @@ public class GUIAdmin extends javax.swing.JFrame {
                             .addComponent(jLabel26)
                             .addComponent(jLabel34))
                         .addGap(49, 49, 49)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(slTempat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(tfNamaTempat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tfIdTempat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tfAlamatTempat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))))
-                    .addComponent(btnInputTempat))
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(tfAlamatInputTW, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfNamaInputTW, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfIdInputTW, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(slRatingInputTW, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))
+                    .addComponent(btnInputTW))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfIdTempat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfNamaTempat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfIdInputTW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(tfNamaInputTW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
-                    .addComponent(tfAlamatTempat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(tfAlamatInputTW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(slTempat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(slRatingInputTW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(13, 13, 13))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel34)
                         .addGap(18, 18, 18)))
-                .addComponent(btnInputTempat)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addComponent(btnInputTW)
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Input", jPanel9);
 
         jLabel29.setText("Masukkan ID :");
 
-        btnTempatUpdate.setText("Update Data");
-        btnTempatUpdate.addActionListener(new java.awt.event.ActionListener() {
+        btnEditTW.setText("Edit Data");
+        btnEditTW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTempatUpdateActionPerformed(evt);
+                btnEditTWActionPerformed(evt);
             }
         });
 
-        btnSearch.setText("Search");
+        btnSearchEditTW.setText("Search");
+        btnSearchEditTW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchEditTWActionPerformed(evt);
+            }
+        });
 
         jLabel35.setText("Rating :");
-
-        jLabel24.setText("ID :");
 
         jLabel36.setText("Alamat :");
 
         jLabel22.setText("Nama :");
 
-        tfNamaTempatBaru.setText("1");
+        tfIdSearchEditTW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIdSearchEditTWActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -476,26 +480,23 @@ public class GUIAdmin extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTempatUpdate)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jLabel29)
-                        .addGap(49, 49, 49)
-                        .addComponent(tfIdTempatLama, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch))
+                    .addComponent(btnEditTW)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel22)
-                            .addComponent(jLabel24)
                             .addComponent(jLabel36)
-                            .addComponent(jLabel35))
-                        .addGap(49, 49, 49)
+                            .addComponent(jLabel35)
+                            .addComponent(jLabel29))
+                        .addGap(21, 21, 21)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(slTempatBaru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(slRatingEditTW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(tfNamaTempatBaru, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(IdTempatBaru, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tfAlamatBaru, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(tfAlamatEditTW, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfNamaEditTW, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel10Layout.createSequentialGroup()
+                                    .addComponent(tfIdSearchEditTW, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnSearchEditTW))))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
@@ -503,39 +504,46 @@ public class GUIAdmin extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel29)
-                    .addComponent(tfIdTempatLama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(IdTempatBaru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfNamaTempatBaru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel29)
+                        .addComponent(tfIdSearchEditTW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSearchEditTW))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(tfNamaEditTW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
-                    .addComponent(tfAlamatBaru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(tfAlamatEditTW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(slTempatBaru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(slRatingEditTW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel35))
                 .addGap(18, 18, 18)
-                .addComponent(btnTempatUpdate)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addComponent(btnEditTW)
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Edit Data", jPanel10);
 
         jLabel33.setText("Masukkan ID :");
 
-        btnSearchDelete.setText("Search");
+        btnSearchDeleteTW.setText("Search");
+        btnSearchDeleteTW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchDeleteTWActionPerformed(evt);
+            }
+        });
 
-        tfIdTempatDelete.setText("Delete");
+        btnDeleteTW.setText("Delete");
+        btnDeleteTW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteTWActionPerformed(evt);
+            }
+        });
 
-        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+        tbViewDeleteTW.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -543,7 +551,7 @@ public class GUIAdmin extends javax.swing.JFrame {
                 "ID", "Nama", "Alamat", "Rating"
             }
         ));
-        jScrollPane7.setViewportView(jTable7);
+        jScrollPane7.setViewportView(tbViewDeleteTW);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -557,27 +565,28 @@ public class GUIAdmin extends javax.swing.JFrame {
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addComponent(jLabel33)
-                                .addGap(20, 20, 20)
-                                .addComponent(IdTempatDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSearchDelete))
-                            .addComponent(tfIdTempatDelete))
+                                .addGap(28, 28, 28)
+                                .addComponent(tfIdSearchDeleteTW, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnSearchDeleteTW))
+                            .addComponent(btnDeleteTW))
                         .addGap(0, 51, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel33)
-                    .addComponent(IdTempatDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearchDelete))
+                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel33)
+                        .addComponent(tfIdSearchDeleteTW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSearchDeleteTW))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(tfIdTempatDelete)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addComponent(btnDeleteTW)
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Delete", jPanel11);
@@ -972,13 +981,13 @@ public class GUIAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbPaketPaketBaruActionPerformed
 
-    private void btnInputTempatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInputTempatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnInputTempatActionPerformed
+    private void btnInputTWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInputTWActionPerformed
+        ctrlAdm.inputTW();
+    }//GEN-LAST:event_btnInputTWActionPerformed
 
-    private void btnTempatUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTempatUpdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTempatUpdateActionPerformed
+    private void btnEditTWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTWActionPerformed
+        ctrlAdm.editTW();
+    }//GEN-LAST:event_btnEditTWActionPerformed
 
     private void tfTanggalBerangkatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTanggalBerangkatActionPerformed
         // TODO add your handling code here:
@@ -1003,6 +1012,22 @@ public class GUIAdmin extends javax.swing.JFrame {
     private void btnRefreshRPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshRPActionPerformed
         ctrlAdm.updateViewRP();
     }//GEN-LAST:event_btnRefreshRPActionPerformed
+
+    private void tfIdSearchEditTWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdSearchEditTWActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIdSearchEditTWActionPerformed
+
+    private void btnSearchEditTWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchEditTWActionPerformed
+        ctrlAdm.searchIdEditTW();
+    }//GEN-LAST:event_btnSearchEditTWActionPerformed
+
+    private void btnSearchDeleteTWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchDeleteTWActionPerformed
+        ctrlAdm.searchIdDeleteTW();
+    }//GEN-LAST:event_btnSearchDeleteTWActionPerformed
+
+    private void btnDeleteTWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTWActionPerformed
+        ctrlAdm.deleteTW();
+    }//GEN-LAST:event_btnDeleteTWActionPerformed
 
   
     
@@ -1075,72 +1100,104 @@ public class GUIAdmin extends javax.swing.JFrame {
     public JTable getTbViewRP(){
         return tbViewRP;
     }
-   
-
-//TempatWisataInput
-   public void setIdTempatWisata (int id) {
-       tfIdTempat.setText("TEMPAT-"+id);
-   }
-   public String getNamaTempatWisata () {
-       return tfNamaTempat.getText();
-   }
-   public String getAlamatTempatWisata () {
-       return tfAlamatTempat.getText();
-   }
-  public int getTempatRatting() {
-       return slTempat.getValue();
-   }
-  public String getIdTempat(){
-        return tfIdTempat.getText(); 
-   }
-  public JButton getBtnSaveTempatWisata() {
-       return btnInputTempat;
-   }
-    public void resetViewTempat() {
-       tfNamaTempat.setText("");
-       tfAlamatTempat.setText("");
-       slTempat.setValue(0);
-   }
- //TempatWIsataInput
     
-//TempatWisataEdit
-     
-   public String getNamaTempatWisataEdit () {
-       return tfNamaTempat.getText();
-   }
-   public String getAlamatTempatWisataEdit () {
-       return tfAlamatTempat.getText();
-   }
-  public int getTempatRattingEdit() {
-       return slTempat.getValue();
-   }
-  public String getIdTemaptaBaru(){
-        return tfIdTempatLama.getText(); 
-   }
-  public JButton getBtnSaveTempatWisataEdit() {
-       return btnTempatUpdate;
-   }
-//TempatWisataEdit
+    //TEMPAT WISATA
+    //INPUT
+    //GETTER
+    public JTextField getTfIdInputTW(){
+        return tfIdInputTW;
+    }
+    public JTextField getTfNamaInputTW(){
+        return tfNamaInputTW;
+    }
+    public JTextField getTfAlamatInputTW(){
+        return tfAlamatInputTW;
+    }
+    public JSlider getSlRatingInputTW(){
+        return slRatingInputTW;
+    }
+    
+    //EDIT
+    public JTextField getTfIdSearchEditTW(){
+        return tfIdSearchEditTW;
+    }
+    public JTextField getTfNamaEditTW(){
+        return tfNamaEditTW;
+    }
+    public JTextField getTfAlamatEditTW(){
+        return tfAlamatEditTW;
+    }
+    public JSlider getSlRatingEditTW(){
+        return slRatingEditTW;
+    }
+    
+    //DELETE
+    public JTextField getTfIdSearchDeleteTW(){
+        return tfIdSearchDeleteTW;
+    }
+    public JTable getTbViewDeleteTW(){
+        return tbViewDeleteTW;
+    }
+ 
+    
+    public void resetViewInputTW(){
+        tfIdInputTW.setText("TW-"+TempatWisata.getSidTW());
+        tfNamaInputTW.setText("");
+        tfAlamatInputTW.setText("");
+        slRatingInputTW.setValue(0);
+        DefaultTableModel tbModel = (DefaultTableModel) tbViewTW.getModel();
+        tbModel.setRowCount(0);
+    }
+    public void resetViewEditTW(){
+        tfIdSearchEditTW.setText("TW-"+TempatWisata.getSidTW());
+        tfNamaEditTW.setText("");
+        tfAlamatEditTW.setText("");
+        slRatingEditTW.setValue(0);
+        DefaultTableModel tbModel = (DefaultTableModel) tbViewTW.getModel();
+        tbModel.setRowCount(0);
+    }
+    public void resetViewDeleteTW(){
+        tfIdSearchDeleteTW.setText("");
+        DefaultTableModel tbModelDel = (DefaultTableModel) tbViewDeleteTW.getModel();
+        tbModelDel.setRowCount(0);
+        DefaultTableModel tbModel = (DefaultTableModel) tbViewTW.getModel();
+        tbModel.setRowCount(0);
+    }
+    public void updateTableTW(){
+        DefaultTableModel tbModel = (DefaultTableModel) tbViewTW.getModel();
+        String[] row = new String[4];
+        for(int j = 0; j<model.getDaftarTW().size(); j++){
+            row[0] = model.getDaftarTW().get(j).getId();
+            row[1] = model.getDaftarTW().get(j).getNama();
+            row[2] = model.getDaftarTW().get(j).getAlamat();
+            row[3] = Integer.toString(model.getDaftarTW().get(j).getRating());
+            tbModel.addRow(row);           
+        }
+    }
+
+    
+
+
   
 //TempatWisataDelete
   public String getIdTemaptaDelete(){
-        return tfIdTempatDelete.getText(); 
+        return btnDeleteTW.getText(); 
    }
   public JButton getBtnSaveTempatWisataSearch() {
-       return btnSearchDelete;
+       return btnSearchDeleteTW;
    }
   public JButton getBtnSaveTempatWisataDelete() {
-       return tfIdTempatDelete;
+       return btnDeleteTW;
    }
 //TempatWisataDelete
   
     
    //PaketWIsata
     public void setfIdPaketWisata (int id) {
-       tfIdTempat.setText("TEMPAT-"+id);
+       tfIdInputTW.setText("TEMPAT-"+id);
    }
    public String getNamaPaketWisata () {
-       return tfNamaTempat.getText();
+       return tfNamaInputTW.getText();
    }
    public String getHargaPaketWisata () {
        return tfHargaPaket.getText();
@@ -1180,7 +1237,7 @@ public void setfIdPaketWisataEdit (int id) {
   
  //PaketWisataDelete
   public String getIdPaketDelete(){
-        return tfIdTempatDelete.getText(); 
+        return btnDeleteTW.getText(); 
    }
   public JButton getBtnDeletePaketWisataSearch() {
        return btnSeacrhPaketDelete;
@@ -1194,21 +1251,20 @@ public void setfIdPaketWisataEdit (int id) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.TextField IdPaketDelete;
-    private java.awt.TextField IdTempatBaru;
-    private java.awt.TextField IdTempatDelete;
     private javax.swing.ButtonGroup bgJKTG;
     private javax.swing.JButton btnBMM;
+    private javax.swing.JButton btnDeleteTW;
+    private javax.swing.JButton btnEditTW;
     private javax.swing.JButton btnInputPaket;
     private javax.swing.JButton btnInputTG;
-    private javax.swing.JButton btnInputTempat;
+    private javax.swing.JButton btnInputTW;
     private javax.swing.JButton btnPaketUpdate;
     private javax.swing.JButton btnRefreshCs;
     private javax.swing.JButton btnRefreshRP;
     private javax.swing.JButton btnSeacrhPaketDelete;
-    private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnSearchDelete;
+    private javax.swing.JButton btnSearchDeleteTW;
+    private javax.swing.JButton btnSearchEditTW;
     private javax.swing.JButton btnSearchPaket;
-    private javax.swing.JButton btnTempatUpdate;
     private javax.swing.JComboBox<String> cbPaketPaketBaru;
     private javax.swing.JComboBox<String> cbTempat;
     private javax.swing.JButton jButton5;
@@ -1228,7 +1284,6 @@ public void setfIdPaketWisataEdit (int id) {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
@@ -1258,8 +1313,6 @@ public void setfIdPaketWisataEdit (int id) {
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
-    private javax.swing.JTable jTable7;
     private javax.swing.JPanel pCustomer;
     private javax.swing.JPanel pPaketWisata;
     private javax.swing.JPanel pRekapPemesanan;
@@ -1267,29 +1320,31 @@ public void setfIdPaketWisataEdit (int id) {
     private javax.swing.JPanel pTourGuide;
     private javax.swing.JRadioButton rbLakiTG;
     private javax.swing.JRadioButton rbPerempuanTG;
-    private javax.swing.JSlider slTempat;
-    private javax.swing.JSlider slTempatBaru;
+    private javax.swing.JSlider slRatingEditTW;
+    private javax.swing.JSlider slRatingInputTW;
     private javax.swing.JScrollPane spTbViewTGTG;
     private javax.swing.JTable tbViewCs;
+    private javax.swing.JTable tbViewDeleteTW;
     private javax.swing.JTable tbViewRP;
     private javax.swing.JTable tbViewTGTG;
-    private java.awt.TextField tfAlamatBaru;
+    private javax.swing.JTable tbViewTW;
+    private javax.swing.JTextField tfAlamatEditTW;
+    private javax.swing.JTextField tfAlamatInputTW;
     private javax.swing.JTextField tfAlamatTG;
-    private java.awt.TextField tfAlamatTempat;
     private java.awt.TextField tfHargaPaket;
     private java.awt.TextField tfHargaPaketBaru;
+    private javax.swing.JTextField tfIdInputTW;
     private java.awt.TextField tfIdPaket;
     private java.awt.TextField tfIdPaketLama;
+    private javax.swing.JTextField tfIdSearchDeleteTW;
+    private javax.swing.JTextField tfIdSearchEditTW;
     private javax.swing.JTextField tfIdTG;
-    private java.awt.TextField tfIdTempat;
-    private javax.swing.JButton tfIdTempatDelete;
-    private java.awt.TextField tfIdTempatLama;
     private javax.swing.JTextField tfKontakTG;
+    private javax.swing.JTextField tfNamaEditTW;
+    private javax.swing.JTextField tfNamaInputTW;
     private java.awt.TextField tfNamaPaket;
     private java.awt.TextField tfNamaPaketBaru;
     private javax.swing.JTextField tfNamaTG;
-    private java.awt.TextField tfNamaTempat;
-    private java.awt.TextField tfNamaTempatBaru;
     private java.awt.TextField tfTanggalBerangkat;
     private java.awt.TextField tfTanggalBerangkatPaketBaru;
     private java.awt.TextField tfTanggalPulang;

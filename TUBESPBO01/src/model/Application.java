@@ -121,26 +121,35 @@ public class Application {
     
     
     //TEMPAT WISATA
+    public List<TempatWisata> getDaftarTW(){
+        return daftarTempatWisata;
+    }
     public void inputTempatWisata(TempatWisata tw){
         daftarTempatWisata.add(tw);
     }
     public void viewTempatWisata(){
         for(TempatWisata pw: daftarTempatWisata){
-            
+            System.out.println("Id : "+pw.getId());
+            System.out.println("Nama : "+pw.getNama());
+            System.out.println("Alamat : "+pw.getAlamat());
+            System.out.println("Rating : "+pw.getRating());
+            System.out.println("");
         }
     }
     public TempatWisata getTempatWisata(String id){
         TempatWisata tw = null;
         for(TempatWisata t: daftarTempatWisata){
-            if(t.getId() == id){
+            if(t.getId().equals(id)){
                 tw = t;
                 break;
             }
         }
         return tw;
     }
-    public void editTempatWisata(String id, String nama, String alamat){
-        
+    public void editTempatWisata(TempatWisata tw, String nama, String alamat, int rating){
+        tw.setNama(nama);
+        tw.setAlamat(alamat);
+        tw.setRating(rating);
     }
     
 }

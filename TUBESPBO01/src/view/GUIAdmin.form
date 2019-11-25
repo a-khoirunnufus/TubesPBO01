@@ -557,7 +557,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable5">
+                <Component class="javax.swing.JTable" name="tbViewTW">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="0">
@@ -625,18 +625,16 @@
                                           <Component id="jLabel34" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="slTempat" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="tfNamaTempat" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="tfIdTempat" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="tfAlamatTempat" alignment="0" pref="183" max="32767" attributes="0"/>
-                                          </Group>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="tfAlamatInputTW" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="tfNamaInputTW" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="tfIdInputTW" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="slRatingInputTW" pref="183" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="btnInputTempat" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnInputTW" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="28" max="32767" attributes="0"/>
+                              <EmptySpace pref="45" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -644,24 +642,24 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel23" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
-                                  <Component id="tfIdTempat" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel23" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                                  <Component id="tfIdInputTW" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tfNamaTempat" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tfNamaInputTW" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel26" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tfAlamatTempat" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tfAlamatInputTW" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="slTempat" min="-2" max="-2" attributes="0"/>
+                                      <Component id="slRatingInputTW" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
@@ -669,8 +667,8 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="btnInputTempat" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="151" max="32767" attributes="0"/>
+                              <Component id="btnInputTW" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="148" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -681,39 +679,36 @@
                         <Property name="text" type="java.lang.String" value="Nama :"/>
                       </Properties>
                     </Component>
-                    <Component class="java.awt.TextField" name="tfNamaTempat">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="1"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="jLabel23">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="ID :"/>
                       </Properties>
-                    </Component>
-                    <Component class="java.awt.TextField" name="tfAlamatTempat">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel26">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Alamat :"/>
                       </Properties>
                     </Component>
-                    <Component class="java.awt.TextField" name="tfIdTempat">
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btnInputTempat">
+                    <Component class="javax.swing.JButton" name="btnInputTW">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Input"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInputTempatActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInputTWActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JSlider" name="slTempat">
+                    <Component class="javax.swing.JSlider" name="slRatingInputTW">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel34">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Rating :"/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="tfIdInputTW">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="tfNamaInputTW">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="tfAlamatInputTW">
                     </Component>
                   </SubComponents>
                 </Container>
@@ -732,28 +727,25 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnTempatUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                      <Component id="tfIdTempatLama" min="-2" pref="93" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="btnEditTW" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel29" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="slTempatBaru" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="slRatingEditTW" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="tfNamaTempatBaru" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="IdTempatBaru" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="tfAlamatBaru" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
+                                              <Component id="tfAlamatEditTW" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="tfNamaEditTW" alignment="0" max="32767" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="tfIdSearchEditTW" min="-2" pref="121" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="btnSearchEditTW" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -767,33 +759,30 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel29" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tfIdTempatLama" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnSearch" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfIdSearchEditTW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="btnSearchEditTW" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel24" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
-                                  <Component id="IdTempatBaru" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tfNamaEditTW" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tfNamaTempatBaru" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tfAlamatEditTW" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tfAlamatBaru" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="slTempatBaru" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="slRatingEditTW" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnTempatUpdate" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="112" max="32767" attributes="0"/>
+                              <Component id="btnEditTW" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="111" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -804,34 +793,28 @@
                         <Property name="text" type="java.lang.String" value="Masukkan ID :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnTempatUpdate">
+                    <Component class="javax.swing.JButton" name="btnEditTW">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Update Data"/>
+                        <Property name="text" type="java.lang.String" value="Edit Data"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTempatUpdateActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditTWActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="java.awt.TextField" name="tfIdTempatLama">
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btnSearch">
+                    <Component class="javax.swing.JButton" name="btnSearchEditTW">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Search"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchEditTWActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JSlider" name="slTempatBaru">
+                    <Component class="javax.swing.JSlider" name="slRatingEditTW">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel35">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Rating :"/>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel24">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="ID :"/>
-                      </Properties>
-                    </Component>
-                    <Component class="java.awt.TextField" name="tfAlamatBaru">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel36">
                       <Properties>
@@ -843,12 +826,14 @@
                         <Property name="text" type="java.lang.String" value="Nama :"/>
                       </Properties>
                     </Component>
-                    <Component class="java.awt.TextField" name="IdTempatBaru">
+                    <Component class="javax.swing.JTextField" name="tfIdSearchEditTW">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfIdSearchEditTWActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="java.awt.TextField" name="tfNamaTempatBaru">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="1"/>
-                      </Properties>
+                    <Component class="javax.swing.JTextField" name="tfNamaEditTW">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="tfAlamatEditTW">
                     </Component>
                   </SubComponents>
                 </Container>
@@ -872,12 +857,12 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                              <Component id="IdTempatDelete" min="-2" pref="93" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btnSearchDelete" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                              <Component id="tfIdSearchDeleteTW" min="-2" pref="85" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnSearchDeleteTW" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="tfIdTempatDelete" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnDeleteTW" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="51" max="32767" attributes="0"/>
                                   </Group>
@@ -889,17 +874,19 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel33" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="IdTempatDelete" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnSearchDelete" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfIdSearchDeleteTW" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="btnSearchDeleteTW" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane7" min="-2" pref="72" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                              <Component id="tfIdTempatDelete" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="123" max="32767" attributes="0"/>
+                              <Component id="btnDeleteTW" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="126" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -910,17 +897,21 @@
                         <Property name="text" type="java.lang.String" value="Masukkan ID :"/>
                       </Properties>
                     </Component>
-                    <Component class="java.awt.TextField" name="IdTempatDelete">
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btnSearchDelete">
+                    <Component class="javax.swing.JButton" name="btnSearchDeleteTW">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Search"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchDeleteTWActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="tfIdTempatDelete">
+                    <Component class="javax.swing.JButton" name="btnDeleteTW">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Delete"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteTWActionPerformed"/>
+                      </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane7">
                       <AuxValues>
@@ -929,7 +920,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable7">
+                        <Component class="javax.swing.JTable" name="tbViewDeleteTW">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="0">
@@ -970,6 +961,8 @@
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JTextField" name="tfIdSearchDeleteTW">
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
