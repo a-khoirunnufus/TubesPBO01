@@ -8,18 +8,21 @@ package view;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
-
+import controller.*;
+import model.*;
 /**
  *
  * @author Lenovo
  */
 public class GUITourGuide extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GUITourGuide
-     */
-    public GUITourGuide() {
+    private ControllerMainMenu ctrlMM;
+    private ControllerTourGuide ctrlTG;
+    
+    public GUITourGuide(ControllerMainMenu ctrlMM, Application model) {
         initComponents();
+        this.ctrlMM = ctrlMM;
+        ctrlTG = new ControllerTourGuide(model, this);
     }
 
     /**
@@ -50,6 +53,7 @@ public class GUITourGuide extends javax.swing.JFrame {
         tfKontak = new java.awt.TextField();
         jLabel5 = new javax.swing.JLabel();
         btnUbah = new javax.swing.JButton();
+        btnBMM = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -189,24 +193,35 @@ public class GUITourGuide extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Ubah Data Pribadi", jPanel2);
 
+        btnBMM.setText("Back to Main Menu");
+        btnBMM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBMMActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(210, 210, 210))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(127, 127, 127)
+                        .addComponent(btnBMM))
+                    .addComponent(jTabbedPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(btnBMM))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1)
                 .addContainerGap())
@@ -226,7 +241,12 @@ public class GUITourGuide extends javax.swing.JFrame {
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUbahActionPerformed
-public String getNewName(){
+
+    private void btnBMMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBMMActionPerformed
+        ctrlMM.toMainMenu();
+    }//GEN-LAST:event_btnBMMActionPerformed
+
+    public String getNewName(){
         return tfNama.getText();
     }
     
@@ -277,6 +297,7 @@ public String getNewName(){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup JenisKelamin;
+    private javax.swing.JButton btnBMM;
     private javax.swing.JButton btnUbah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

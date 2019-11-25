@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import controller.*;
+import model.*;
 
 /**
  *
@@ -16,11 +18,13 @@ import javax.swing.JTextField;
  */
 public class GUIAdmin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GuiTubes
-     */
-    public GUIAdmin() {
+    private ControllerMainMenu ctrlMM;
+    private ControllerAdmin ctrlAdm;
+    
+    public GUIAdmin(ControllerMainMenu ctrlMM, Application model) {
         initComponents();
+        this.ctrlMM = ctrlMM;
+        ctrlAdm = new ControllerAdmin(model, this);
     }
 
     /**
@@ -132,6 +136,7 @@ public class GUIAdmin extends javax.swing.JFrame {
         jTable4 = new javax.swing.JTable();
         btnSeacrhPaketDelete = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnBMM = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -858,7 +863,14 @@ public class GUIAdmin extends javax.swing.JFrame {
         jTabbedPane2.addTab("PAKET WISATA", jPanel5);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("PT. tour guide");
+        jLabel1.setText("Menu Admin");
+
+        btnBMM.setText("Back to Main Menu");
+        btnBMM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBMMActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -866,18 +878,24 @@ public class GUIAdmin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(161, 161, 161)
+                        .addComponent(btnBMM)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(282, 282, 282))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBMM)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -929,6 +947,10 @@ public class GUIAdmin extends javax.swing.JFrame {
     private void tfNamaPaketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNamaPaketActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNamaPaketActionPerformed
+
+    private void btnBMMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBMMActionPerformed
+        ctrlMM.toMainMenu();
+    }//GEN-LAST:event_btnBMMActionPerformed
 
   
     
@@ -1059,6 +1081,7 @@ public void setfIdPaketWisataEdit (int id) {
     private java.awt.TextField IdTempatBaru;
     private java.awt.TextField IdTempatDelete;
     private javax.swing.ButtonGroup bgJKTG;
+    private javax.swing.JButton btnBMM;
     private javax.swing.JButton btnInputPaket;
     private javax.swing.JButton btnInputTG;
     private javax.swing.JButton btnInputTempat;

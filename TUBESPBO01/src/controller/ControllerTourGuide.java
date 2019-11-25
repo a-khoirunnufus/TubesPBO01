@@ -5,17 +5,17 @@
  */
 package controller;
 import model.Application;
-import view.GUIAdmin;
+import view.GUITourGuide;
 /**
  *
  * @author Lenovo
  */
-public class ControllerAdmin {
+public class ControllerTourGuide {
     private Application model;
-    private GUIAdmin viewAdm;
+    private GUITourGuide viewTG;
     
-    public ControllerAdmin(Application model, GUIAdmin viewAdm){
-        this.viewAdm = viewAdm;
+    public ControllerTourGuide(Application model, GUITourGuide viewTG){
+        this.viewTG = viewTG;
         this.model = model;
     }
 }
