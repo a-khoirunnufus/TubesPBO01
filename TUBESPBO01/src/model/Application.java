@@ -47,6 +47,17 @@ public class Application {
         }
         return tg;
     }
+    public TourGuide getTourGuidebyName(String name){
+        TourGuide tg = null;
+        
+        for(TourGuide t: daftarTourGuide){
+            if(t.getNama() == name){
+                tg = t;
+                break;
+            }
+        }
+        return tg;
+    }
     public List<TourGuide> getDaftarTG(){
         return daftarTourGuide;
     }
@@ -89,34 +100,32 @@ public class Application {
     }
     
     //PAKET WISATA
+    public List<PaketWisata> getDaftarPW(){
+        return daftarPaketWisata;
+    }
     public void inputPaketWisata(PaketWisata pw){
         daftarPaketWisata.add(pw);
     }
     public void viewPaketWisata(){
         for(PaketWisata pw: daftarPaketWisata){
-            
+            pw.viewPaketWisata();
         }
     }
     public PaketWisata getPaketWisata(String id){
         PaketWisata pw = null;
         for(PaketWisata w: daftarPaketWisata){
-            if(w.getId() == id){
+            if(w.getId().equals(id)){
                 pw = w;
                 break;
             }
         }
         return pw;
     }
-    public void editPaketWisata(String id, String nama, double harga,Date tglB, Date tglP, 
-                                        List<TourGuide> listTg, List<TempatWisata> listTw){
-//        PaketWisata pw = Application.getPaketWisata(id);
-//        pw.setNama(nama);
-//        pw.setHarga(harga);
-//        pw.setTglBerangkat(tglB);
-//        pw.setTglPulang(tglP);
-//        pw.setListGuide(listTg);
-//        pw.setListTujuan(listTw);
-//        List tourGuideBertugas = new ArrayList();
+    public void editPaketWisata(PaketWisata pw, String nama, double harga,String tglB, String tglP){
+        pw.setNama(nama);
+        pw.setHarga(harga);
+        pw.setTglBerangkat(tglB);
+        pw.setTglPulang(tglP);
     }
     
     
@@ -140,6 +149,16 @@ public class Application {
         TempatWisata tw = null;
         for(TempatWisata t: daftarTempatWisata){
             if(t.getId().equals(id)){
+                tw = t;
+                break;
+            }
+        }
+        return tw;
+    }
+    public TempatWisata getTempatWisatabyName(String name){
+        TempatWisata tw = null;
+        for(TempatWisata t: daftarTempatWisata){
+            if(t.getNama().equals(name)){
                 tw = t;
                 break;
             }

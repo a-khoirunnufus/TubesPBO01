@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
 import controller.*;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import model.*;
 /**
  *
@@ -37,9 +39,12 @@ public class GUITourGuide extends javax.swing.JFrame {
         JenisKelamin = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        pPenugasan = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblData = new javax.swing.JTable();
+        tbViewPNGS = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        tfIdSearchTGPW = new javax.swing.JTextField();
+        btnSearchIdTGPW = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         tfNama = new java.awt.TextField();
@@ -60,34 +65,59 @@ public class GUITourGuide extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("TOUR GUIDE MENU");
 
-        tblData.setModel(new javax.swing.table.DefaultTableModel(
+        tbViewPNGS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Paket Wisata", "Tanggal", "Customer"
+                "Paket Wisata", "Tanggal Berangkat", "Tanggal Pulang", "Customer"
             }
-        ));
-        jScrollPane1.setViewportView(tblData);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false
+            };
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tbViewPNGS);
+
+        jLabel3.setText("Masukkan Id :");
+
+        btnSearchIdTGPW.setText("Search");
+
+        javax.swing.GroupLayout pPenugasanLayout = new javax.swing.GroupLayout(pPenugasan);
+        pPenugasan.setLayout(pPenugasanLayout);
+        pPenugasanLayout.setHorizontalGroup(
+            pPenugasanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPenugasanLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+                .addGroup(pPenugasanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
+                    .addGroup(pPenugasanLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(tfIdSearchTGPW, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSearchIdTGPW)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+        pPenugasanLayout.setVerticalGroup(
+            pPenugasanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPenugasanLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pPenugasanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(tfIdSearchTGPW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearchIdTGPW))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("PAKET WISATA", jPanel1);
+        jTabbedPane1.addTab("PENUGASAN", pPenugasan);
 
         jPanel2.setRequestFocusEnabled(false);
 
@@ -160,7 +190,7 @@ public class GUITourGuide extends javax.swing.JFrame {
                                     .addComponent(rbLaki)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(rbPerempuan))))))
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addContainerGap(477, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +218,7 @@ public class GUITourGuide extends javax.swing.JFrame {
                     .addComponent(tfKontak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(btnUbah)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Ubah Data Pribadi", jPanel2);
@@ -222,9 +252,9 @@ public class GUITourGuide extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(btnBMM))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane1)
-                .addContainerGap())
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -246,6 +276,15 @@ public class GUITourGuide extends javax.swing.JFrame {
         ctrlMM.toMainMenu();
     }//GEN-LAST:event_btnBMMActionPerformed
 
+    //PAKET WISATA YANG DITUGASKAN
+    //GETTER
+    public JTextField getTfIdSearchTGPW(){
+        return tfIdSearchTGPW;
+    }
+    public JTable getTbViewPNGS(){
+        return tbViewPNGS;
+    }
+    
     public String getNewName(){
         return tfNama.getText();
     }
@@ -283,7 +322,7 @@ public class GUITourGuide extends javax.swing.JFrame {
     }
     
     public void addMouseAdapter(MouseAdapter ma){
-        tblData.addMouseListener(ma);
+        tbViewPNGS.addMouseListener(ma);
     }
     
     public void resetViewUbah(){
@@ -298,21 +337,24 @@ public class GUITourGuide extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup JenisKelamin;
     private javax.swing.JButton btnBMM;
+    private javax.swing.JButton btnSearchIdTGPW;
     private javax.swing.JButton btnUbah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel pPenugasan;
     private javax.swing.JRadioButton rbLaki;
     private javax.swing.JRadioButton rbPerempuan;
-    private javax.swing.JTable tblData;
+    private javax.swing.JTable tbViewPNGS;
     private java.awt.TextField tfAlamat;
+    private javax.swing.JTextField tfIdSearchTGPW;
     private java.awt.TextField tfKontak;
     private java.awt.TextField tfNama;
     private java.awt.TextField tfUmur;
