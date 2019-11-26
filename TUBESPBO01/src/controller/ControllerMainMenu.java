@@ -7,12 +7,13 @@ public class ControllerMainMenu {
     private Application model;
     private GUIMainMenu viewMM;
     private GUIAdmin viewAdm;
-    private GUITourGuide viewTG = new GUITourGuide(this,model);
-    private GUICustomer viewCs = new GUICustomer(this,model);
+    private GUITourGuide viewTG;
+    private GUICustomer viewCs;
     
     public ControllerMainMenu(Application model, GUIMainMenu viewMM){
         this.model = model;
         this.viewMM = viewMM;
+        viewTG = new GUITourGuide(this,model);
         viewCs = new GUICustomer(this,model);
         viewAdm = new GUIAdmin(this,model);
     }

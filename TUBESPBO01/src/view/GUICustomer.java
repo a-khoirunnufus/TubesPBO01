@@ -73,6 +73,10 @@ public class GUICustomer extends javax.swing.JFrame {
         tfTglPesanPsn = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         tfIdCsPsn = new javax.swing.JTextField();
+        btnRefreshPsn = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        tfTotalHargaPsn = new javax.swing.JTextField();
+        btnGetTHargaPsn = new javax.swing.JButton();
         pUbahDataPribadi = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btnUpdateUDP = new javax.swing.JButton();
@@ -160,7 +164,7 @@ public class GUICustomer extends javax.swing.JFrame {
                             .addComponent(jLabel11)
                             .addComponent(jLabel9)
                             .addComponent(jLabel8))
-                        .addContainerGap(489, Short.MAX_VALUE))
+                        .addContainerGap(508, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pRegistrasiLayout.createSequentialGroup()
                         .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -217,7 +221,7 @@ public class GUICustomer extends javax.swing.JFrame {
                     .addComponent(tfKontakReg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnRegistrasiReg)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Registrasi", pRegistrasi);
@@ -233,11 +237,6 @@ public class GUICustomer extends javax.swing.JFrame {
 
         jLabel15.setText("Paket Wisata");
 
-        lsPaketWisataPsn.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "paket 1", "paket 2", "paket 3" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(lsPaketWisataPsn);
 
         btnPesanPsn.setText("Pesan");
@@ -257,6 +256,24 @@ public class GUICustomer extends javax.swing.JFrame {
             }
         });
 
+        btnRefreshPsn.setText("refresh");
+        btnRefreshPsn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshPsnActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("Total Harga");
+
+        tfTotalHargaPsn.setEditable(false);
+
+        btnGetTHargaPsn.setText("refresh");
+        btnGetTHargaPsn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGetTHargaPsnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pPemesananLayout = new javax.swing.GroupLayout(pPemesanan);
         pPemesanan.setLayout(pPemesananLayout);
         pPemesananLayout.setHorizontalGroup(
@@ -266,21 +283,28 @@ public class GUICustomer extends javax.swing.JFrame {
                 .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnPesanPsn)
                     .addGroup(pPemesananLayout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfTglPesanPsn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pPemesananLayout.createSequentialGroup()
                         .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14)
                             .addComponent(jLabel15)
                             .addComponent(jLabel18))
                         .addGap(18, 18, 18)
+                        .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(tfIdPsnPsn, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                            .addComponent(tfIdCsPsn))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnRefreshPsn))
+                    .addGroup(pPemesananLayout.createSequentialGroup()
                         .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(tfIdCsPsn, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tfIdPsnPsn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)))))
-                .addContainerGap(330, Short.MAX_VALUE))
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel16))
+                        .addGap(18, 18, 18)
+                        .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfTotalHargaPsn, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(tfTglPesanPsn))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnGetTHargaPsn)))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
         pPemesananLayout.setVerticalGroup(
             pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,14 +320,20 @@ public class GUICustomer extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRefreshPsn))
+                .addGap(9, 9, 9)
+                .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(tfTotalHargaPsn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGetTHargaPsn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(tfTglPesanPsn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                .addGap(18, 18, 18)
                 .addComponent(btnPesanPsn)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pemesanan", pPemesanan);
@@ -392,7 +422,7 @@ public class GUICustomer extends javax.swing.JFrame {
                             .addComponent(tfUmurUDP)
                             .addComponent(tfAlamatUDP)
                             .addComponent(tfKontakUDP, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))))
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addContainerGap(249, Short.MAX_VALUE))
         );
         pUbahDataPribadiLayout.setVerticalGroup(
             pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,7 +455,7 @@ public class GUICustomer extends javax.swing.JFrame {
                     .addComponent(tfKontakUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addComponent(btnUpdateUDP)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Ubah Data Pribadi", pUbahDataPribadi);
@@ -461,14 +491,14 @@ public class GUICustomer extends javax.swing.JFrame {
             pLihatPaketWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLihatPaketWisataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spTabelLPW, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addComponent(spTabelLPW, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pLihatPaketWisataLayout.setVerticalGroup(
             pLihatPaketWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLihatPaketWisataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spTabelLPW, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                .addComponent(spTabelLPW, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -505,14 +535,14 @@ public class GUICustomer extends javax.swing.JFrame {
             pLihatTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLihatTourGuideLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spTabelLTG, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addComponent(spTabelLTG, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pLihatTourGuideLayout.setVerticalGroup(
             pLihatTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLihatTourGuideLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spTabelLTG, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                .addComponent(spTabelLTG, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -549,14 +579,14 @@ public class GUICustomer extends javax.swing.JFrame {
             pLihatTempatWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLihatTempatWisataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spTabelLTW, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addComponent(spTabelLTW, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pLihatTempatWisataLayout.setVerticalGroup(
             pLihatTempatWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLihatTempatWisataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spTabelLTW, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                .addComponent(spTabelLTW, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -574,25 +604,24 @@ public class GUICustomer extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(212, 212, 212)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(86, 86, 86)
                         .addComponent(btnBMM))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPane1)))
+                    .addComponent(jTabbedPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(btnBMM))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBMM)
+                    .addComponent(jLabel1))
+                .addGap(12, 12, 12)
                 .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
@@ -655,6 +684,14 @@ public class GUICustomer extends javax.swing.JFrame {
     private void btnBMMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBMMActionPerformed
         ctrlMM.toMainMenu();
     }//GEN-LAST:event_btnBMMActionPerformed
+
+    private void btnRefreshPsnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshPsnActionPerformed
+        ctrlCs.refreshPsn();
+    }//GEN-LAST:event_btnRefreshPsnActionPerformed
+
+    private void btnGetTHargaPsnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetTHargaPsnActionPerformed
+        ctrlCs.getHargaTotalPsn();
+    }//GEN-LAST:event_btnGetTHargaPsnActionPerformed
     
     //TAB REGISTRASI
     //SETTER
@@ -720,6 +757,9 @@ public class GUICustomer extends javax.swing.JFrame {
     public JList<String> getLsPaketWisataPsn (){
         return lsPaketWisataPsn;
     }
+    public JTextField getTfTotalHargaPsn(){
+        return tfTotalHargaPsn;
+    }
     public String getTfTglPesanPsn(){
         return tfTglPesanPsn.getText();
     }
@@ -728,6 +768,7 @@ public class GUICustomer extends javax.swing.JFrame {
         tfIdPsnPsn.setText("P-"+Pemesanan.getSidP());
         lsPaketWisataPsn.clearSelection();
         tfTglPesanPsn.setText("");
+        tfTotalHargaPsn.setText("");
     }
 
     
@@ -819,7 +860,9 @@ public class GUICustomer extends javax.swing.JFrame {
     private javax.swing.ButtonGroup bgJKUDP;
     private javax.swing.JButton btnBMM;
     private javax.swing.JButton btnCariIdCsUDP;
+    private javax.swing.JButton btnGetTHargaPsn;
     private javax.swing.JButton btnPesanPsn;
+    private javax.swing.JButton btnRefreshPsn;
     private javax.swing.JButton btnRegistrasiReg;
     private javax.swing.JButton btnUpdateUDP;
     private javax.swing.JLabel jLabel1;
@@ -829,6 +872,7 @@ public class GUICustomer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
@@ -869,6 +913,7 @@ public class GUICustomer extends javax.swing.JFrame {
     private java.awt.TextField tfNamaReg;
     private javax.swing.JTextField tfNamaUDP;
     private javax.swing.JTextField tfTglPesanPsn;
+    private javax.swing.JTextField tfTotalHargaPsn;
     private java.awt.TextField tfUmurReg;
     private javax.swing.JTextField tfUmurUDP;
     // End of variables declaration//GEN-END:variables

@@ -5,10 +5,13 @@
  */
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import model.Application;
 import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 import model.Customer;
+import model.PaketWisata;
 import view.GUICustomer;
 import model.Pemesanan;
 
@@ -38,12 +41,15 @@ public class ControllerCustomer {
     public void pesanPsn(){
         Customer cs = model.getCustomer(viewCs.getTfIdCsPsn());
         if(cs != null){
-            cs.createPemesanan(viewCs.getLsPaketWisataPsn().getSelectedValue(),viewCs.getTfTglPesanPsn());
-            System.out.println("nama pemesan : "+cs.getNama());
-            System.out.println("jumlah pemesanan : "+model.getCustomer(viewCs.getTfIdCsPsn()).getListPesanan().size());
-            for(Pemesanan Psn: model.getCustomer(viewCs.getTfIdCsPsn()).getListPesanan()){
-                Psn.viewPsn();
+            double tHarga = Double.parseDouble(viewCs.getTfTotalHargaPsn().getText());
+            List<PaketWisata> listPWPsn = new ArrayList<>();
+            List listPWNmPsn = viewCs.getLsPaketWisataPsn().getSelectedValuesList(); 
+            for(Object nmPW: listPWNmPsn){
+                listPWPsn.add(model.getPaketWisatabyName(nmPW.toString()));
             }
+                        
+            cs.createPemesanan(listPWPsn, tHarga, viewCs.getTfTglPesanPsn());
+            
             JOptionPane.showMessageDialog(viewCs, "Data Berhasil Ditambahkan!");
         }else{
             JOptionPane.showMessageDialog(viewCs, "Id Customer Tidak Tersedia!");
@@ -82,5 +88,25 @@ public class ControllerCustomer {
         JOptionPane.showMessageDialog(viewCs, "Data Diupdate");
         viewCs.resetViewUDP();
         model.viewCustomer();
+    }
+    
+    public void refreshPsn(){
+        String[] listPw = new String[model.getDaftarPW().size()];
+        int i = -1;
+        for(PaketWisata pw: model.getDaftarPW()){
+            i++;
+            listPw[i] = pw.getNama();
+        }
+        viewCs.getLsPaketWisataPsn().setListData(listPw);
+    }
+    
+    public void getHargaTotalPsn(){
+        double th = 0;
+        
+        List listPWPsn = viewCs.getLsPaketWisataPsn().getSelectedValuesList();
+        for(Object nmPW: listPWPsn){
+            th += model.getPaketWisatabyName(nmPW.toString()).getHarga();
+        }
+        viewCs.getTfTotalHargaPsn().setText(Double.toString(th));
     }
 }

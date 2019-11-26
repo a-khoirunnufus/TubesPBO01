@@ -33,7 +33,21 @@ public class ControllerAdmin {
         model.viewTourGuide();
         JOptionPane.showMessageDialog(viewAdm, "Data Berhasil Ditambahkan!");
         viewAdm.resetViewTG();
-        viewAdm.updateTableTG();
+        updateTableTG();
+    }
+    public void updateTableTG(){
+        DefaultTableModel tbModel = (DefaultTableModel) viewAdm.getTbViewTGTG().getModel();
+        tbModel.setRowCount(0);
+        String[] row = new String[6];
+        for(int j = 0; j<model.getDaftarTG().size(); j++){
+            row[0] = model.getDaftarTG().get(j).getId();
+            row[1] = model.getDaftarTG().get(j).getNama();
+            row[2] = model.getDaftarTG().get(j).getJenisKelamin();
+            row[3] = model.getDaftarTG().get(j).getUmur();
+            row[4] = model.getDaftarTG().get(j).getAlamat();
+            row[5] = model.getDaftarTG().get(j).getKontak();
+            tbModel.addRow(row);           
+        }
     }
     
     public void updateViewCs(){
@@ -54,15 +68,19 @@ public class ControllerAdmin {
     public void updateViewRP(){
         DefaultTableModel tbModel = (DefaultTableModel) viewAdm.getTbViewRP().getModel();
         tbModel.setRowCount(0);
-        String[] row = new String[6];
+       
+        String[] row = new String[4];
         
         for(Customer cs: model.getDaftarCs()){
-            if(!cs.getListPesanan().isEmpty()){
-                for(int i = 0; i<cs.getListPesanan().size(); i++){
-                    row[0] = cs.getListPesanan().get(i).getId();
+            System.out.println(cs.getNama());
+            for(Pemesanan psn: cs.getListPesanan()){
+                System.out.println("jumlah paket : "+psn.getListPaket().size());
+                for(PaketWisata pw: psn.getListPaket()){
+                    System.out.println(pw.getNama());
+                    row[0] = psn.getId();
                     row[1] = cs.getNama();
-                    row[2] = cs.getListPesanan().get(i).getPW();
-                    row[3] = cs.getListPesanan().get(i).getTglPesan();
+                    row[2] = pw.getNama();
+                    row[3] = psn.getTglPesan();
                     tbModel.addRow(row);
                 }
             }
@@ -230,9 +248,20 @@ public class ControllerAdmin {
     }
     
     public void searchIdDeletePW(){
-        PaketWisata pw = model.getPaketWisata(viewAdm.getTfIdSearchEditPW().getText());
+        PaketWisata pw = model.getPaketWisata(viewAdm.getTfIdSearchDeletePW().getText());
         if(pw != null){
-            
+            DefaultTableModel tbModel = (DefaultTableModel) viewAdm.getTbViewDeletePW().getModel();
+            tbModel.addRow(new String[]{pw.getId(),pw.getNama()});
+            JOptionPane.showMessageDialog(viewAdm, "ID Valid");
+        }else{
+            JOptionPane.showMessageDialog(viewAdm, "ID Tidak Valid");
         }
+    }
+    
+    public void deletePW(){
+        model.getDaftarPW().remove(model.getDaftarPW().indexOf(model.getPaketWisata(viewAdm.getTfIdSearchDeletePW().getText())));
+        JOptionPane.showMessageDialog(viewAdm, "Data Telah Dihapus");
+        viewAdm.resetViewDeletePW();
+        viewAdm.updateTablePW();
     }
 }

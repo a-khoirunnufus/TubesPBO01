@@ -13,14 +13,14 @@ import java.util.ArrayList;
 public class Pemesanan {
     private String id;
     private static int sidP = 1;
-    private String PW;
-    private List<PaketWisata> listPaket = new ArrayList();
+    private List<PaketWisata> listPaket;
     private double totalHarga;
     private String tglPesan; //BUAT OBJEK DATE
 
-    public Pemesanan(String PW, String tglPesan) {
+    public Pemesanan(List<PaketWisata> lsPw, double tHarga, String tglPesan) {
         this.id = "P-"+sidP;
-        this.PW = PW;
+        this.listPaket = lsPw;
+        this.totalHarga = tHarga;
         this.tglPesan = tglPesan;
         sidP++;
     }
@@ -35,9 +35,6 @@ public class Pemesanan {
     public void setId(String id) {
         this.id = id;
     }
-    public void setPW(String PW){
-        this.PW = PW;
-    }
     public void setListPaket(List<PaketWisata> listPaket) {
         this.listPaket = listPaket;
     }
@@ -49,9 +46,6 @@ public class Pemesanan {
     }
     public String getId() {
         return id;
-    }
-    public String getPW(){
-        return PW;
     }
     public List<PaketWisata> getListPaket() {
         return listPaket;
@@ -65,7 +59,6 @@ public class Pemesanan {
     
     public void viewPsn(){
         System.out.println("Id Pemesanan : "+id);
-        System.out.println("Paket : "+PW);
         System.out.println("Tanggal Pesan : "+tglPesan);
         System.out.println("");
     }

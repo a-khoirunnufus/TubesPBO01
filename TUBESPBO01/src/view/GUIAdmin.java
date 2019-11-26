@@ -64,6 +64,7 @@ public class GUIAdmin extends javax.swing.JFrame {
         tfUmurTG = new javax.swing.JTextField();
         tfAlamatTG = new javax.swing.JTextField();
         tfKontakTG = new javax.swing.JTextField();
+        btnUpdateTG = new javax.swing.JButton();
         pCustomer = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbViewCs = new javax.swing.JTable();
@@ -226,39 +227,51 @@ public class GUIAdmin extends javax.swing.JFrame {
 
         tfIdTG.setEditable(false);
 
+        btnUpdateTG.setText("Update");
+        btnUpdateTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateTGActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pTourGuideLayout = new javax.swing.GroupLayout(pTourGuide);
         pTourGuide.setLayout(pTourGuideLayout);
         pTourGuideLayout.setHorizontalGroup(
             pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pTourGuideLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTourGuideLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnInputTG)
+                .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pTourGuideLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnUpdateTG))
                     .addGroup(pTourGuideLayout.createSequentialGroup()
                         .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(55, 55, 55)
-                        .addComponent(tfIdTG, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pTourGuideLayout.createSequentialGroup()
-                        .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(18, 18, 18)
-                        .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfNamaTG)
+                            .addComponent(btnInputTG)
                             .addGroup(pTourGuideLayout.createSequentialGroup()
-                                .addComponent(rbLakiTG)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rbPerempuanTG))
-                            .addComponent(tfUmurTG)
-                            .addComponent(tfAlamatTG)
-                            .addComponent(tfKontakTG, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 334, Short.MAX_VALUE)
-                .addComponent(spTbViewTGTG, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                                .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addGap(55, 55, 55)
+                                .addComponent(tfIdTG, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pTourGuideLayout.createSequentialGroup()
+                                .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7))
+                                .addGap(18, 18, 18)
+                                .addGroup(pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfNamaTG)
+                                    .addGroup(pTourGuideLayout.createSequentialGroup()
+                                        .addComponent(rbLakiTG)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(rbPerempuanTG))
+                                    .addComponent(tfUmurTG)
+                                    .addComponent(tfAlamatTG)
+                                    .addComponent(tfKontakTG, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addComponent(spTbViewTGTG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(180, 180, 180))
         );
         pTourGuideLayout.setVerticalGroup(
             pTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,7 +306,9 @@ public class GUIAdmin extends javax.swing.JFrame {
                             .addComponent(tfKontakTG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39)
                         .addComponent(btnInputTG)))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnUpdateTG)
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         tpAdmin.addTab("TOUR GUIDE", pTourGuide);
@@ -908,23 +923,36 @@ public class GUIAdmin extends javax.swing.JFrame {
         jLabel20.setText("Masukkan ID :");
 
         btnSearchDeletePW.setText("Search");
+        btnSearchDeletePW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchDeletePWActionPerformed(evt);
+            }
+        });
 
         tbViewDeletePW.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nama", "Gender", "Umur", "Alamat", "Kontak"
+                "ID", "Nama"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane4.setViewportView(tbViewDeletePW);
-        if (tbViewDeletePW.getColumnModel().getColumnCount() > 0) {
-            tbViewDeletePW.getColumnModel().getColumn(3).setHeaderValue("Umur");
-            tbViewDeletePW.getColumnModel().getColumn(4).setHeaderValue("Alamat");
-            tbViewDeletePW.getColumnModel().getColumn(5).setHeaderValue("Kontak");
-        }
 
         btnDeletePW.setText("Delete");
+        btnDeletePW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletePWActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -1094,6 +1122,18 @@ public class GUIAdmin extends javax.swing.JFrame {
         ctrlAdm.searchIdEditPW();
     }//GEN-LAST:event_btnSearchEditPWActionPerformed
 
+    private void btnSearchDeletePWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchDeletePWActionPerformed
+        ctrlAdm.searchIdDeletePW();
+    }//GEN-LAST:event_btnSearchDeletePWActionPerformed
+
+    private void btnDeletePWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePWActionPerformed
+        ctrlAdm.deletePW();
+    }//GEN-LAST:event_btnDeletePWActionPerformed
+
+    private void btnUpdateTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTGActionPerformed
+        ctrlAdm.updateTableTG();
+    }//GEN-LAST:event_btnUpdateTGActionPerformed
+
   
     
     //TOUR GUIDE
@@ -1129,6 +1169,9 @@ public class GUIAdmin extends javax.swing.JFrame {
     public JTextField getTfKontakTG(){
         return tfKontakTG;
     }
+    public JTable getTbViewTGTG(){
+        return tbViewTGTG;
+    }
     public void resetViewTG(){
         tfIdTG.setText("TG-"+TourGuide.getSidTG());
         tfNamaTG.setText("");
@@ -1136,22 +1179,6 @@ public class GUIAdmin extends javax.swing.JFrame {
         tfUmurTG.setText("");
         tfAlamatTG.setText("");
         tfKontakTG.setText("");
-        
-        DefaultTableModel tbModel = (DefaultTableModel) tbViewTGTG.getModel();
-        tbModel.setRowCount(0);
-    }
-    public void updateTableTG(){
-        DefaultTableModel tbModel = (DefaultTableModel) tbViewTGTG.getModel();
-        String[] row = new String[6];
-        for(int j = 0; j<model.getDaftarTG().size(); j++){
-            row[0] = model.getDaftarTG().get(j).getId();
-            row[1] = model.getDaftarTG().get(j).getNama();
-            row[2] = model.getDaftarTG().get(j).getJenisKelamin();
-            row[3] = model.getDaftarTG().get(j).getUmur();
-            row[4] = model.getDaftarTG().get(j).getAlamat();
-            row[5] = model.getDaftarTG().get(j).getKontak();
-            tbModel.addRow(row);           
-        }
     }
     
     //CUSTOMER
@@ -1362,6 +1389,7 @@ public class GUIAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnSearchDeleteTW;
     private javax.swing.JButton btnSearchEditPW;
     private javax.swing.JButton btnSearchEditTW;
+    private javax.swing.JButton btnUpdateTG;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

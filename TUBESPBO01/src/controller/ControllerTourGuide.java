@@ -25,8 +25,8 @@ public class ControllerTourGuide {
         this.model = model;
     }
     
-    public void searchIdTG(){
-        TourGuide tg = model.getTourGuide(viewTG.getTfIdSearchTGPW().getText());
+    public void searchIdTGPNGS(){
+        TourGuide tg = model.getTourGuide(viewTG.getTfIdSearchTGPNGS().getText());
         if(tg != null){
             JOptionPane.showMessageDialog(viewTG, "Id Valid");
             //mengupdate view table
@@ -48,5 +48,37 @@ public class ControllerTourGuide {
         }else{
             JOptionPane.showMessageDialog(viewTG, "Id Tidak Valid");
         }
+    }
+    
+    public void searchIdUDP(){
+        TourGuide tg = model.getTourGuide(viewTG.getTfIdSearchTGUDP().getText());
+        if(tg != null){
+            viewTG.getTfNamaUDP().setText(tg.getNama());
+            if(tg.getJenisKelamin() == "Laki-Laki"){
+                viewTG.getBgJKUDP().setSelected(viewTG.getRbLakiUDP().getModel(), true);
+            }else{
+                viewTG.getBgJKUDP().setSelected(viewTG.getRbPerempuanUDP().getModel(), true);
+            }
+            viewTG.getTfUmurUDP().setText(tg.getUmur());
+            viewTG.getTfAlamatUDP().setText(tg.getAlamat());
+            viewTG.getTfKontakUDP().setText(tg.getKontak());
+            JOptionPane.showMessageDialog(viewTG, "Id Valid");            
+        }else{
+            JOptionPane.showMessageDialog(viewTG, "Id Tidak Valid");
+            
+        }
+    }
+    
+    public void editTourGuide(){
+        TourGuide tg = model.getTourGuide(viewTG.getTfIdSearchTGUDP().getText());
+        String jk;
+        if(viewTG.getRbLakiUDP().isSelected()){
+            jk = "Laki-Laki";
+        }else{
+            jk = "Perempuan";
+        }
+        model.editTourGuide(tg, viewTG.getTfNamaUDP().getText(), jk, viewTG.getTfUmurUDP().getText(), viewTG.getTfAlamatUDP().getText(), viewTG.getTfKontakUDP().getText());
+        JOptionPane.showMessageDialog(viewTG, "Data Telah Diedit");
+        viewTG.resetViewUDP();
     }
 }

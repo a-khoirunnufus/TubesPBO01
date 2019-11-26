@@ -8,10 +8,18 @@ import java.util.ArrayList;
  */
 // untuk admin
 public class Application {
-    private List<Customer> daftarCustomer = new ArrayList<>();
-    private List<TourGuide> daftarTourGuide = new ArrayList<>();
-    private List<PaketWisata> daftarPaketWisata = new ArrayList<>();
-    private List<TempatWisata> daftarTempatWisata = new ArrayList<>();
+    private List<Customer> daftarCustomer;
+    private List<TourGuide> daftarTourGuide;
+    private List<PaketWisata> daftarPaketWisata;
+    private List<TempatWisata> daftarTempatWisata;
+    
+    public Application(){
+        daftarCustomer = new ArrayList<>();
+        daftarTourGuide = new ArrayList<>();
+        daftarPaketWisata = new ArrayList<>();
+        daftarTempatWisata = new ArrayList<>();
+    
+    }
     
     //TOUR GUIDE
     public void inputTourGuide(TourGuide tg){
@@ -28,19 +36,21 @@ public class Application {
             System.out.print("\n");
         }
     }  
-    public void editTourGuide(String id, String nama, String jk, String umur, String alamat, String kontak){
-//        TourGuide tg = Application.getTourGuide(id);
-//        tg.setNama(nama);
-//        tg.setJenisKelamin(jk);
-//        tg.setUmur(umur);
-//        tg.setAlamat(alamat);
-//        tg.setKontak(kontak);
+    public void editTourGuide(TourGuide tg, String nama, String jk, String umur, String alamat, String kontak){
+        tg.setNama(nama);
+        tg.setJenisKelamin(jk);
+        tg.setUmur(umur);
+        tg.setAlamat(alamat);
+        tg.setKontak(kontak);
     }   
     public TourGuide getTourGuide(String id){
+        System.out.println("jalan");
         TourGuide tg = null;
         
         for(TourGuide t: daftarTourGuide){
-            if(t.getId() == id){
+            System.out.println(t.getId()+", "+id);
+            if(t.getId().equals(id)){
+                System.out.println("ketemu bos");
                 tg = t;
                 break;
             }
@@ -115,6 +125,16 @@ public class Application {
         PaketWisata pw = null;
         for(PaketWisata w: daftarPaketWisata){
             if(w.getId().equals(id)){
+                pw = w;
+                break;
+            }
+        }
+        return pw;
+    }
+    public PaketWisata getPaketWisatabyName(String name){
+        PaketWisata pw = null;
+        for(PaketWisata w: daftarPaketWisata){
+            if(w.getNama().equals(name)){
                 pw = w;
                 break;
             }

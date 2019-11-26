@@ -26,18 +26,14 @@ public class Customer extends Person{
         return sidC;
     }
 
-    public void setListPesanan(List<Pemesanan> listPesanan) {
-        this.listPesanan = listPesanan;
-    }
-
     public List<Pemesanan> getListPesanan() {
         return listPesanan;
     }
     
     
-    public void createPemesanan(String PW, String tglPesan){
-        Pemesanan pesanan = new Pemesanan(PW,tglPesan);
-        
-        listPesanan.add(pesanan);
+    public void createPemesanan(List<PaketWisata> lsPw, double tHarga, String tglPesan){
+        Pemesanan psn = new Pemesanan(lsPw, tHarga, tglPesan);
+ 
+        listPesanan.add(psn);
     }
 }

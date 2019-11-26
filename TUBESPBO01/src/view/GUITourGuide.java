@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
 import controller.*;
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import model.*;
@@ -36,28 +38,31 @@ public class GUITourGuide extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        JenisKelamin = new javax.swing.ButtonGroup();
+        bgJKUDP = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         pPenugasan = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbViewPNGS = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        tfIdSearchTGPW = new javax.swing.JTextField();
-        btnSearchIdTGPW = new javax.swing.JButton();
+        tfIdSearchTGPNGS = new javax.swing.JTextField();
+        btnSearchIdTGPNGS = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        tfNama = new java.awt.TextField();
-        tfUmur = new java.awt.TextField();
-        tfAlamat = new java.awt.TextField();
-        rbLaki = new javax.swing.JRadioButton();
+        rbLakiUDP = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
-        rbPerempuan = new javax.swing.JRadioButton();
+        rbPerempuanUDP = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        tfKontak = new java.awt.TextField();
         jLabel5 = new javax.swing.JLabel();
-        btnUbah = new javax.swing.JButton();
+        btnEditUDP = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        tfIdSearchTGUDP = new javax.swing.JTextField();
+        btnSearchUDP = new javax.swing.JButton();
+        tfNamaUDP = new javax.swing.JTextField();
+        tfUmurUDP = new javax.swing.JTextField();
+        tfAlamatUDP = new javax.swing.JTextField();
+        tfKontakUDP = new javax.swing.JTextField();
         btnBMM = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,7 +90,12 @@ public class GUITourGuide extends javax.swing.JFrame {
 
         jLabel3.setText("Masukkan Id :");
 
-        btnSearchIdTGPW.setText("Search");
+        btnSearchIdTGPNGS.setText("Search");
+        btnSearchIdTGPNGS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchIdTGPNGSActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pPenugasanLayout = new javax.swing.GroupLayout(pPenugasan);
         pPenugasan.setLayout(pPenugasanLayout);
@@ -98,23 +108,23 @@ public class GUITourGuide extends javax.swing.JFrame {
                     .addGroup(pPenugasanLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(tfIdSearchTGPW, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfIdSearchTGPNGS, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSearchIdTGPW)
+                        .addComponent(btnSearchIdTGPNGS)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pPenugasanLayout.setVerticalGroup(
             pPenugasanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPenugasanLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(pPenugasanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(tfIdSearchTGPW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearchIdTGPW))
-                .addGap(18, 18, 18)
+                    .addComponent(tfIdSearchTGPNGS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearchIdTGPNGS))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("PENUGASAN", pPenugasan);
@@ -123,23 +133,21 @@ public class GUITourGuide extends javax.swing.JFrame {
 
         jLabel2.setText("Nama :");
 
-        tfNama.setText("1");
-
-        JenisKelamin.add(rbLaki);
-        rbLaki.setText("Laki - Laki");
-        rbLaki.addActionListener(new java.awt.event.ActionListener() {
+        bgJKUDP.add(rbLakiUDP);
+        rbLakiUDP.setText("Laki - Laki");
+        rbLakiUDP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbLakiActionPerformed(evt);
+                rbLakiUDPActionPerformed(evt);
             }
         });
 
         jLabel6.setText("Alamat :");
 
-        JenisKelamin.add(rbPerempuan);
-        rbPerempuan.setText("Perempuan");
-        rbPerempuan.addActionListener(new java.awt.event.ActionListener() {
+        bgJKUDP.add(rbPerempuanUDP);
+        rbPerempuanUDP.setText("Perempuan");
+        rbPerempuanUDP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbPerempuanActionPerformed(evt);
+                rbPerempuanUDPActionPerformed(evt);
             }
         });
 
@@ -149,10 +157,19 @@ public class GUITourGuide extends javax.swing.JFrame {
 
         jLabel5.setText("Umur :");
 
-        btnUbah.setText("Update");
-        btnUbah.addActionListener(new java.awt.event.ActionListener() {
+        btnEditUDP.setText("Edit Data");
+        btnEditUDP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUbahActionPerformed(evt);
+                btnEditUDPActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Masukkan ID");
+
+        btnSearchUDP.setText("search");
+        btnSearchUDP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchUDPActionPerformed(evt);
             }
         });
 
@@ -163,62 +180,63 @@ public class GUITourGuide extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUbah)
+                    .addComponent(btnEditUDP)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(55, 55, 55)
-                        .addComponent(tfNama, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfKontak, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel2)
                             .addComponent(jLabel6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(16, 16, 16)
-                                    .addComponent(tfUmur, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(rbLaki)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(rbPerempuan))))))
-                .addContainerGap(477, Short.MAX_VALUE))
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(rbLakiUDP)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rbPerempuanUDP))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(tfIdSearchTGUDP, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSearchUDP))
+                            .addComponent(tfNamaUDP)
+                            .addComponent(tfUmurUDP)
+                            .addComponent(tfAlamatUDP)
+                            .addComponent(tfKontakUDP))))
+                .addContainerGap(471, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(tfIdSearchTGUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearchUDP))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(tfNamaUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(rbLaki)
-                    .addComponent(rbPerempuan))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbLakiUDP)
+                    .addComponent(rbPerempuanUDP))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(tfUmur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfUmurUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(tfAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tfAlamatUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(tfKontak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addComponent(btnUbah)
-                .addContainerGap(163, Short.MAX_VALUE))
+                    .addComponent(tfKontakUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(btnEditUDP)
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Ubah Data Pribadi", jPanel2);
@@ -253,92 +271,89 @@ public class GUITourGuide extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(btnBMM))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1)
-                .addGap(12, 12, 12))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rbLakiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLakiActionPerformed
+    private void rbLakiUDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLakiUDPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbLakiActionPerformed
+    }//GEN-LAST:event_rbLakiUDPActionPerformed
 
-    private void rbPerempuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPerempuanActionPerformed
+    private void rbPerempuanUDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPerempuanUDPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbPerempuanActionPerformed
+    }//GEN-LAST:event_rbPerempuanUDPActionPerformed
 
-    private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUbahActionPerformed
+    private void btnEditUDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditUDPActionPerformed
+        ctrlTG.editTourGuide();
+    }//GEN-LAST:event_btnEditUDPActionPerformed
 
     private void btnBMMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBMMActionPerformed
         ctrlMM.toMainMenu();
     }//GEN-LAST:event_btnBMMActionPerformed
 
+    private void btnSearchUDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUDPActionPerformed
+        ctrlTG.searchIdUDP();
+    }//GEN-LAST:event_btnSearchUDPActionPerformed
+
+    private void btnSearchIdTGPNGSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchIdTGPNGSActionPerformed
+        ctrlTG.searchIdTGPNGS();
+    }//GEN-LAST:event_btnSearchIdTGPNGSActionPerformed
+
     //PAKET WISATA YANG DITUGASKAN
     //GETTER
-    public JTextField getTfIdSearchTGPW(){
-        return tfIdSearchTGPW;
+    public JTextField getTfIdSearchTGPNGS(){
+        return tfIdSearchTGPNGS;
     }
     public JTable getTbViewPNGS(){
         return tbViewPNGS;
     }
     
-    public String getNewName(){
-        return tfNama.getText();
+    //UBAH DATA PRIBADI
+    //GETTER
+    public JTextField getTfIdSearchTGUDP(){
+        return tfIdSearchTGUDP;
     }
-    
-    public String getNewUmur(){
-        return tfUmur.getText();
+    public JTextField getTfNamaUDP(){
+        return tfNamaUDP;
     }
-    
-    public String getNewJenisKelamin(){
-        if(rbLaki.isSelected()){
-            return "l";
-        }else{
-            return "p";
-        }
+    public ButtonGroup getBgJKUDP(){
+        return bgJKUDP;
     }
-    
-    public String getNewAlamat(){
-        return tfAlamat.getText();
+    public JRadioButton getRbLakiUDP(){
+        return rbLakiUDP;
     }
-    
-    public String getNewKontak(){
-        return tfKontak.getText();
+    public JRadioButton getRbPerempuanUDP(){
+        return rbPerempuanUDP;
     }
-    
-    public JButton getBtnUbah(){
-        return btnUbah;
+    public JTextField getTfUmurUDP(){
+        return tfUmurUDP;
     }
-    
-    //public JTable setTableData(String idTourGuide){
-    //    TourGuide tg = Application.getTourGuide(idTourGuide);
-    //}
-    
-    public void addActionListener(ActionListener al){
-        btnUbah.addActionListener(al);
+    public JTextField getTfAlamatUDP(){
+        return tfAlamatUDP;
     }
-    
-    public void addMouseAdapter(MouseAdapter ma){
-        tbViewPNGS.addMouseListener(ma);
+    public JTextField getTfKontakUDP(){
+        return tfKontakUDP;
     }
-    
-    public void resetViewUbah(){
-        tfNama.setText("");
-        tfUmur.setText("");
-        JenisKelamin.clearSelection();
-        tfAlamat.setText("");
-        tfKontak.setText("");
+    public void resetViewUDP(){
+        tfIdSearchTGUDP.setText("");
+        tfNamaUDP.setText("");
+        bgJKUDP.clearSelection();
+        tfUmurUDP.setText("");
+        tfAlamatUDP.setText("");
+        tfKontakUDP.setText("");
     }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup JenisKelamin;
+    private javax.swing.ButtonGroup bgJKUDP;
     private javax.swing.JButton btnBMM;
-    private javax.swing.JButton btnSearchIdTGPW;
-    private javax.swing.JButton btnUbah;
+    private javax.swing.JButton btnEditUDP;
+    private javax.swing.JButton btnSearchIdTGPNGS;
+    private javax.swing.JButton btnSearchUDP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -346,17 +361,19 @@ public class GUITourGuide extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel pPenugasan;
-    private javax.swing.JRadioButton rbLaki;
-    private javax.swing.JRadioButton rbPerempuan;
+    private javax.swing.JRadioButton rbLakiUDP;
+    private javax.swing.JRadioButton rbPerempuanUDP;
     private javax.swing.JTable tbViewPNGS;
-    private java.awt.TextField tfAlamat;
-    private javax.swing.JTextField tfIdSearchTGPW;
-    private java.awt.TextField tfKontak;
-    private java.awt.TextField tfNama;
-    private java.awt.TextField tfUmur;
+    private javax.swing.JTextField tfAlamatUDP;
+    private javax.swing.JTextField tfIdSearchTGPNGS;
+    private javax.swing.JTextField tfIdSearchTGUDP;
+    private javax.swing.JTextField tfKontakUDP;
+    private javax.swing.JTextField tfNamaUDP;
+    private javax.swing.JTextField tfUmurUDP;
     // End of variables declaration//GEN-END:variables
 }
