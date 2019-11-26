@@ -658,9 +658,9 @@ public class GUIAdmin extends javax.swing.JFrame {
             .addGroup(pTempatWisataLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(264, Short.MAX_VALUE))
         );
         pTempatWisataLayout.setVerticalGroup(
             pTempatWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -13,6 +13,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import model.*;
 
@@ -96,12 +97,15 @@ public class GUICustomer extends javax.swing.JFrame {
         pLihatPaketWisata = new javax.swing.JPanel();
         spTabelLPW = new javax.swing.JScrollPane();
         tbLPW = new javax.swing.JTable();
+        btnRefreshLPW = new javax.swing.JButton();
         pLihatTourGuide = new javax.swing.JPanel();
         spTabelLTG = new javax.swing.JScrollPane();
         tbLTG = new javax.swing.JTable();
+        btnRefreshLTG = new javax.swing.JButton();
         pLihatTempatWisata = new javax.swing.JPanel();
         spTabelLTW = new javax.swing.JScrollPane();
         tbLTW = new javax.swing.JTable();
+        btnRefreshLTW = new javax.swing.JButton();
         btnBMM = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -164,7 +168,7 @@ public class GUICustomer extends javax.swing.JFrame {
                             .addComponent(jLabel11)
                             .addComponent(jLabel9)
                             .addComponent(jLabel8))
-                        .addContainerGap(508, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pRegistrasiLayout.createSequentialGroup()
                         .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -221,7 +225,7 @@ public class GUICustomer extends javax.swing.JFrame {
                     .addComponent(tfKontakReg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnRegistrasiReg)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Registrasi", pRegistrasi);
@@ -304,7 +308,7 @@ public class GUICustomer extends javax.swing.JFrame {
                             .addComponent(tfTglPesanPsn))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnGetTHargaPsn)))
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addContainerGap(350, Short.MAX_VALUE))
         );
         pPemesananLayout.setVerticalGroup(
             pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,7 +337,7 @@ public class GUICustomer extends javax.swing.JFrame {
                     .addComponent(tfTglPesanPsn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnPesanPsn)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pemesanan", pPemesanan);
@@ -422,7 +426,7 @@ public class GUICustomer extends javax.swing.JFrame {
                             .addComponent(tfUmurUDP)
                             .addComponent(tfAlamatUDP)
                             .addComponent(tfKontakUDP, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))))
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addContainerGap(327, Short.MAX_VALUE))
         );
         pUbahDataPribadiLayout.setVerticalGroup(
             pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -455,7 +459,7 @@ public class GUICustomer extends javax.swing.JFrame {
                     .addComponent(tfKontakUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addComponent(btnUpdateUDP)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Ubah Data Pribadi", pUbahDataPribadi);
@@ -485,21 +489,34 @@ public class GUICustomer extends javax.swing.JFrame {
         });
         spTabelLPW.setViewportView(tbLPW);
 
+        btnRefreshLPW.setText("refresh");
+        btnRefreshLPW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshLPWActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pLihatPaketWisataLayout = new javax.swing.GroupLayout(pLihatPaketWisata);
         pLihatPaketWisata.setLayout(pLihatPaketWisataLayout);
         pLihatPaketWisataLayout.setHorizontalGroup(
             pLihatPaketWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLihatPaketWisataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spTabelLPW, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                .addGroup(pLihatPaketWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spTabelLPW, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
+                    .addGroup(pLihatPaketWisataLayout.createSequentialGroup()
+                        .addComponent(btnRefreshLPW)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pLihatPaketWisataLayout.setVerticalGroup(
             pLihatPaketWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLihatPaketWisataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spTabelLPW, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(spTabelLPW, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRefreshLPW)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Lihat Paket Wisata", pLihatPaketWisata);
@@ -529,21 +546,34 @@ public class GUICustomer extends javax.swing.JFrame {
         });
         spTabelLTG.setViewportView(tbLTG);
 
+        btnRefreshLTG.setText("refresh");
+        btnRefreshLTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshLTGActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pLihatTourGuideLayout = new javax.swing.GroupLayout(pLihatTourGuide);
         pLihatTourGuide.setLayout(pLihatTourGuideLayout);
         pLihatTourGuideLayout.setHorizontalGroup(
             pLihatTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLihatTourGuideLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spTabelLTG, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                .addGroup(pLihatTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spTabelLTG, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
+                    .addGroup(pLihatTourGuideLayout.createSequentialGroup()
+                        .addComponent(btnRefreshLTG)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pLihatTourGuideLayout.setVerticalGroup(
             pLihatTourGuideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLihatTourGuideLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spTabelLTG, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(spTabelLTG, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRefreshLTG)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Lihat Tour Guide", pLihatTourGuide);
@@ -573,21 +603,34 @@ public class GUICustomer extends javax.swing.JFrame {
         });
         spTabelLTW.setViewportView(tbLTW);
 
+        btnRefreshLTW.setText("refresh");
+        btnRefreshLTW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshLTWActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pLihatTempatWisataLayout = new javax.swing.GroupLayout(pLihatTempatWisata);
         pLihatTempatWisata.setLayout(pLihatTempatWisataLayout);
         pLihatTempatWisataLayout.setHorizontalGroup(
             pLihatTempatWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLihatTempatWisataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spTabelLTW, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+                .addGroup(pLihatTempatWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spTabelLTW, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
+                    .addGroup(pLihatTempatWisataLayout.createSequentialGroup()
+                        .addComponent(btnRefreshLTW)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pLihatTempatWisataLayout.setVerticalGroup(
             pLihatTempatWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLihatTempatWisataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spTabelLTW, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(spTabelLTW, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRefreshLTW)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Lihat Tempat Wisata", pLihatTempatWisata);
@@ -609,7 +652,7 @@ public class GUICustomer extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
-                        .addGap(86, 86, 86)
+                        .addGap(153, 153, 153)
                         .addComponent(btnBMM))
                     .addComponent(jTabbedPane1))
                 .addContainerGap())
@@ -692,6 +735,18 @@ public class GUICustomer extends javax.swing.JFrame {
     private void btnGetTHargaPsnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetTHargaPsnActionPerformed
         ctrlCs.getHargaTotalPsn();
     }//GEN-LAST:event_btnGetTHargaPsnActionPerformed
+
+    private void btnRefreshLPWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshLPWActionPerformed
+        ctrlCs.refreshTbLPW();
+    }//GEN-LAST:event_btnRefreshLPWActionPerformed
+
+    private void btnRefreshLTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshLTGActionPerformed
+        ctrlCs.refreshTbLTG();
+    }//GEN-LAST:event_btnRefreshLTGActionPerformed
+
+    private void btnRefreshLTWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshLTWActionPerformed
+        ctrlCs.refreshTbLTW();
+    }//GEN-LAST:event_btnRefreshLTWActionPerformed
     
     //TAB REGISTRASI
     //SETTER
@@ -825,33 +880,21 @@ public class GUICustomer extends javax.swing.JFrame {
     }
     
     //TAB LIHAT PAKET WISATA
-    //SETTER
-    public void setTbLPW (String[] list){
-        
-    }
     //GETTER
-    public List getTbLPW (){
-        return null;
+    public JTable getTbLPW (){
+        return tbLPW;
     }
     
     //TAB LIHAT TOUR GUIDE
-    //SETTER
-    public void setTbLTG (String[] list){
-        
-    }
     //GETTER
-    public List getTbLTG (){
-        return null;
+    public JTable getTbLTG (){
+        return tbLTG;
     }
     
     //TAB LIHAT TEMPAT WISATA
-    //SETTER
-    public void setTbLTW (String[] list){
-        
-    }
     //GETTER
-    public List getTbLTW (){
-        return null;
+    public JTable getTbLTW (){
+        return tbLTW;
     }
     
     
@@ -862,6 +905,9 @@ public class GUICustomer extends javax.swing.JFrame {
     private javax.swing.JButton btnCariIdCsUDP;
     private javax.swing.JButton btnGetTHargaPsn;
     private javax.swing.JButton btnPesanPsn;
+    private javax.swing.JButton btnRefreshLPW;
+    private javax.swing.JButton btnRefreshLTG;
+    private javax.swing.JButton btnRefreshLTW;
     private javax.swing.JButton btnRefreshPsn;
     private javax.swing.JButton btnRegistrasiReg;
     private javax.swing.JButton btnUpdateUDP;

@@ -51,7 +51,7 @@ public class TourGuide extends Person {
         List<List<String>> listPWnCsTGS = new ArrayList<>();
 
         List<PaketWisata> listPWTGS = new ArrayList(); 
-        listPWTGS = getLsPaketWisataTGS(listPWTGS);
+        listPWTGS = getLsPaketWisataTGS(listPW);
         
         for(Customer cs: listCs){
             for(Pemesanan psn: cs.getListPesanan())

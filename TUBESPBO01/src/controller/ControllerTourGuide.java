@@ -27,15 +27,14 @@ public class ControllerTourGuide {
     
     public void searchIdTGPNGS(){
         TourGuide tg = model.getTourGuide(viewTG.getTfIdSearchTGPNGS().getText());
-        if(tg != null){
-            JOptionPane.showMessageDialog(viewTG, "Id Valid");
+        if(tg != null){           
             //mengupdate view table
             DefaultTableModel tbModel = (DefaultTableModel) viewTG.getTbViewPNGS().getModel();
             tbModel.setRowCount(0);
             String[] row = new String[4];
             
             List<List<String>> lsPWnCsTGS = tg.getLsPWnCsTGS(model.getDaftarCs(), model.getDaftarPW());
-            
+            System.out.println("ukuran : "+lsPWnCsTGS.size());
             for(List<String> inLs: lsPWnCsTGS){
                 PaketWisata pw = model.getPaketWisata(inLs.get(0));
                 Customer cs = model.getCustomer(inLs.get(1));
@@ -45,6 +44,7 @@ public class ControllerTourGuide {
                 row[3] = cs.getNama();
                 tbModel.addRow(row);         
             }
+            JOptionPane.showMessageDialog(viewTG, "Id Valid");
         }else{
             JOptionPane.showMessageDialog(viewTG, "Id Tidak Valid");
         }
