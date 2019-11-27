@@ -21,6 +21,18 @@ public class TourGuide extends Person {
         }
         
     }
+     public TourGuide(String id,String nama, String jenisKelamin, String tglLahir,
+                  String alamat, String kontak){
+        super("TG-"+sidTG,nama,jenisKelamin,tglLahir,alamat,kontak);
+        sidTG++;
+        
+        for(int b = 0; b<12; b++){
+            for(int h = 0; h<32; h++){
+                jadwalTourGuide[h][b] = false;
+            }
+        }
+        
+    }
     
     public static int getSidTG(){
         return sidTG;

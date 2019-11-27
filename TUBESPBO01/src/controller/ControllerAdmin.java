@@ -10,12 +10,16 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.*;
 import view.GUIAdmin;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 /**
  *
  * @author Lenovo
  */
-public class ControllerAdmin {
-    private Application model;
+public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
+private Application model;
     private GUIAdmin viewAdm;
     
     public ControllerAdmin(Application model, GUIAdmin viewAdm){
@@ -264,4 +268,45 @@ public class ControllerAdmin {
         viewAdm.resetViewDeletePW();
         viewAdm.updateTablePW();
     }
-}
+  //COBA YAHYA
+// GUIAdmin view;
+//  Application model;
+//    
+//    public ControllerAdmin() {
+//        view = new GUIAdmin();
+//        model = new Application();
+//        view.addActionListener(this);
+//        view.addMouseAdabter(this);
+//        view.setVisible(true);
+//        model.loadTourguide(); 
+//        view.setTourguideId(model.newId());
+//        view.resetViewTG();
+//    }
+//
+//    @Override
+//    public void actionPerformed(ActionEvent ae) {
+//        Object source = ae.getSource();
+//        
+//        if (source.equals(view.getBtnInputTG())) {
+//            try{
+//                String name = view.getTfNamaTG();
+//                String jeniskelamin = view.getRbJKTG();
+//                String umur = view.getTfUmurTG();
+//                String alamat = view.getTfAlamatTG();
+//                String kontak = view.getTfKontakTG();
+//                String id=view.getTfIdTG();
+//                
+//              
+//            TourGuide  t = new TourGuide(id,name,jeniskelamin,umur,alamat,kontak);
+//                model.inputTourGuide(t);
+//
+//            }catch(Exception e){
+//                System.out.println(e);
+//            }
+//        view.resetViewTG();
+//        //view.setToyId(Toy.getSid());
+//        model.loadTourguide(); 
+//        view.setTourguideId (model.newId());
+//        }  
+//    }
+}  

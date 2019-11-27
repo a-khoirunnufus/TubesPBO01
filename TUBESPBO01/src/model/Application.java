@@ -13,17 +13,39 @@ public class Application {
     private List<PaketWisata> daftarPaketWisata;
     private List<TempatWisata> daftarTempatWisata;
     
+//baru
+    List <TourGuide> daftarTourGuideList;
+    List <TourGuide> daftarCustomerList;
+    Database db;
+//    List <Customer> daftarCustumerList;
+//    Database db;
+//    List <TourGuide> daftarTourguideList;
+//    Database db;
+    
     public Application(){
         daftarCustomer = new ArrayList<>();
         daftarTourGuide = new ArrayList<>();
         daftarPaketWisata = new ArrayList<>();
         daftarTempatWisata = new ArrayList<>();
+        
+//baru
+        daftarTourGuideList = new ArrayList();
+        daftarCustomerList = new ArrayList();
+        db=new Database(); 
+        db.connect();
     
     }
     
     //TOUR GUIDE
     public void inputTourGuide(TourGuide tg){
         daftarTourGuide.add(tg);
+ //baru
+        daftarTourGuideList.add(tg);
+        db.saveTourGuide(tg);
+         
+    }
+      public void loadTourguide(){ 
+        daftarTourGuideList=db.loadAllTourGuide();
     }
     public void viewTourGuide(){
         for(TourGuide tg: daftarTourGuide){
@@ -70,14 +92,21 @@ public class Application {
     }
     public List<TourGuide> getDaftarTG(){
         return daftarTourGuide;
+        
+        
     }
     
     //CUSTOMER
     public List<Customer> getDaftarCs(){
         return daftarCustomer;
+        
     }
     public void inputCustomer(Customer c){
         daftarCustomer.add(c);
+        //baru
+        daftarCustomer.add(c);
+        db.saveCustomer(c);
+        
     }
     public void viewCustomer(){
         for(Customer c: daftarCustomer){
@@ -190,5 +219,20 @@ public class Application {
         tw.setAlamat(alamat);
         tw.setRating(rating);
     }
-    
+    //coba yahya
+    public int newId(){
+        if (daftarTourGuideList.size()==0) return 1; 
+        else{
+            String lastId=daftarTourGuideList.get(daftarTourGuideList.size()-1).getId(); 
+            String lastNumId=lastId.substring(2);
+            int lastNoId = Integer.parseInt(lastNumId); 
+            return lastNoId+1;
+        } 
+    }
+
+  
 }
+
+    
+    
+

@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import controller.*;
+import java.awt.event.MouseAdapter;
 import javax.swing.ButtonGroup;
 import javax.swing.JList;
 import javax.swing.JRadioButton;
@@ -18,12 +19,10 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.*;
 
-/**
- *
- * @author Lenovo
- */
+
 public class GUIAdmin extends javax.swing.JFrame {
     
+     
     private ControllerMainMenu ctrlMM;
     private ControllerAdmin ctrlAdm;
     private Application model;
@@ -35,6 +34,15 @@ public class GUIAdmin extends javax.swing.JFrame {
         this.model = model;
         
     }
+    
+    //coba yahya
+
+    public GUIAdmin() {
+        initComponents();
+    }
+
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1137,6 +1145,11 @@ public class GUIAdmin extends javax.swing.JFrame {
   
     
     //TOUR GUIDE
+    //setter
+       public void setTourguideId (int id) {
+       tfIdTG.setText("T-"+id);
+   }
+   
     //GETTER
     public JTextField getTfIdTG(){
         return tfIdTG;
@@ -1172,6 +1185,11 @@ public class GUIAdmin extends javax.swing.JFrame {
     public JTable getTbViewTGTG(){
         return tbViewTGTG;
     }
+
+    public JButton getBtnInputTG() {
+        return btnInputTG;
+    }
+    
     public void resetViewTG(){
         tfIdTG.setText("TG-"+TourGuide.getSidTG());
         tfNamaTG.setText("");
@@ -1367,7 +1385,17 @@ public class GUIAdmin extends javax.swing.JFrame {
         }
         
     }
-    
+      public String getTourGuideId(){
+        return tfIdTG.getText(); 
+   }
+    //yahyacoba
+    public void addActionListener (ActionListener a1) {
+       btnInputTG.addActionListener(a1);
+   }
+   
+   public void addMouseAdabter (MouseAdapter ma) {
+       tbViewTGTG.addMouseListener(ma);
+   }
 
 
     
@@ -1485,4 +1513,7 @@ public class GUIAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField tfUmurTG;
     private javax.swing.JTabbedPane tpAdmin;
     // End of variables declaration//GEN-END:variables
+
+   
+
 }

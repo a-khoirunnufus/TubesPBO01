@@ -18,6 +18,7 @@ public class GUIMainMenu extends javax.swing.JFrame {
     public GUIMainMenu() {
         initComponents();
         ctrlMM = new ControllerMainMenu(model, this);
+//        model.loadOneTourGuideById("TG-1");
     }
 
     /**
