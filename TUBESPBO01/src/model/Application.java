@@ -42,9 +42,8 @@ public class Application {
         db.saveTourGuide(tg);
          
     }
-      public void loadAllTourguide(){ 
+    public void loadAllTourguide(){ 
         daftarTourGuide=db.loadAllTourGuide();
-          System.out.println("nama zz "+db.loadAllTourGuide().get(0).getNama());
     }
     public void viewTourGuide(){
         System.out.println("jumlah tourguide : "+daftarTourGuide.size());
@@ -236,15 +235,15 @@ public class Application {
 //    }
 //    
 //    
-//    public int newId(){
-//        if (daftarTourGuideList.size()==0) return 1; 
-//        else{
-//            String lastId=daftarTourGuideList.get(daftarTourGuideList.size()-1).getId(); 
-//            String lastNumId=lastId.substring(3);
-//            int lastNoId = Integer.parseInt(lastNumId); 
-//            return lastNoId+1;
-//        } 
-//    }
+    public int getNewId(){
+        if (daftarTourGuide.size()==0) return 1; 
+        else{
+            String lastId=daftarTourGuide.get(daftarTourGuide.size()-1).getId(); 
+            String lastNumId=lastId.substring(3);
+            int lastNoId = Integer.parseInt(lastNumId); 
+            return lastNoId+1;
+        } 
+    }
 
   
 }

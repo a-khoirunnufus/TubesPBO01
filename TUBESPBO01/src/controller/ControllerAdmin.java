@@ -27,7 +27,7 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
         this.viewAdm = viewAdm;
         this.model = model;
         model.loadAllTourguide();
-        //viewAdm.getTfIdTG().setText("TG-"+model.getNewId());
+        viewAdm.getTfIdTG().setText("TG-"+model.getNewId());
         //System.out.println("new id : "+db.getNewId());
         viewAdm.getTfIdInputTW().setText("TW-"+TempatWisata.getSidTW());
         viewAdm.getSlRatingInputTW().setValue(0);

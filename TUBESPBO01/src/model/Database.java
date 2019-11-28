@@ -88,7 +88,6 @@ public class Database {
             t = new TourGuide(id,name,jeniskelamin,umur,alamat,kontak);
             tourguides.add(t);
         }
-        System.out.println(" nama 1 : "+tourguides.get(0).getNama());
         return tourguides;
     }catch(SQLException se){
         return null; }
