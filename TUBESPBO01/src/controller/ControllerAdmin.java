@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 /**
  *
  * @author Lenovo
@@ -25,14 +26,16 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
     public ControllerAdmin(Application model, GUIAdmin viewAdm){
         this.viewAdm = viewAdm;
         this.model = model;
-        viewAdm.getTfIdTG().setText("TG-"+TourGuide.getSidTG());
+        model.loadAllTourguide();
+        //viewAdm.getTfIdTG().setText("TG-"+model.getNewId());
+        //System.out.println("new id : "+db.getNewId());
         viewAdm.getTfIdInputTW().setText("TW-"+TempatWisata.getSidTW());
         viewAdm.getSlRatingInputTW().setValue(0);
         viewAdm.getTfIdInputPW().setText("PW-"+PaketWisata.getSidPW());
     }
     
     public void inputTG(){
-        model.inputTourGuide(new TourGuide(viewAdm.getTfNamaTG().getText(),viewAdm.getRbJKTG(),viewAdm.getTfUmurTG().getText(),viewAdm.getTfAlamatTG().getText(),viewAdm.getTfKontakTG().getText()));
+        model.inputTourGuide(new TourGuide(viewAdm.getTfNamaTG().getText(),viewAdm.getRbJKTG(),Integer.parseInt(viewAdm.getTfUmurTG().getText()),viewAdm.getTfAlamatTG().getText(),viewAdm.getTfKontakTG().getText()));
         
         System.out.println("jumlah tg : "+model.getDaftarTG().size());
         model.viewTourGuide();
@@ -48,7 +51,7 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
             row[0] = model.getDaftarTG().get(j).getId();
             row[1] = model.getDaftarTG().get(j).getNama();
             row[2] = model.getDaftarTG().get(j).getJenisKelamin();
-            row[3] = model.getDaftarTG().get(j).getUmur();
+            row[3] = String.valueOf(model.getDaftarTG().get(j).getUmur());
             row[4] = model.getDaftarTG().get(j).getAlamat();
             row[5] = model.getDaftarTG().get(j).getKontak();
             tbModel.addRow(row);           
@@ -63,7 +66,7 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
             row[0] = model.getDaftarCs().get(j).getId();
             row[1] = model.getDaftarCs().get(j).getNama();
             row[2] = model.getDaftarCs().get(j).getJenisKelamin();
-            row[3] = model.getDaftarCs().get(j).getUmur();
+            row[3] = String.valueOf(model.getDaftarCs().get(j).getUmur());
             row[4] = model.getDaftarCs().get(j).getAlamat();
             row[5] = model.getDaftarCs().get(j).getKontak();
             tbModel.addRow(row);           

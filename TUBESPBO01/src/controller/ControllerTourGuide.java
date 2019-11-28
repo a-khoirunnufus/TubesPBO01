@@ -59,7 +59,7 @@ public class ControllerTourGuide {
             }else{
                 viewTG.getBgJKUDP().setSelected(viewTG.getRbPerempuanUDP().getModel(), true);
             }
-            viewTG.getTfUmurUDP().setText(tg.getUmur());
+            viewTG.getTfUmurUDP().setText(String.valueOf(tg.getUmur()));
             viewTG.getTfAlamatUDP().setText(tg.getAlamat());
             viewTG.getTfKontakUDP().setText(tg.getKontak());
             JOptionPane.showMessageDialog(viewTG, "Id Valid");            
@@ -77,7 +77,7 @@ public class ControllerTourGuide {
         }else{
             jk = "Perempuan";
         }
-        model.editTourGuide(tg, viewTG.getTfNamaUDP().getText(), jk, viewTG.getTfUmurUDP().getText(), viewTG.getTfAlamatUDP().getText(), viewTG.getTfKontakUDP().getText());
+        model.editTourGuide(tg, viewTG.getTfNamaUDP().getText(), jk, Integer.parseInt(viewTG.getTfUmurUDP().getText()), viewTG.getTfAlamatUDP().getText(), viewTG.getTfKontakUDP().getText());
         JOptionPane.showMessageDialog(viewTG, "Data Telah Diedit");
         viewTG.resetViewUDP();
     }

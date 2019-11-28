@@ -234,6 +234,11 @@ public class GUIAdmin extends javax.swing.JFrame {
         spTbViewTGTG.setViewportView(tbViewTGTG);
 
         tfIdTG.setEditable(false);
+        tfIdTG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIdTGActionPerformed(evt);
+            }
+        });
 
         btnUpdateTG.setText("Update");
         btnUpdateTG.addActionListener(new java.awt.event.ActionListener() {
@@ -1141,6 +1146,10 @@ public class GUIAdmin extends javax.swing.JFrame {
     private void btnUpdateTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTGActionPerformed
         ctrlAdm.updateTableTG();
     }//GEN-LAST:event_btnUpdateTGActionPerformed
+
+    private void tfIdTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdTGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIdTGActionPerformed
 
   
     

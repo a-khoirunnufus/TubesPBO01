@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException; 
 import java.sql.Statement; 
 import java.util.ArrayList;
+import java.util.List;
 public class Database {
 
     private static Connection getConnection() {
@@ -21,13 +22,14 @@ public class Database {
             String url="jdbc:mysql://localhost:3306/tubes";
             String username = "root";
             String password = "";
-            con = DriverManager.getConnection(url, username, password); 
-            System.out.println("Connected to database.");
+            con = DriverManager.getConnection(url, username, password);
+            //System.out.println("jumlah data : "+getNewId());
         } 
         catch(SQLException se){ 
             System.out.println("Connection error.");
         }  
     }
+    
     //Coba yahya
     public void saveTourGuide(TourGuide t){ 
         try{
@@ -58,31 +60,36 @@ public class Database {
             String name=rs.getString(2);
             String jeniskelamin=rs.getString(3);
 //            int tglLahir = Integer.parseInt(rs.getString(4));
-            String umur = rs.getNString(4);
+            int umur = Integer.parseInt(rs.getString(4));
             String alamat = rs.getString(5);
             String kontak = rs.getString(6);
             t = new TourGuide(id,name,jeniskelamin,umur,alamat,kontak);
         }
-            return t; 
+        
+        return t; 
     }catch(SQLException se){
             return null;
         }
     }
-    public ArrayList<TourGuide> loadAllTourGuide(){ 
+    public List<TourGuide> loadAllTourGuide(){ 
     try{
-        ArrayList<TourGuide> tourguides=new ArrayList(); String query="select * from tourguide" ; 
-        Statement s=con.createStatement(); ResultSet rs=s.executeQuery(query); TourGuide t;
+        List<TourGuide> tourguides = new ArrayList(); 
+        String query="select * from tourguide;" ; 
+        Statement s=con.createStatement(); 
+        ResultSet rs=s.executeQuery(query); TourGuide t;
         while (rs.next()){
             String id=rs.getString(1);
+            
             String name=rs.getString(2);
             String jeniskelamin=rs.getString(3);
-            String umur = rs.getNString(4);
+            int umur = Integer.parseInt(rs.getString(4));
             String alamat = rs.getString(5);
             String kontak = rs.getString(6);
             t = new TourGuide(id,name,jeniskelamin,umur,alamat,kontak);
             tourguides.add(t);
         }
-        return tourguides; 
+        System.out.println(" nama 1 : "+tourguides.get(0).getNama());
+        return tourguides;
     }catch(SQLException se){
         return null; }
     } 

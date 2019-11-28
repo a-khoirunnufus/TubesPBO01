@@ -14,7 +14,7 @@ public class Customer extends Person{
     private static int sidC = 1;
     private List<Pemesanan> listPesanan;
     
-    public Customer(String nama, String jenisKelamin, String umur,
+    public Customer(String nama, String jenisKelamin, int umur,
                   String alamat, String kontak){
         super("C-"+sidC,nama,jenisKelamin,umur,
                   alamat,kontak);

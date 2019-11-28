@@ -9,9 +9,9 @@ public class TourGuide extends Person {
     private static int sidTG = 1;
     public boolean[][] jadwalTourGuide = new boolean[32][12];
     
-    public TourGuide(String nama, String jenisKelamin, String tglLahir,
+    public TourGuide(String nama, String jenisKelamin, int umur,
                   String alamat, String kontak){
-        super("TG-"+sidTG,nama,jenisKelamin,tglLahir,alamat,kontak);
+        super("TG-"+sidTG,nama,jenisKelamin,umur,alamat,kontak);
         sidTG++;
         
         for(int b = 0; b<12; b++){
@@ -21,9 +21,9 @@ public class TourGuide extends Person {
         }
         
     }
-     public TourGuide(String id,String nama, String jenisKelamin, String tglLahir,
+     public TourGuide(String id,String nama, String jenisKelamin, int umur,
                   String alamat, String kontak){
-        super("TG-"+sidTG,nama,jenisKelamin,tglLahir,alamat,kontak);
+        super("TG-"+sidTG,nama,jenisKelamin,umur,alamat,kontak);
         sidTG++;
         
         for(int b = 0; b<12; b++){

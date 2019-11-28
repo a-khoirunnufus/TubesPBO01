@@ -34,7 +34,7 @@ public class ControllerCustomer {
     }
     
     public void registReg(){        
-        model.inputCustomer(new Customer(viewCs.getTfNamaReg(),viewCs.getRbJKReg(),viewCs.getTfUmurReg(),viewCs.getTfAlamatReg(),viewCs.getTfKontakReg()));
+        model.inputCustomer(new Customer(viewCs.getTfNamaReg(),viewCs.getRbJKReg(),Integer.parseInt(viewCs.getTfUmurReg()),viewCs.getTfAlamatReg(),viewCs.getTfKontakReg()));
         System.out.println("jumlah customer : "+model.getDaftarCs().size());
         model.viewCustomer();
         JOptionPane.showMessageDialog(viewCs, "Data Berhasil Ditambahkan!");
@@ -70,7 +70,7 @@ public class ControllerCustomer {
             }else{
                 viewCs.getRbPerempuanUDP().setSelected(true);
             }
-            viewCs.getTfUmurUDP().setText(cs.getUmur());
+            viewCs.getTfUmurUDP().setText(String.valueOf(cs.getUmur()));
             viewCs.getTfAlamatUDP().setText(cs.getAlamat());
             viewCs.getTfKontakUDP().setText(cs.getKontak());
             JOptionPane.showMessageDialog(viewCs, "Id Valid");
@@ -87,7 +87,7 @@ public class ControllerCustomer {
         }else{
             jK = "Perempuan";
         }
-        model.editCustomer(cs, viewCs.getTfNamaUDP().getText(), jK, viewCs.getTfUmurUDP().getText(), viewCs.getTfAlamatUDP().getText(), viewCs.getTfKontakUDP().getText());
+        model.editCustomer(cs, viewCs.getTfNamaUDP().getText(), jK, Integer.parseInt(viewCs.getTfUmurUDP().getText()), viewCs.getTfAlamatUDP().getText(), viewCs.getTfKontakUDP().getText());
         JOptionPane.showMessageDialog(viewCs, "Data Diupdate");
         viewCs.resetViewUDP();
         model.viewCustomer();
@@ -146,7 +146,7 @@ public class ControllerCustomer {
             row[0] = model.getDaftarTG().get(j).getId();
             row[1] = model.getDaftarTG().get(j).getNama();
             row[2] = model.getDaftarTG().get(j).getJenisKelamin();
-            row[3] = model.getDaftarTG().get(j).getUmur();
+            row[3] = String.valueOf(model.getDaftarTG().get(j).getUmur());
             row[4] = model.getDaftarTG().get(j).getAlamat();
             row[5] = model.getDaftarTG().get(j).getKontak();
             tbModel.addRow(row);           

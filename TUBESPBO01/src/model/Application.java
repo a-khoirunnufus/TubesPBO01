@@ -1,5 +1,8 @@
 // ini adalah model
 package model;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.ArrayList;
 /**
@@ -14,8 +17,6 @@ public class Application {
     private List<TempatWisata> daftarTempatWisata;
     
 //baru
-    List <TourGuide> daftarTourGuideList;
-    List <TourGuide> daftarCustomerList;
     Database db;
 //    List <Customer> daftarCustumerList;
 //    Database db;
@@ -29,25 +30,24 @@ public class Application {
         daftarTempatWisata = new ArrayList<>();
         
 //baru
-        daftarTourGuideList = new ArrayList();
-        daftarCustomerList = new ArrayList();
         db = new Database(); 
         db.connect();
-    
     }
     
     //TOUR GUIDE
     public void inputTourGuide(TourGuide tg){
         daftarTourGuide.add(tg);
  //baru
-        daftarTourGuideList.add(tg);
+        //daftarTourGuideList.add(tg);
         db.saveTourGuide(tg);
          
     }
-      public void loadTourguide(){ 
-        daftarTourGuideList=db.loadAllTourGuide();
+      public void loadAllTourguide(){ 
+        daftarTourGuide=db.loadAllTourGuide();
+          System.out.println("nama zz "+db.loadAllTourGuide().get(0).getNama());
     }
     public void viewTourGuide(){
+        System.out.println("jumlah tourguide : "+daftarTourGuide.size());
         for(TourGuide tg: daftarTourGuide){
             System.out.println("Id : "+tg.getId());
             System.out.println("Nama : "+tg.getNama());
@@ -58,7 +58,7 @@ public class Application {
             System.out.print("\n");
         }
     }  
-    public void editTourGuide(TourGuide tg, String nama, String jk, String umur, String alamat, String kontak){
+    public void editTourGuide(TourGuide tg, String nama, String jk, int umur, String alamat, String kontak){
         tg.setNama(nama);
         tg.setJenisKelamin(jk);
         tg.setUmur(umur);
@@ -119,7 +119,7 @@ public class Application {
             System.out.print("\n");
         }
     }
-    public void editCustomer(Customer cs, String nama,String jk, String umur, String alamat, String kontak){
+    public void editCustomer(Customer cs, String nama,String jk, int umur, String alamat, String kontak){
         cs.setNama(nama);
         cs.setJenisKelamin(jk);
         cs.setUmur(umur);
@@ -219,16 +219,32 @@ public class Application {
         tw.setAlamat(alamat);
         tw.setRating(rating);
     }
-    //coba yahya
-    public int newId(){
-        if (daftarTourGuideList.size()==0) return 1; 
-        else{
-            String lastId=daftarTourGuideList.get(daftarTourGuideList.size()-1).getId(); 
-            String lastNumId=lastId.substring(2);
-            int lastNoId = Integer.parseInt(lastNumId); 
-            return lastNoId+1;
-        } 
-    }
+    //coba yahya 
+//     public String searchTourguide (String id) {
+//        int i = 0;
+//        while ((i < daftarTourGuideList.size()) && (daftarTourGuideList.get(i).getId()!= id)) {            
+//            i++;
+//        }
+//        return db.loadOneTourGuideById(id).toString();
+//    }
+//     public String[] getTourguideListId() {
+//        String[] listId = new String[daftarTourGuideList.size()];
+//        for (int i = 0; i < daftarTourGuideList.size(); i++) {
+//            listId[i] = daftarTourGuideList.get(i).getId();
+//        }
+//        return listId;
+//    }
+//    
+//    
+//    public int newId(){
+//        if (daftarTourGuideList.size()==0) return 1; 
+//        else{
+//            String lastId=daftarTourGuideList.get(daftarTourGuideList.size()-1).getId(); 
+//            String lastNumId=lastId.substring(3);
+//            int lastNoId = Integer.parseInt(lastNumId); 
+//            return lastNoId+1;
+//        } 
+//    }
 
   
 }
