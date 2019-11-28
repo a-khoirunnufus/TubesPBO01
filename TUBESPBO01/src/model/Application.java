@@ -144,6 +144,9 @@ public class Application {
     public List<PaketWisata> getDaftarPW(){
         return daftarPaketWisata;
     }
+    public void loadAllPaketWisata(){
+        daftarPaketWisata = db.loadAllPaketWisata();
+    }
     public void inputPaketWisata(PaketWisata pw) throws SQLException{
         daftarPaketWisata.add(pw);
         
@@ -247,10 +250,30 @@ public class Application {
 //    }
 //    
 //    
-    public int getNewId(){
+    public int getNewIdTG(){
         if (daftarTourGuide.size()==0) return 1; 
         else{
             String lastId=daftarTourGuide.get(daftarTourGuide.size()-1).getId(); 
+            String lastNumId=lastId.substring(3);
+            int lastNoId = Integer.parseInt(lastNumId); 
+            return lastNoId+1;
+        } 
+    }
+    
+    public int getNewIdTW(){
+        if (daftarTempatWisata.size()==0) return 1; 
+        else{
+            String lastId=daftarTempatWisata.get(daftarTempatWisata.size()-1).getId(); 
+            String lastNumId=lastId.substring(3);
+            int lastNoId = Integer.parseInt(lastNumId); 
+            return lastNoId+1;
+        } 
+    }
+    
+    public int getNewIdPW(){
+        if (daftarPaketWisata.size()==0) return 1; 
+        else{
+            String lastId=daftarPaketWisata.get(daftarPaketWisata.size()-1).getId(); 
             String lastNumId=lastId.substring(3);
             int lastNoId = Integer.parseInt(lastNumId); 
             return lastNoId+1;

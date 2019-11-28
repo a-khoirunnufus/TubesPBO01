@@ -29,11 +29,12 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
         model.loadAllTourguide();
         model.loadAllTempatwisata();
         model.loadAllCustomer();
-        viewAdm.getTfIdTG().setText("TG-"+model.getNewId());
-        //System.out.println("new id : "+db.getNewId());
-        viewAdm.getTfIdInputTW().setText("TW-"+TempatWisata.getSidTW());
+        model.loadAllPaketWisata();
+        
+        viewAdm.getTfIdTG().setText("TG-"+model.getNewIdTG());
+        viewAdm.getTfIdInputPW().setText("PW-"+model.getNewIdPW());
+        viewAdm.getTfIdInputTW().setText("TW-"+model.getNewIdTW());
         viewAdm.getSlRatingInputTW().setValue(0);
-        viewAdm.getTfIdInputPW().setText("PW-"+PaketWisata.getSidPW());
     }
     
     public void inputTG(){
@@ -204,7 +205,7 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
         viewAdm.getLsTGInputPW().setListData(listTg);
     }
     
-    public void inputPW(){
+    public void inputPW() throws SQLException{
         PaketWisata pw = new PaketWisata(viewAdm.getTfNamaInputPW().getText(),Double.parseDouble(viewAdm.getTfHargaInputPW().getText()),viewAdm.getTfTglBInputPW().getText(),viewAdm.getTfTglPInputPW().getText());
         //menambahkan tempat wisata
         List listTWInput = viewAdm.getLsTWInputPW().getSelectedValuesList();

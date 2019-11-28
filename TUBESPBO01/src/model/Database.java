@@ -212,7 +212,7 @@ public class Database {
         while (rs.next()){
             String id=rs.getString(1);
             String name=rs.getString(2);
-            int harga = Integer.parseInt(rs.getString(3));
+            double harga = Double.parseDouble(rs.getString(3));
             String tanggalberangkat = rs.getString(4);
             String tanggalpulang = rs.getString(5);
             pw = new PaketWisata(id,name,harga,tanggalberangkat,tanggalpulang);

@@ -11,6 +11,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import controller.*;
 import java.awt.event.MouseAdapter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JList;
 import javax.swing.JRadioButton;
@@ -1110,7 +1113,11 @@ public class GUIAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInputTGActionPerformed
 
     private void btnInputPWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInputPWActionPerformed
-        ctrlAdm.inputPW();
+        try {
+            ctrlAdm.inputPW();
+        } catch (SQLException ex) {
+            Logger.getLogger(GUIAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnInputPWActionPerformed
 
     private void btnEditPWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditPWActionPerformed
