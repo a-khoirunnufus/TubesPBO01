@@ -1,21 +1,23 @@
 package controller;
 
 import view.*;
-import model.Application;
+import model.*;
 
 public class ControllerMainMenu {
+    private Database db;
     private Application model;
     private GUIMainMenu viewMM;
     private GUIAdmin viewAdm;
     private GUITourGuide viewTG;
     private GUICustomer viewCs;
     
-    public ControllerMainMenu(Application model, GUIMainMenu viewMM){
+    public ControllerMainMenu(Database db, Application model, GUIMainMenu viewMM){
+        this.db = db;
         this.model = model;
         this.viewMM = viewMM;
         viewTG = new GUITourGuide(this,model);
         viewCs = new GUICustomer(this,model);
-        viewAdm = new GUIAdmin(this,model);
+        viewAdm = new GUIAdmin(this,model,db);
     }
     
     public void menuAdmin(){
