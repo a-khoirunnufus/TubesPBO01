@@ -27,6 +27,8 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
         this.viewAdm = viewAdm;
         this.model = model;
         model.loadAllTourguide();
+        model.loadAllTempatwisata();
+        model.loadAllCustomer();
         viewAdm.getTfIdTG().setText("TG-"+model.getNewId());
         //System.out.println("new id : "+db.getNewId());
         viewAdm.getTfIdInputTW().setText("TW-"+TempatWisata.getSidTW());
@@ -58,6 +60,48 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
         }
     }
     
+     public void updateTableTW(){
+        DefaultTableModel tbModel = (DefaultTableModel) viewAdm.getTBViewTW().getModel();
+        tbModel.setRowCount(0);
+        String[] row = new String[4];
+        for(int j = 0; j<model.getDaftarTW().size(); j++){
+            row[0] = model.getDaftarTW().get(j).getId();
+            row[1] = model.getDaftarTW().get(j).getNama();
+            row[2] = model.getDaftarTW().get(j).getAlamat();
+            row[3] = String.valueOf(model.getDaftarTW().get(j).getRating());
+            
+            tbModel.addRow(row);           
+        }
+    }
+    public void updateTableCS(){
+        DefaultTableModel tbModel = (DefaultTableModel) viewAdm.getTbViewCs().getModel();
+        tbModel.setRowCount(0);
+        String[] row = new String[6];
+        for(int j = 0; j<model.getDaftarCs().size(); j++){
+            row[0] = model.getDaftarCs().get(j).getId();
+            row[1] = model.getDaftarCs().get(j).getNama();
+            row[2] = model.getDaftarCs().get(j).getJenisKelamin();
+            row[3] = String.valueOf(model.getDaftarCs().get(j).getUmur());
+            row[4] = model.getDaftarCs().get(j).getAlamat();
+            row[5] = model.getDaftarCs().get(j).getKontak();
+            tbModel.addRow(row);           
+        }
+    }
+    
+     public void updateTablePW(){
+        DefaultTableModel tbModel = (DefaultTableModel) viewAdm.getTBViewPW().getModel();
+        tbModel.setRowCount(0);
+        String[] row = new String[6];
+        for(int j = 0; j<model.getDaftarPW().size(); j++){
+            row[0] = model.getDaftarPW().get(j).getId();
+            row[1] = model.getDaftarPW().get(j).getNama();
+            row[3] = String.valueOf(model.getDaftarPW().get(j).getHarga());
+            row[4] = model.getDaftarPW().get(j).getTglBerangkat();
+            row[5] = model.getDaftarPW().get(j).getTglPulang();
+            tbModel.addRow(row);           
+        }
+    
+    }
     public void updateViewCs(){
         DefaultTableModel tbModel = (DefaultTableModel) viewAdm.getTbViewCs().getModel();
         tbModel.setRowCount(0);

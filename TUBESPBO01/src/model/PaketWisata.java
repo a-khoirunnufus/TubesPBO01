@@ -21,6 +21,17 @@ public class PaketWisata {
         this.tglPulang = tglPulang;
         sidPW++;
     }   
+    
+     public PaketWisata(String id,String nama, double harga, String tglBerangkat, String tglPulang){
+        this.id = "PW-"+sidPW;
+        this.nama = nama;
+        this.harga = harga;
+        listGuide = new ArrayList<>();
+        listTujuan = new ArrayList<>();
+        this.tglBerangkat = tglBerangkat;
+        this.tglPulang = tglPulang;
+        sidPW++;
+    }   
     public static int getSidPW(){
         return sidPW;
     }  

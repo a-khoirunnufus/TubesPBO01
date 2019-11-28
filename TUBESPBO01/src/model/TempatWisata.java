@@ -24,6 +24,14 @@ public class TempatWisata {
         sidTW++;
     }
     
+    public TempatWisata(String id,String nama, String alamat, int rating){
+        this.id = "TW-"+sidTW;
+        this.nama = nama;
+        this.alamat = alamat;
+        this.rating = rating;
+        sidTW++;
+    }
+    
     public static int getSidTW(){
         return sidTW;
     }

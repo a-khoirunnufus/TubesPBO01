@@ -103,9 +103,12 @@ public class Application {
     public void inputCustomer(Customer c){
         daftarCustomer.add(c);
         //baru
-        daftarCustomer.add(c);
+//        daftarCustomer.add(c);
         db.saveCustomer(c);
         
+    }
+     public void loadAllCustomer(){ 
+        daftarCustomer=db.loadAllCustomer();
     }
     public void viewCustomer(){
         for(Customer c: daftarCustomer){
@@ -143,6 +146,9 @@ public class Application {
     }
     public void inputPaketWisata(PaketWisata pw){
         daftarPaketWisata.add(pw);
+        
+        
+          db.savePaketWisata(pw);
     }
     public void viewPaketWisata(){
         for(PaketWisata pw: daftarPaketWisata){
@@ -181,8 +187,14 @@ public class Application {
     public List<TempatWisata> getDaftarTW(){
         return daftarTempatWisata;
     }
+    
+    public void loadAllTempatwisata(){ 
+        daftarTempatWisata=db.loadAllTempatWisata();
+    }
     public void inputTempatWisata(TempatWisata tw){
         daftarTempatWisata.add(tw);
+        //baru
+        db.saveTempatWisata(tw);
     }
     public void viewTempatWisata(){
         for(TempatWisata pw: daftarTempatWisata){

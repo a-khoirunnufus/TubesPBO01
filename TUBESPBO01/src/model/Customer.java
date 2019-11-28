@@ -22,6 +22,14 @@ public class Customer extends Person{
         sidC++;
     }
     
+    public Customer(String id,String nama, String jenisKelamin, int umur,
+                  String alamat, String kontak){
+        super("C-"+sidC,nama,jenisKelamin,umur,
+                  alamat,kontak);
+        listPesanan = new ArrayList<>();
+        sidC++;
+    }
+    
     public static int getSidC(){
         return sidC;
     }

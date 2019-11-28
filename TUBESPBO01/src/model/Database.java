@@ -41,6 +41,17 @@ public class Database {
             System.out.println("Saving error.");
         } 
     }
+     public void saveTempatWisata(TempatWisata  tw){ 
+        try{
+            String query="insert into tempatwisata values ('"+tw.getId()+"','"+tw.getNama()+"','"+tw.getAlamat()+"','"+tw.getRating( )+"');";
+            System.out.println("id"+tw.getRating());
+            Statement s=con.createStatement(); 
+            s.execute(query); 
+            System.out.println("Saving success.");
+        } catch(SQLException se){ 
+            System.out.println("Saving error.");
+        } 
+    }
     public void saveCustomer(Customer c){ 
         try{
             String query="insert into customer values ('"+c.getId()+"','"+c.getNama()+"','"+c.getJenisKelamin()+"','"+c.getUmur( )+"','"+c.getAlamat()+"','"+c.getKontak()+"');";
@@ -51,6 +62,18 @@ public class Database {
             System.out.println("Saving error.");
         } 
     }
+    
+    public void savePaketWisata(PaketWisata pw){ 
+        try{
+            String query="insert into customer values ('"+pw.getId()+"','"+pw.getNama()+"','"+pw.getHarga( )+"','"+pw.getTglBerangkat()+"','"+pw.getTglPulang()+"');";
+            Statement s=con.createStatement(); 
+            s.execute(query); 
+            System.out.println("Saving success.");
+        } catch(SQLException se){ 
+            System.out.println("Saving error.");
+        } 
+    }
+    
     public TourGuide loadOneTourGuideById(String id){ 
     try{
         String query="select * from tourguide where id ='"+id+"'" ; Statement s=con.createStatement();
@@ -92,6 +115,67 @@ public class Database {
     }catch(SQLException se){
         return null; }
     } 
+    public List<TempatWisata> loadAllTempatWisata(){ 
+    try{
+        List<TempatWisata> tempatwisatas = new ArrayList(); 
+        String query="select * from tempatwisata;" ; 
+        Statement s=con.createStatement(); 
+        ResultSet rs=s.executeQuery(query); TempatWisata tw;
+        while (rs.next()){
+            String id=rs.getString(1);
+            
+            String name=rs.getString(2);
+            String alamat=rs.getString(3);
+            int rating = Integer.parseInt(rs.getString(4));
+            tw = new TempatWisata(id,name,alamat,rating);
+            tempatwisatas.add(tw);
+        }
+        return tempatwisatas;
+    }catch(SQLException se){
+        return null; }
+    } 
+    
+    public List<Customer> loadAllCustomer(){ 
+    try{
+        List<Customer> customers = new ArrayList(); 
+        String query="select * from Customer;" ; 
+        Statement s=con.createStatement(); 
+        ResultSet rs=s.executeQuery(query); Customer c;
+        while (rs.next()){
+            String id=rs.getString(1);
+            
+            String name=rs.getString(2);
+            String jeniskelamin=rs.getString(3);
+            int umur = Integer.parseInt(rs.getString(4));
+            String alamat = rs.getString(5);
+            String kontak = rs.getString(6);
+            c = new Customer(id,name,jeniskelamin,umur,alamat,kontak);
+            customers.add(c);
+        }
+        return customers;
+    }catch(SQLException se){
+        return null; }
+    } 
+    public List<PaketWisata> loadAllPaketWisata(){ 
+    try{
+        List<PaketWisata> paketwisatas = new ArrayList(); 
+        String query="select * from paketwisata;" ; 
+        Statement s=con.createStatement(); 
+        ResultSet rs=s.executeQuery(query); PaketWisata pw;
+        while (rs.next()){
+            String id=rs.getString(1);
+            String name=rs.getString(2);
+            int harga = Integer.parseInt(rs.getString(3));
+            String tanggalberangkat = rs.getString(4);
+            String tanggalpulang = rs.getString(5);
+            pw = new PaketWisata(id,name,harga,tanggalberangkat,tanggalpulang);
+            paketwisatas.add(pw);
+        }
+        return paketwisatas;
+    }catch(SQLException se){
+        return null; }
+    } 
+    
 //     public void AmbilDataBarang() {
 //        //Menghapus Seluruh Data
 //        .getDataVector().removeAllElements();

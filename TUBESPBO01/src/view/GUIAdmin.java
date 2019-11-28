@@ -113,6 +113,7 @@ public class GUIAdmin extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         tbViewDeleteTW = new javax.swing.JTable();
         tfIdSearchDeleteTW = new javax.swing.JTextField();
+        btnUpdateTW = new javax.swing.JButton();
         pPaketWisata = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbViewPW = new javax.swing.JTable();
@@ -162,6 +163,7 @@ public class GUIAdmin extends javax.swing.JFrame {
         tbViewDeletePW = new javax.swing.JTable();
         btnDeletePW = new javax.swing.JButton();
         tfIdSearchDeletePW = new javax.swing.JTextField();
+        btnRefreshPW = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnBMM = new javax.swing.JButton();
 
@@ -664,6 +666,13 @@ public class GUIAdmin extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Delete", jPanel11);
 
+        btnUpdateTW.setText("Update ");
+        btnUpdateTW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateTWActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pTempatWisataLayout = new javax.swing.GroupLayout(pTempatWisata);
         pTempatWisata.setLayout(pTempatWisataLayout);
         pTempatWisataLayout.setHorizontalGroup(
@@ -672,7 +681,9 @@ public class GUIAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pTempatWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdateTW))
                 .addContainerGap(264, Short.MAX_VALUE))
         );
         pTempatWisataLayout.setVerticalGroup(
@@ -680,8 +691,12 @@ public class GUIAdmin extends javax.swing.JFrame {
             .addGroup(pTempatWisataLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pTempatWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane3))
+                    .addComponent(jTabbedPane3)
+                    .addGroup(pTempatWisataLayout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnUpdateTW)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -1002,6 +1017,13 @@ public class GUIAdmin extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Delete", jPanel8);
 
+        btnRefreshPW.setText("Refresh");
+        btnRefreshPW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshPWActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pPaketWisataLayout = new javax.swing.GroupLayout(pPaketWisata);
         pPaketWisata.setLayout(pPaketWisataLayout);
         pPaketWisataLayout.setHorizontalGroup(
@@ -1009,17 +1031,26 @@ public class GUIAdmin extends javax.swing.JFrame {
             .addGroup(pPaketWisataLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(pPaketWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pPaketWisataLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPaketWisataLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRefreshPW)
+                        .addGap(52, 52, 52))))
         );
         pPaketWisataLayout.setVerticalGroup(
             pPaketWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pPaketWisataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pPaketWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1))
+                .addGroup(pPaketWisataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pPaketWisataLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRefreshPW)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1104,6 +1135,8 @@ public class GUIAdmin extends javax.swing.JFrame {
 
     private void btnRefreshCsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshCsActionPerformed
         ctrlAdm.updateViewCs();
+        ctrlAdm.updateTableCS();
+        
     }//GEN-LAST:event_btnRefreshCsActionPerformed
 
     private void btnRefreshRPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshRPActionPerformed
@@ -1150,6 +1183,14 @@ public class GUIAdmin extends javax.swing.JFrame {
     private void tfIdTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdTGActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfIdTGActionPerformed
+
+    private void btnUpdateTWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTWActionPerformed
+        ctrlAdm.updateTableTW();
+    }//GEN-LAST:event_btnUpdateTWActionPerformed
+
+    private void btnRefreshPWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshPWActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRefreshPWActionPerformed
 
   
     
@@ -1254,6 +1295,9 @@ public class GUIAdmin extends javax.swing.JFrame {
     public JTable getTbViewDeleteTW(){
         return tbViewDeleteTW;
     }
+    public JTable getTBViewTW(){
+        return tbViewTW;
+    }
     //VIEW
     public void resetViewInputTW(){
         tfIdInputTW.setText("TW-"+TempatWisata.getSidTW());
@@ -1313,6 +1357,10 @@ public class GUIAdmin extends javax.swing.JFrame {
     public JList getLsTGInputPW(){
         return lsTGInputPW;
     }
+    public JTable getTBViewPW(){
+        return tbViewPW;
+    }
+    
     //EDIT
     public JTextField getTfIdSearchEditPW(){
         return tfIdSearchEditPW;
@@ -1420,6 +1468,7 @@ public class GUIAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnInputTG;
     private javax.swing.JButton btnInputTW;
     private javax.swing.JButton btnRefreshCs;
+    private javax.swing.JButton btnRefreshPW;
     private javax.swing.JButton btnRefreshRP;
     private javax.swing.JButton btnRefreshTWInputPW;
     private javax.swing.JButton btnSearchDeletePW;
@@ -1427,6 +1476,7 @@ public class GUIAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnSearchEditPW;
     private javax.swing.JButton btnSearchEditTW;
     private javax.swing.JButton btnUpdateTG;
+    private javax.swing.JButton btnUpdateTW;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
