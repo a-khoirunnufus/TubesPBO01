@@ -1196,7 +1196,7 @@ public class GUIAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateTWActionPerformed
 
     private void btnRefreshPWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshPWActionPerformed
-        // TODO add your handling code here:
+        updateTablePW();
     }//GEN-LAST:event_btnRefreshPWActionPerformed
 
   

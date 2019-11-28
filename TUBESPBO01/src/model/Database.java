@@ -213,6 +213,19 @@ public class Database {
             String id=rs.getString(1);
             String name=rs.getString(2);
             double harga = Double.parseDouble(rs.getString(3));
+            
+            query = "select count(id_TWPW) from tempatwisatadipaketwisata;";
+            s = con.createStatement();
+            rs = s.executeQuery(query);
+            int nTW = 0;
+            while(rs.next()){
+                nTW = Integer.parseInt(rs.getString(1));
+            }
+            
+            for(int i = 0; i<nTW; i++){
+                
+            }
+            
             String tanggalberangkat = rs.getString(4);
             String tanggalpulang = rs.getString(5);
             pw = new PaketWisata(id,name,harga,tanggalberangkat,tanggalpulang);
