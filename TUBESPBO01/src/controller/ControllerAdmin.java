@@ -21,9 +21,8 @@ import java.awt.event.MouseEvent;
 public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
     private Application model;
     private GUIAdmin viewAdm;
-    private Database db;
     
-    public ControllerAdmin(Application model, GUIAdmin viewAdm, Database db){
+    public ControllerAdmin(Application model, GUIAdmin viewAdm){
         this.viewAdm = viewAdm;
         this.model = model;
         viewAdm.getTfIdTG().setText("TG-"+TourGuide.getSidTG());

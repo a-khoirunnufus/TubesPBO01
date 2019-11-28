@@ -15,11 +15,10 @@ public class GUIMainMenu extends javax.swing.JFrame {
 
     private ControllerMainMenu ctrlMM;
     private Application model = new Application();
-    private Database db = new Database();
     
     public GUIMainMenu() {
         initComponents();
-        ctrlMM = new ControllerMainMenu(db,model, this);
+        ctrlMM = new ControllerMainMenu(model, this);
 //        model.loadOneTourGuideById("TG-1");
     }
 

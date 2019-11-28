@@ -4,20 +4,18 @@ import view.*;
 import model.*;
 
 public class ControllerMainMenu {
-    private Database db;
     private Application model;
     private GUIMainMenu viewMM;
     private GUIAdmin viewAdm;
     private GUITourGuide viewTG;
     private GUICustomer viewCs;
     
-    public ControllerMainMenu(Database db, Application model, GUIMainMenu viewMM){
-        this.db = db;
+    public ControllerMainMenu(Application model, GUIMainMenu viewMM){
         this.model = model;
         this.viewMM = viewMM;
         viewTG = new GUITourGuide(this,model);
         viewCs = new GUICustomer(this,model);
-        viewAdm = new GUIAdmin(this,model,db);
+        viewAdm = new GUIAdmin(this,model);
     }
     
     public void menuAdmin(){

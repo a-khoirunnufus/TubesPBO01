@@ -26,13 +26,11 @@ public class GUIAdmin extends javax.swing.JFrame {
     private ControllerMainMenu ctrlMM;
     private ControllerAdmin ctrlAdm;
     private Application model;
-    private Database db;
     
-    public GUIAdmin(ControllerMainMenu ctrlMM, Application model, Database db) {
+    public GUIAdmin(ControllerMainMenu ctrlMM, Application model) {
         initComponents();
-        this.db = db;
         this.ctrlMM = ctrlMM;
-        ctrlAdm = new ControllerAdmin(model, this,db);
+        ctrlAdm = new ControllerAdmin(model, this);
         this.model = model;
         
     }
