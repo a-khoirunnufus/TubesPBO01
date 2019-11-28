@@ -19,9 +19,9 @@ public class Database {
     public void connect(){ 
         try{
             String url="jdbc:mysql://localhost:3306/tubes";
-            String username="root";
-            String password="";
-            con=DriverManager.getConnection(url, username, password); 
+            String username = "root";
+            String password = "";
+            con = DriverManager.getConnection(url, username, password); 
             System.out.println("Connected to database.");
         } 
         catch(SQLException se){ 
@@ -31,8 +31,8 @@ public class Database {
     //Coba yahya
     public void saveTourGuide(TourGuide t){ 
         try{
-            String query="insert into tourguide values ('"+t.getId()+"','"+t.getNama()+"','"+t.getJenisKelamin()+"','"+t.getUmur( )+"','"+t.getAlamat()+"','"+t.getKontak()+"');";
-            Statement s=con.createStatement(); 
+            String query="insert into tourguide values ('"+t.getId()+"','"+t.getNama()+"','"+t.getJenisKelamin()+"','"+t.getUmur()+"','"+t.getAlamat()+"','"+t.getKontak()+"');";
+            Statement s = con.createStatement(); 
             s.execute(query); 
             System.out.println("Saving success.");
         } catch(SQLException se){ 

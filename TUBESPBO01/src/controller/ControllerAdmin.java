@@ -19,7 +19,7 @@ import java.awt.event.MouseEvent;
  * @author Lenovo
  */
 public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
-private Application model;
+    private Application model;
     private GUIAdmin viewAdm;
     
     public ControllerAdmin(Application model, GUIAdmin viewAdm){
@@ -33,6 +33,7 @@ private Application model;
     
     public void inputTG(){
         model.inputTourGuide(new TourGuide(viewAdm.getTfNamaTG().getText(),viewAdm.getRbJKTG(),viewAdm.getTfUmurTG().getText(),viewAdm.getTfAlamatTG().getText(),viewAdm.getTfKontakTG().getText()));
+        
         System.out.println("jumlah tg : "+model.getDaftarTG().size());
         model.viewTourGuide();
         JOptionPane.showMessageDialog(viewAdm, "Data Berhasil Ditambahkan!");

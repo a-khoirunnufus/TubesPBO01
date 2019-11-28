@@ -31,7 +31,7 @@ public class Application {
 //baru
         daftarTourGuideList = new ArrayList();
         daftarCustomerList = new ArrayList();
-        db=new Database(); 
+        db = new Database(); 
         db.connect();
     
     }

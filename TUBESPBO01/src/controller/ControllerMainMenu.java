@@ -1,7 +1,7 @@
 package controller;
 
 import view.*;
-import model.Application;
+import model.*;
 
 public class ControllerMainMenu {
     private Application model;
