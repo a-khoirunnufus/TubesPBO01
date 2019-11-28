@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement; 
 import java.util.ArrayList;
 import java.util.List;
+import view.GUIAdmin;
 public class Database {
 
     private static Connection getConnection() {
@@ -63,11 +64,57 @@ public class Database {
         } 
     }
     
-    public void savePaketWisata(PaketWisata pw){ 
+    public int getNewIdTWPW() throws SQLException{
+        String query = "select count(id_TWPW) from tempatwisatadipaketwisata;";
+        Statement s = con.createStatement();
+        ResultSet rs=s.executeQuery(query);
+        int idBaru = 0;
+        while(rs.next()){
+            idBaru = Integer.parseInt(rs.getString(1));
+        }
+        return idBaru;
+    }
+    public int getNewIdTGPW() throws SQLException{
+        String query = "select count(id_TGPW) from tourguidedipaketwisata;";
+        Statement s = con.createStatement();
+        ResultSet rs=s.executeQuery(query);
+        int idBaru = 0;
+        while(rs.next()){
+            idBaru = Integer.parseInt(rs.getString(1));
+        }
+        return idBaru;
+    }
+    
+    public void savePaketWisata(PaketWisata pw) throws SQLException{
+        String[] idTw = new String[pw.getListTujuan().size()];
+        for(int i = 0; i< pw.getListTujuan().size(); i++){
+            idTw[i] = pw.getListTujuan().get(i).getId();
+        }
+        String[] idG = new String[pw.getListGuide().size()];
+        for(int i = 0; i< pw.getListGuide().size(); i++){
+            idG[i] = pw.getListGuide().get(i).getId();
+        }
+        String idTWPW = String.valueOf(getNewIdTWPW()+1);
+        String idTGPW = String.valueOf(getNewIdTGPW()+1);
+  
         try{
-            String query="insert into customer values ('"+pw.getId()+"','"+pw.getNama()+"','"+pw.getHarga( )+"','"+pw.getTglBerangkat()+"','"+pw.getTglPulang()+"');";
-            Statement s=con.createStatement(); 
-            s.execute(query); 
+            String query="insert into paketwisata values ('"+pw.getId()+"','"+pw.getNama()+"','"+pw.getHarga( )+"','"+pw.getTglBerangkat()+"','"+pw.getTglPulang()+"');";
+            Statement s=con.createStatement();           
+            s.execute(query);
+            //insert ke table tempatwisatadipaketwisata
+            for(TempatWisata tw: pw.getListTujuan()){
+                query = "insert into tempatwisatadipaketwisata values ('TWPW-"+idTWPW+"','"+pw.getId()+"','"+tw.getId()+"');";               
+                s.execute(query);
+                idTWPW = String.valueOf(Integer.parseInt(idTWPW)+1);
+                
+            }
+            //insert ke table tourguidedipaketwisata
+            for(TourGuide tg: pw.getListGuide()){
+                query = "insert into tourguidedipaketwisata values ('TGPW-"+idTGPW+"','"+pw.getId()+"','"+tg.getId()+"');";
+                s.execute(query);
+                idTGPW = String.valueOf(Integer.parseInt(idTGPW)+1);
+            }
+            
             System.out.println("Saving success.");
         } catch(SQLException se){ 
             System.out.println("Saving error.");

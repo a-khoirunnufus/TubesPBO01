@@ -144,7 +144,7 @@ public class Application {
     public List<PaketWisata> getDaftarPW(){
         return daftarPaketWisata;
     }
-    public void inputPaketWisata(PaketWisata pw){
+    public void inputPaketWisata(PaketWisata pw) throws SQLException{
         daftarPaketWisata.add(pw);
         
         
