@@ -129,7 +129,6 @@ public class Database {
         while (rs.next()){
             String name=rs.getString(2);
             String jeniskelamin=rs.getString(3);
-//            int tglLahir = Integer.parseInt(rs.getString(4));
             int umur = Integer.parseInt(rs.getString(4));
             String alamat = rs.getString(5);
             String kontak = rs.getString(6);
@@ -214,17 +213,17 @@ public class Database {
             String name=rs.getString(2);
             double harga = Double.parseDouble(rs.getString(3));
             
-            query = "select count(id_TWPW) from tempatwisatadipaketwisata;";
-            s = con.createStatement();
-            rs = s.executeQuery(query);
-            int nTW = 0;
-            while(rs.next()){
-                nTW = Integer.parseInt(rs.getString(1));
-            }
-            
-            for(int i = 0; i<nTW; i++){
-                
-            }
+//            query = "select count(id_TWPW) from tempatwisatadipaketwisata;";
+//            s = con.createStatement();
+//            rs = s.executeQuery(query);
+//            int nTW = 0;
+//            while(rs.next()){
+//                nTW = Integer.parseInt(rs.getString(1));
+//            }
+//            
+//            for(int i = 0; i<nTW; i++){
+//                
+//            }
             
             String tanggalberangkat = rs.getString(4);
             String tanggalpulang = rs.getString(5);
@@ -235,7 +234,63 @@ public class Database {
     }catch(SQLException se){
         return null; }
     } 
+    //coba delete
     
+    public static void deleteRecord() throws SQLException{
+  Connection connection = null;
+  Statement statement = null;
+  int countRecordDeleted = 0;
+  String deleteTableQuery = "DELETE FROM tourguide WHERE Id_TourGuide = 'TG-7'";
+  try {
+   connection = getConnection();
+   statement = connection.createStatement();
+   System.out.println(deleteTableQuery);
+   // execute delete SQL stetement
+   statement.executeUpdate(deleteTableQuery);
+   countRecordDeleted = statement.getUpdateCount();
+   System.out.println(countRecordDeleted+" Record berhasil di delete dari TBL_USER!");
+  } catch (SQLException ex) {
+   System.out.println(ex.getMessage());
+  } finally {
+   if (statement != null) {
+    statement.close();
+   }
+   if (connection != null) {
+    connection.close();
+   }
+  }
+ }
+public void deleteTourGuide(TourGuide tg){ 
+        try{
+            String query="delete from tourguide WHERE Id_TourGuide = ('"+tg.getId()+"','"+tg.getNama()+"','"+tg.getJenisKelamin()+"','"+tg.getUmur( )+"','"+tg.getAlamat()+"','"+tg.getKontak()+"');";
+            Statement s=con.createStatement(); 
+            s.execute(query); 
+            System.out.println("delete success.");
+        } catch(SQLException se){ 
+            System.out.println("delete error.");
+        } 
+    }
+
+public void deleteTourGuide(Customer c){ 
+        try{
+            String query="delete from customer WHERE Id_Customer = ('"+c.getId()+"','"+c.getNama()+"','"+c.getJenisKelamin()+"','"+c.getUmur( )+"','"+c.getAlamat()+"','"+c.getKontak()+"');";
+            Statement s=con.createStatement(); 
+            s.execute(query); 
+            System.out.println("delete success.");
+        } catch(SQLException se){ 
+            System.out.println("delete error.");
+        } 
+    }
+public void deleteTempatWisata(TempatWisata tw){ 
+        try{
+            String query="delete from tempatwisata WHERE Id_TempatWisata ('"+tw.getId()+"','"+tw.getNama()+"','"+tw.getAlamat()+"','"+tw.getRating( )+"');";
+            Statement s=con.createStatement(); 
+            s.execute(query); 
+            System.out.println("delete success.");
+        } catch(SQLException se){ 
+            System.out.println("delete error.");
+        } 
+    }
 //     public void AmbilDataBarang() {
 //        //Menghapus Seluruh Data
 //        .getDataVector().removeAllElements();

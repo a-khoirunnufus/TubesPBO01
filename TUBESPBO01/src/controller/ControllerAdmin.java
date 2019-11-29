@@ -31,6 +31,7 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
         model.loadAllCustomer();
         model.loadAllPaketWisata();
         
+        
         viewAdm.getTfIdTG().setText("TG-"+model.getNewIdTG());
         viewAdm.getTfIdInputPW().setText("PW-"+model.getNewIdPW());
         viewAdm.getTfIdInputTW().setText("TW-"+model.getNewIdTW());
@@ -118,6 +119,7 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
         }
     }
     
+    
     public void updateViewRP(){
         DefaultTableModel tbModel = (DefaultTableModel) viewAdm.getTbViewRP().getModel();
         tbModel.setRowCount(0);
@@ -174,6 +176,7 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
             DefaultTableModel tbModel = (DefaultTableModel) viewAdm.getTbViewDeleteTW().getModel();
             tbModel.addRow(new String[]{tw.getId(),tw.getNama(),tw.getAlamat(),Integer.toString(tw.getRating())});
             JOptionPane.showMessageDialog(viewAdm, "ID Valid");
+          
         }else{
             JOptionPane.showMessageDialog(viewAdm, "ID Tidak Valid");
         }

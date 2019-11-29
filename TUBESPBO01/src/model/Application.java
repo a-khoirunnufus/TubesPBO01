@@ -42,6 +42,10 @@ public class Application {
         db.saveTourGuide(tg);
          
     }
+    
+    public void DeleteTourGuide(TourGuide tg){
+        db.deleteTourGuide(tg);
+    }
     public void loadAllTourguide(){ 
         daftarTourGuide=db.loadAllTourGuide();
     }
@@ -194,6 +198,9 @@ public class Application {
     public void loadAllTempatwisata(){ 
         daftarTempatWisata=db.loadAllTempatWisata();
     }
+    public void DeleteTempatWisata(TempatWisata tw){
+        db.deleteTempatWisata(tw);
+    }
     public void inputTempatWisata(TempatWisata tw){
         daftarTempatWisata.add(tw);
         //baru
@@ -234,22 +241,22 @@ public class Application {
         tw.setRating(rating);
     }
     //coba yahya 
-//     public String searchTourguide (String id) {
-//        int i = 0;
-//        while ((i < daftarTourGuideList.size()) && (daftarTourGuideList.get(i).getId()!= id)) {            
-//            i++;
-//        }
-//        return db.loadOneTourGuideById(id).toString();
-//    }
-//     public String[] getTourguideListId() {
-//        String[] listId = new String[daftarTourGuideList.size()];
-//        for (int i = 0; i < daftarTourGuideList.size(); i++) {
-//            listId[i] = daftarTourGuideList.get(i).getId();
-//        }
-//        return listId;
-//    }
-//    
-//    
+     public String searchTourguide (String id) {
+        int i = 0;
+        while ((i < daftarTourGuide.size()) && (daftarTourGuide.get(i).getId()!= id)) {            
+            i++;
+        }
+        return db.loadOneTourGuideById(id).toString();
+    }
+     public String[] getTourguideListId() {
+        String[] listId = new String[daftarTourGuide.size()];
+        for (int i = 0; i < daftarTourGuide.size(); i++) {
+            listId[i] = daftarTourGuide.get(i).getId();
+        }
+        return listId;
+    }
+    
+    
     public int getNewIdTG(){
         if (daftarTourGuide.size()==0) return 1; 
         else{

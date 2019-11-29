@@ -22,11 +22,13 @@ public class GUITourGuide extends javax.swing.JFrame {
 
     private ControllerMainMenu ctrlMM;
     private ControllerTourGuide ctrlTG;
+     private Application model;
     
     public GUITourGuide(ControllerMainMenu ctrlMM, Application model) {
         initComponents();
         this.ctrlMM = ctrlMM;
         ctrlTG = new ControllerTourGuide(model, this);
+           this.model = model;
     }
 
     /**
