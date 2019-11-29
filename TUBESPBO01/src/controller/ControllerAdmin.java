@@ -183,10 +183,15 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
     }
     
     public void deleteTW(){
-        model.getDaftarTW().remove(model.getDaftarTW().indexOf(model.getTempatWisata(viewAdm.getTfIdSearchDeleteTW().getText())));
+        TempatWisata tw = model.getTempatWisata(viewAdm.getTfIdSearchDeleteTW().getText());
+        
+        model.getDaftarTW().remove(model.getDaftarTW().indexOf(tw));
+        model.DeleteTempatWisata(tw);
+        
         JOptionPane.showMessageDialog(viewAdm, "Data Telah Dihapus");
         viewAdm.resetViewDeleteTW();
         viewAdm.updateTableTW();
+        
     }
     
     public void refreshTWInputPW(){

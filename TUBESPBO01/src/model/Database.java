@@ -271,19 +271,19 @@ public void deleteTourGuide(TourGuide tg){
         } 
     }
 
-public void deleteTourGuide(Customer c){ 
-        try{
-            String query="delete from customer WHERE Id_Customer = ('"+c.getId()+"','"+c.getNama()+"','"+c.getJenisKelamin()+"','"+c.getUmur( )+"','"+c.getAlamat()+"','"+c.getKontak()+"');";
-            Statement s=con.createStatement(); 
-            s.execute(query); 
-            System.out.println("delete success.");
-        } catch(SQLException se){ 
-            System.out.println("delete error.");
-        } 
-    }
+//public void deleteTourGuide(Customer c){ 
+//        try{
+//            String query="delete from customer WHERE Id_Customer = ('"+c.getId()+"','"+c.getNama()+"','"+c.getJenisKelamin()+"','"+c.getUmur( )+"','"+c.getAlamat()+"','"+c.getKontak()+"');";
+//            Statement s=con.createStatement(); 
+//            s.execute(query); 
+//            System.out.println("delete success.");
+//        } catch(SQLException se){ 
+//            System.out.println("delete error.");
+//        } 
+//    }
 public void deleteTempatWisata(TempatWisata tw){ 
         try{
-            String query="delete from tempatwisata WHERE Id_TempatWisata ('"+tw.getId()+"','"+tw.getNama()+"','"+tw.getAlamat()+"','"+tw.getRating( )+"');";
+            String query="delete from tempatwisata WHERE Id_Tempat = ('"+tw.getId()+"');";
             Statement s=con.createStatement(); 
             s.execute(query); 
             System.out.println("delete success.");
