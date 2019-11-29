@@ -291,6 +291,27 @@ public void deleteTempatWisata(TempatWisata tw){
             System.out.println("delete error.");
         } 
     }
+
+public void updateTourGuide(TourGuide tg){
+    try{
+            String query="update tempatwisata set Nama = '"+tg.getNama()+"', JenisKelamin = '"+tg.getJenisKelamin()+"', Umur = '"+tg.getUmur()+"',Alamat = '"+tg.getAlamat()+"',Kontak '"+tg.getKontak()+"' where Id_TourGuide = '"+tg.getId()+"';";
+            Statement s=con.createStatement(); 
+            s.execute(query); 
+            System.out.println("update success.");
+        } catch(SQLException se){ 
+            System.out.println("update error.");
+        } 
+}
+public void updateTempatWisata(TempatWisata tw){
+    try{
+            String query="update tempatwisata set Nama = '"+tw.getNama()+"', Alamat = '"+tw.getAlamat()+"', Rating = '"+tw.getRating( )+"' where Id_Tempat = '"+tw.getId()+"';";
+            Statement s=con.createStatement(); 
+            s.execute(query); 
+            System.out.println("update success.");
+        } catch(SQLException se){ 
+            System.out.println("update error.");
+        } 
+}
 //     public void AmbilDataBarang() {
 //        //Menghapus Seluruh Data
 //        .getDataVector().removeAllElements();

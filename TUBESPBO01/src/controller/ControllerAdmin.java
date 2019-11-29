@@ -48,6 +48,7 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
         updateTableTG();
     }
     public void updateTableTG(){
+        
         DefaultTableModel tbModel = (DefaultTableModel) viewAdm.getTbViewTGTG().getModel();
         tbModel.setRowCount(0);
         String[] row = new String[6];
@@ -150,6 +151,7 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
     }
     
     public void searchIdEditTW(){
+        
         TempatWisata tw = model.getTempatWisata(viewAdm.getTfIdSearchEditTW().getText());
         if(tw!=null){
             viewAdm.getTfNamaEditTW().setText(tw.getNama());
@@ -187,6 +189,7 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
         
         model.getDaftarTW().remove(model.getDaftarTW().indexOf(tw));
         model.DeleteTempatWisata(tw);
+        
         
         JOptionPane.showMessageDialog(viewAdm, "Data Telah Dihapus");
         viewAdm.resetViewDeleteTW();

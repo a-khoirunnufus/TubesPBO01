@@ -67,6 +67,7 @@ public class Application {
         tg.setUmur(umur);
         tg.setAlamat(alamat);
         tg.setKontak(kontak);
+         db.updateTourGuide(tg);
     }   
     public TourGuide getTourGuide(String id){
         System.out.println("jalan");
@@ -183,6 +184,7 @@ public class Application {
         return pw;
     }
     public void editPaketWisata(PaketWisata pw, String nama, double harga,String tglB, String tglP){
+        
         pw.setNama(nama);
         pw.setHarga(harga);
         pw.setTglBerangkat(tglB);
@@ -236,9 +238,11 @@ public class Application {
         return tw;
     }
     public void editTempatWisata(TempatWisata tw, String nama, String alamat, int rating){
+        
         tw.setNama(nama);
         tw.setAlamat(alamat);
         tw.setRating(rating);
+        db.updateTempatWisata(tw);
     }
     //coba yahya 
      public String searchTourguide (String id) {
