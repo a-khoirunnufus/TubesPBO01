@@ -13,6 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 import view.GUIAdmin;
 public class Database {
+    private Application model;
+    
+    public Database(Application model){
+        this.model = model;
+    }
 
     private static Connection getConnection() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -65,7 +70,7 @@ public class Database {
     }
     
     public int getNewIdTWPW() throws SQLException{
-        String query = "select count(id_TWPW) from tempatwisatadipaketwisata;";
+        String query = "select count(idTWPW) from tempatwisatadipaketwisata;";
         Statement s = con.createStatement();
         ResultSet rs=s.executeQuery(query);
         int idBaru = 0;
@@ -323,6 +328,27 @@ public void deleteTempatWisata(TempatWisata tw){
 //        }
 //        
 //    }
+
+    //TEMPAT WISATA DI PAKET WISATA
+    public List<TempatWisata> loadLsTWPW(String idPW){
+        try{
+        List<TempatWisata> listTWPW = new ArrayList(); 
+        String query="select idTW "
+                + "from tempatwisata "
+                + "join tempatwisatadipaketwisata "
+                + "using (idTW)"
+                + "where idPW = '"+idPW+"';" ; 
+        Statement s=con.createStatement(); 
+        ResultSet rs=s.executeQuery(query);
+        String idTw;
+        while (rs.next()){
+            idTw = rs.getString(1);
+            listTWPW.add(model.getTempatWisata(idTw));
+        }
+        return listTWPW;
+    }catch(SQLException se){
+        return null; }
+    }
 }
     
     

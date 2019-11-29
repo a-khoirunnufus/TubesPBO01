@@ -1434,17 +1434,12 @@ public class GUIAdmin extends javax.swing.JFrame {
             row[0] = model.getDaftarPW().get(j).getId();
             row[1] = model.getDaftarPW().get(j).getNama();
             row[2] = Double.toString(model.getDaftarPW().get(j).getHarga());
-            row[3] = "";
-            for(TempatWisata tw: model.getDaftarPW().get(j).getListTujuan()){
-                row[3] += tw.getNama()+", ";
-            }
-            row[4] = "";
-            for(TourGuide tg: model.getDaftarPW().get(j).getListGuide()){
-                row[4] += tg.getNama()+", ";
-            }
+            row[3] = "Lihat Data";
+            row[4] = "Lihat Data";
             row[5] = model.getDaftarPW().get(j).getTglBerangkat();
             row[6] = model.getDaftarPW().get(j).getTglPulang();
             tbModel.addRow(row);
+            
             tbViewPW.setRowHeight(j, 20);
         }
         

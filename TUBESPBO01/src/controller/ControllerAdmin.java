@@ -4,17 +4,23 @@
  * and open the template in the editor.
  */
 package controller;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.*;
+import view.viewListTW;
 import view.GUIAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import javax.swing.JFrame;
+import tableModel.tbModLsTW;
 /**
  *
  * @author Lenovo
@@ -22,6 +28,8 @@ import java.sql.SQLException;
 public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
     private Application model;
     private GUIAdmin viewAdm;
+    private viewListTW viewTW;
+    private tbModLsTW tbModLsTW;
     
     public ControllerAdmin(Application model, GUIAdmin viewAdm){
         this.viewAdm = viewAdm;
@@ -29,13 +37,27 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
         model.loadAllTourguide();
         model.loadAllTempatwisata();
         model.loadAllCustomer();
-        model.loadAllPaketWisata();
-        
-        
+        model.loadAllPaketWisata();       
         viewAdm.getTfIdTG().setText("TG-"+model.getNewIdTG());
         viewAdm.getTfIdInputPW().setText("PW-"+model.getNewIdPW());
         viewAdm.getTfIdInputTW().setText("TW-"+model.getNewIdTW());
         viewAdm.getSlRatingInputTW().setValue(0);
+        
+        //baru        
+        viewAdm.getTBViewPW().addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(viewAdm.getTBViewPW().getSelectedColumn() == 3){
+                    viewTW = new viewListTW();
+                    tbModLsTW = new tbModLsTW();
+                    System.out.println("bayak tempat wisata : "+model.getDaftarPW().get(0).getListGuide().size());
+                    //input berupa id
+                    tbModLsTW.add(model.loadLsTWPW(model.getDaftarPW().get(viewAdm.getTBViewPW().getSelectedRow()).getId()));
+                    viewTW.getTbViewTW().setModel(tbModLsTW);
+                    viewTW.setVisible(true);
+                }
+            }
+        });
     }
     
     public void inputTG(){
