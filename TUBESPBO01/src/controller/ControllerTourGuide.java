@@ -72,13 +72,17 @@ public class ControllerTourGuide {
     public void editTourGuide(){
         TourGuide tg = model.getTourGuide(viewTG.getTfIdSearchTGUDP().getText());
         String jk;
+       
         if(viewTG.getRbLakiUDP().isSelected()){
             jk = "Laki-Laki";
         }else{
             jk = "Perempuan";
         }
         model.editTourGuide(tg, viewTG.getTfNamaUDP().getText(), jk, Integer.parseInt(viewTG.getTfUmurUDP().getText()), viewTG.getTfAlamatUDP().getText(), viewTG.getTfKontakUDP().getText());
+          System.out.println("bisa?");
         JOptionPane.showMessageDialog(viewTG, "Data Telah Diedit");
         viewTG.resetViewUDP();
+        
+        
     }
 }

@@ -260,16 +260,16 @@ public class Database {
    }
   }
  }
-public void deleteTourGuide(TourGuide tg){ 
-        try{
-            String query="delete from tourguide WHERE Id_TourGuide = ('"+tg.getId()+"','"+tg.getNama()+"','"+tg.getJenisKelamin()+"','"+tg.getUmur( )+"','"+tg.getAlamat()+"','"+tg.getKontak()+"');";
-            Statement s=con.createStatement(); 
-            s.execute(query); 
-            System.out.println("delete success.");
-        } catch(SQLException se){ 
-            System.out.println("delete error.");
-        } 
-    }
+//public void deleteTourGuide(TourGuide tg){ 
+//        try{
+//            String query="delete from tourguide WHERE Id_TourGuide = ('"+tg.getId()+"','"+tg.getNama()+"','"+tg.getJenisKelamin()+"','"+tg.getUmur( )+"','"+tg.getAlamat()+"','"+tg.getKontak()+"');";
+//            Statement s=con.createStatement(); 
+//            s.execute(query); 
+//            System.out.println("delete success.");
+//        } catch(SQLException se){ 
+//            System.out.println("delete error.");
+//        } 
+//    }
 
 //public void deleteTourGuide(Customer c){ 
 //        try{
@@ -294,9 +294,26 @@ public void deleteTempatWisata(TempatWisata tw){
 
 public void updateTourGuide(TourGuide tg){
     try{
-            String query="update tempatwisata set Nama = '"+tg.getNama()+"', JenisKelamin = '"+tg.getJenisKelamin()+"', Umur = '"+tg.getUmur()+"',Alamat = '"+tg.getAlamat()+"',Kontak '"+tg.getKontak()+"' where Id_TourGuide = '"+tg.getId()+"';";
-            Statement s=con.createStatement(); 
-            s.execute(query); 
+               
+        String query="update tourguide set Nama = '"+tg.getNama()+"', JenisKelamin = '"+tg.getJenisKelamin()+"', Umur = '"+tg.getUmur( )+"', Alamat = '"+tg.getAlamat()+"',Kontak = '"+tg.getKontak()+"' where Id_TourGuide = '"+tg.getId()+"';";
+            
+        Statement s=con.createStatement(); 
+        s.execute(query); 
+           System.out.println("bisa?");
+            System.out.println("update success.");
+        } catch(SQLException se){ 
+            System.out.println("update error.");
+        } 
+}
+
+public void updateCustomer(Customer c){
+    try{
+               
+        String query="update Customer set Nama = '"+c.getNama()+"', JenisKelamin = '"+c.getJenisKelamin()+"', Umur = '"+c.getUmur( )+"', Alamat = '"+c.getAlamat()+"',Kontak = '"+c.getKontak()+"' where Id_Customer = '"+c.getId()+"';";
+            
+        Statement s=con.createStatement(); 
+        s.execute(query); 
+           System.out.println("bisa?");
             System.out.println("update success.");
         } catch(SQLException se){ 
             System.out.println("update error.");

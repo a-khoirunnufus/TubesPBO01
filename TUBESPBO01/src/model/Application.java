@@ -43,9 +43,9 @@ public class Application {
          
     }
     
-    public void DeleteTourGuide(TourGuide tg){
-        db.deleteTourGuide(tg);
-    }
+//    public void DeleteTourGuide(TourGuide tg){
+//        db.deleteTourGuide(tg);
+//    }
     public void loadAllTourguide(){ 
         daftarTourGuide=db.loadAllTourGuide();
     }
@@ -132,6 +132,8 @@ public class Application {
         cs.setUmur(umur);
         cs.setAlamat(alamat);
         cs.setKontak(kontak);
+        
+        db.updateCustomer(cs);
     }
     public Customer getCustomer(String id){
         Customer cs = null;
