@@ -9,12 +9,18 @@ import java.sql.DriverManager;
 import java.sql.ResultSet; 
 import java.sql.SQLException; 
 import java.sql.Statement; 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 import view.GUIAdmin;
 public class Database {
 
     private Application model;
+    private DateFormat format = new SimpleDateFormat("yyyy-MM-dd");   
+    
     public Database(Application model){
         this.model = model;
     }
@@ -207,7 +213,7 @@ public class Database {
     }catch(SQLException se){
         return null; }
     } 
-    public List<PaketWisata> loadAllPaketWisata(){ 
+    public List<PaketWisata> loadAllPaketWisata() throws ParseException{ 
     try{
         List<PaketWisata> paketwisatas = new ArrayList(); 
         String query="select * from paketwisata;" ; 
@@ -230,9 +236,9 @@ public class Database {
 //                
 //            }
             
-            String tanggalberangkat = rs.getString(4);
-            String tanggalpulang = rs.getString(5);
-            pw = new PaketWisata(id,name,harga,tanggalberangkat,tanggalpulang);
+            Date tglBerangkat = format.parse(rs.getString(4));
+            Date tglPulang = format.parse(rs.getString(5));
+            pw = new PaketWisata(id,name,harga,tglBerangkat,tglPulang);
             paketwisatas.add(pw);
         }
         return paketwisatas;
@@ -326,7 +332,7 @@ public void updateCustomer(Customer c){
 }
 public void updateTempatWisata(TempatWisata tw){
     try{
-            String query="update tempatwisata set Nama = '"+tw.getNama()+"', Alamat = '"+tw.getAlamat()+"', Rating = '"+tw.getRating( )+"' where Id_Tempat = '"+tw.getId()+"';";
+            String query="update tempatwisata set namaTW = '"+tw.getNama()+"', alamatTW = '"+tw.getAlamat()+"', ratingTW = '"+tw.getRating( )+"' where idTW = '"+tw.getId()+"';";
             Statement s=con.createStatement(); 
             s.execute(query); 
             System.out.println("update success.");
@@ -382,6 +388,7 @@ public void updateTempatWisata(TempatWisata tw){
         }catch(SQLException se){
             return null;
     }
+}
 }
     
     

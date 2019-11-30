@@ -15,9 +15,9 @@ public class Pemesanan {
     private static int sidP = 1;
     private List<PaketWisata> listPaket;
     private double totalHarga;
-    private String tglPesan; //BUAT OBJEK DATE
+    private Date tglPesan; //BUAT OBJEK DATE
 
-    public Pemesanan(List<PaketWisata> lsPw, double tHarga, String tglPesan) {
+    public Pemesanan(List<PaketWisata> lsPw, double tHarga, Date tglPesan) {
         this.id = "P-"+sidP;
         this.listPaket = lsPw;
         this.totalHarga = tHarga;
