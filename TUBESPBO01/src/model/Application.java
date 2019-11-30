@@ -30,7 +30,7 @@ public class Application {
         daftarTempatWisata = new ArrayList<>();
         
 //baru
-        db = new Database(); 
+        db = new Database(this); 
         db.connect();
     }
     
@@ -291,6 +291,10 @@ public class Application {
             int lastNoId = Integer.parseInt(lastNumId); 
             return lastNoId+1;
         } 
+    }
+    
+    public List<TempatWisata> loadLsTWPW(String idPW){
+        return db.loadLsTWPW(idPW);
     }
 
   

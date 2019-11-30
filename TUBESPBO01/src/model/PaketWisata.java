@@ -9,9 +9,9 @@ public class PaketWisata {
     private double harga;
     private List<TourGuide> listGuide;
     private List<TempatWisata> listTujuan;
-    private String tglBerangkat, tglPulang;
+    private Date tglBerangkat, tglPulang;  
     
-    public PaketWisata(String nama, double harga, String tglBerangkat, String tglPulang){
+     public PaketWisata(String id,String nama, double harga, Date tglBerangkat, Date tglPulang){
         this.id = "PW-"+sidPW;
         this.nama = nama;
         this.harga = harga;
@@ -20,18 +20,8 @@ public class PaketWisata {
         this.tglBerangkat = tglBerangkat;
         this.tglPulang = tglPulang;
         sidPW++;
-    }   
-    
-     public PaketWisata(String id,String nama, double harga, String tglBerangkat, String tglPulang){
-        this.id = "PW-"+sidPW;
-        this.nama = nama;
-        this.harga = harga;
-        listGuide = new ArrayList<>();
-        listTujuan = new ArrayList<>();
-        this.tglBerangkat = tglBerangkat;
-        this.tglPulang = tglPulang;
-        sidPW++;
-    }   
+    }
+     
     public static int getSidPW(){
         return sidPW;
     }  
@@ -50,10 +40,10 @@ public class PaketWisata {
     public void setListTujuan(List<TempatWisata> listTujuan) {
         this.listTujuan = listTujuan;
     }
-    public void setTglBerangkat(String tglBerangkat) {
+    public void setTglBerangkat(Date tglBerangkat) {
         this.tglBerangkat = tglBerangkat;
     }
-    public void setTglPulang(String tglPulang) {
+    public void setTglPulang(Date tglPulang) {
         this.tglPulang = tglPulang;
     }    
 
@@ -72,10 +62,10 @@ public class PaketWisata {
     public List<TempatWisata> getListTujuan() {
         return listTujuan;
     }
-    public String getTglBerangkat() {
+    public Date getTglBerangkat() {
         return tglBerangkat;
     }
-    public String getTglPulang() {
+    public Date getTglPulang() {
         return tglPulang;
     }
    

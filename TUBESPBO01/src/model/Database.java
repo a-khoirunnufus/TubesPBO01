@@ -14,13 +14,18 @@ import java.util.List;
 import view.GUIAdmin;
 public class Database {
 
+    private Application model;
+    public Database(Application model){
+        this.model = model;
+    }
+    
     private static Connection getConnection() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     private Connection con;
     public void connect(){ 
         try{
-            String url="jdbc:mysql://localhost:3306/tubes";
+            String url="jdbc:mysql://localhost:3306/tubespbo";
             String username = "root";
             String password = "";
             con = DriverManager.getConnection(url, username, password);
@@ -65,7 +70,7 @@ public class Database {
     }
     
     public int getNewIdTWPW() throws SQLException{
-        String query = "select count(id_TWPW) from tempatwisatadipaketwisata;";
+        String query = "select count(idTWPW) from tempatwisatadipaketwisata;";
         Statement s = con.createStatement();
         ResultSet rs=s.executeQuery(query);
         int idBaru = 0;
@@ -123,7 +128,7 @@ public class Database {
     
     public TourGuide loadOneTourGuideById(String id){ 
     try{
-        String query="select * from tourguide where id ='"+id+"'" ; Statement s=con.createStatement();
+        String query="select * from tourguide where idTG ='"+id+"'" ; Statement s=con.createStatement();
         ResultSet rs=s.executeQuery(query);
         TourGuide  t=null;
         while (rs.next()){
@@ -184,7 +189,7 @@ public class Database {
     public List<Customer> loadAllCustomer(){ 
     try{
         List<Customer> customers = new ArrayList(); 
-        String query="select * from Customer;" ; 
+        String query="select * from customer;" ; 
         Statement s=con.createStatement(); 
         ResultSet rs=s.executeQuery(query); Customer c;
         while (rs.next()){
@@ -240,7 +245,7 @@ public class Database {
   Connection connection = null;
   Statement statement = null;
   int countRecordDeleted = 0;
-  String deleteTableQuery = "DELETE FROM tourguide WHERE Id_TourGuide = 'TG-7'";
+  String deleteTableQuery = "DELETE FROM tourguide WHERE IdTG = 'TG-7'";
   try {
    connection = getConnection();
    statement = connection.createStatement();
@@ -283,7 +288,7 @@ public class Database {
 //    }
 public void deleteTempatWisata(TempatWisata tw){ 
         try{
-            String query="delete from tempatwisata WHERE Id_Tempat = ('"+tw.getId()+"');";
+            String query="delete from tempatwisata WHERE idTW = ('"+tw.getId()+"');";
             Statement s=con.createStatement(); 
             s.execute(query); 
             System.out.println("delete success.");
@@ -295,7 +300,7 @@ public void deleteTempatWisata(TempatWisata tw){
 public void updateTourGuide(TourGuide tg){
     try{
                
-        String query="update tourguide set Nama = '"+tg.getNama()+"', JenisKelamin = '"+tg.getJenisKelamin()+"', Umur = '"+tg.getUmur( )+"', Alamat = '"+tg.getAlamat()+"',Kontak = '"+tg.getKontak()+"' where Id_TourGuide = '"+tg.getId()+"';";
+        String query="update tourguide set namaTG = '"+tg.getNama()+"', jenisKelaminTG = '"+tg.getJenisKelamin()+"', umurTG = '"+tg.getUmur( )+"', alamatTG = '"+tg.getAlamat()+"',kontakTG = '"+tg.getKontak()+"' where idTG = '"+tg.getId()+"';";
             
         Statement s=con.createStatement(); 
         s.execute(query); 
@@ -309,7 +314,7 @@ public void updateTourGuide(TourGuide tg){
 public void updateCustomer(Customer c){
     try{
                
-        String query="update Customer set Nama = '"+c.getNama()+"', JenisKelamin = '"+c.getJenisKelamin()+"', Umur = '"+c.getUmur( )+"', Alamat = '"+c.getAlamat()+"',Kontak = '"+c.getKontak()+"' where Id_Customer = '"+c.getId()+"';";
+        String query="update Customer set namaCs = '"+c.getNama()+"', jenisKelaminCs = '"+c.getJenisKelamin()+"', umurCs = '"+c.getUmur( )+"', alamatCs = '"+c.getAlamat()+"',kontakCs = '"+c.getKontak()+"' where idCs = '"+c.getId()+"';";
             
         Statement s=con.createStatement(); 
         s.execute(query); 
@@ -361,6 +366,22 @@ public void updateTempatWisata(TempatWisata tw){
 //        }
 //        
 //    }
+
+    public List<TempatWisata> loadLsTWPW(String idPW){
+        try{
+            List<TempatWisata> listTWPW = new ArrayList<>();
+            String query = "select idTW from tempatWisata join tempatWisataDiPaketWisata using (idTW) where idPW = '"+idPW+"';";
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery(query);
+            String idTw;
+            while(rs.next()){
+                idTw = rs.getString(1);
+                listTWPW.add(model.getTempatWisata(idTw));
+            }
+            return listTWPW;
+        }catch(SQLException se){
+            return null;
+    }
 }
     
     

@@ -15,6 +15,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import tableModel.tbModLsTW;
+import view.viewListTW;
 /**
  *
  * @author Lenovo
@@ -22,6 +24,8 @@ import java.sql.SQLException;
 public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
     private Application model;
     private GUIAdmin viewAdm;
+    private viewListTW viewTW;
+    private tbModLsTW tbModLsTW;
     
     public ControllerAdmin(Application model, GUIAdmin viewAdm){
         this.viewAdm = viewAdm;
@@ -36,6 +40,22 @@ public class ControllerAdmin {//extends MouseAdapter implements ActionListener {
         viewAdm.getTfIdInputPW().setText("PW-"+model.getNewIdPW());
         viewAdm.getTfIdInputTW().setText("TW-"+model.getNewIdTW());
         viewAdm.getSlRatingInputTW().setValue(0);
+        
+        viewAdm.getTBViewPW().addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(viewAdm.getTBViewPW().getSelectedColumn() == 3){
+                    viewTW = new viewListTW();
+                    tbModLsTW = new tbModLsTW();
+                    System.out.println("bayak tempat wisata : "+model.getDaftarPW().get(0).getListGuide().size());
+                    //input berupa id
+                    tbModLsTW.add(model.loadLsTWPW(model.getDaftarPW().get(viewAdm.getTBViewPW().getSelectedRow()).getId()));
+                    viewTW.getTbViewTW().setModel(tbModLsTW);
+                    viewTW.setVisible(true);
+                }
+            }
+        });
+
     }
     
     public void inputTG(){
