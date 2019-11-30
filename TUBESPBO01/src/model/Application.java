@@ -3,8 +3,11 @@ package model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
+import tableModel.tbModTourGuide;
 /**
  *
  * @author Lenovo
@@ -37,30 +40,14 @@ public class Application {
     //TOUR GUIDE
     public void inputTourGuide(TourGuide tg){
         daftarTourGuide.add(tg);
- //baru
-        //daftarTourGuideList.add(tg);
-        db.saveTourGuide(tg);
-         
+        db.saveTourGuide(tg);        
     }
-    
-//    public void DeleteTourGuide(TourGuide tg){
-//        db.deleteTourGuide(tg);
-//    }
-    public void loadAllTourguide(){ 
+
+    public List<TourGuide> loadAllTourguide(){ 
         daftarTourGuide=db.loadAllTourGuide();
-    }
-    public void viewTourGuide(){
-        System.out.println("jumlah tourguide : "+daftarTourGuide.size());
-        for(TourGuide tg: daftarTourGuide){
-            System.out.println("Id : "+tg.getId());
-            System.out.println("Nama : "+tg.getNama());
-            System.out.println("Jenis Kelamin : "+tg.getJenisKelamin());
-            System.out.println("Umur : "+tg.getUmur());
-            System.out.println("Alamat : "+tg.getAlamat());
-            System.out.println("Kontak : "+tg.getKontak());
-            System.out.print("\n");
-        }
-    }  
+        return daftarTourGuide;
+    } 
+    
     public void editTourGuide(TourGuide tg, String nama, String jk, int umur, String alamat, String kontak){
         tg.setNama(nama);
         tg.setJenisKelamin(jk);
@@ -151,14 +138,12 @@ public class Application {
     public List<PaketWisata> getDaftarPW(){
         return daftarPaketWisata;
     }
-    public void loadAllPaketWisata(){
+    public void loadAllPaketWisata() throws ParseException{
         daftarPaketWisata = db.loadAllPaketWisata();
     }
     public void inputPaketWisata(PaketWisata pw) throws SQLException{
         daftarPaketWisata.add(pw);
-        
-        
-          db.savePaketWisata(pw);
+        db.savePaketWisata(pw);
     }
     public void viewPaketWisata(){
         for(PaketWisata pw: daftarPaketWisata){
@@ -185,12 +170,12 @@ public class Application {
         }
         return pw;
     }
-    public void editPaketWisata(PaketWisata pw, String nama, double harga,String tglB, String tglP){
-        
+    public void editPaketWisata(PaketWisata pw, String nama, double harga,Date tglB, Date tglP){  
         pw.setNama(nama);
         pw.setHarga(harga);
         pw.setTglBerangkat(tglB);
         pw.setTglPulang(tglP);
+        db.updatePaketWisata(pw);
     }
     
     
@@ -199,15 +184,16 @@ public class Application {
         return daftarTempatWisata;
     }
     
-    public void loadAllTempatwisata(){ 
+    public List<TempatWisata> loadAllTempatWisata(){ 
         daftarTempatWisata=db.loadAllTempatWisata();
+        return daftarTempatWisata;
     }
+    
     public void DeleteTempatWisata(TempatWisata tw){
         db.deleteTempatWisata(tw);
     }
     public void inputTempatWisata(TempatWisata tw){
         daftarTempatWisata.add(tw);
-        //baru
         db.saveTempatWisata(tw);
     }
     public void viewTempatWisata(){
@@ -239,8 +225,7 @@ public class Application {
         }
         return tw;
     }
-    public void editTempatWisata(TempatWisata tw, String nama, String alamat, int rating){
-        
+    public void editTempatWisata(TempatWisata tw, String nama, String alamat, int rating){       
         tw.setNama(nama);
         tw.setAlamat(alamat);
         tw.setRating(rating);
@@ -262,17 +247,27 @@ public class Application {
         return listId;
     }
     
-    
+    //Mendapatkan id baru
+    public int getNewIdCs(){
+        if (daftarTourGuide.size()==0){ 
+            return 1;
+        }else{
+            String lastId = daftarTourGuide.get(daftarTourGuide.size()-1).getId(); 
+            String lastNumId=lastId.substring(2);
+            int lastNoId = Integer.parseInt(lastNumId); 
+            return lastNoId+1;
+        }
+    }   
     public int getNewIdTG(){
-        if (daftarTourGuide.size()==0) return 1; 
-        else{
+        if (daftarTourGuide.size()==0){
+            return 1;
+        }else{
             String lastId=daftarTourGuide.get(daftarTourGuide.size()-1).getId(); 
             String lastNumId=lastId.substring(3);
             int lastNoId = Integer.parseInt(lastNumId); 
             return lastNoId+1;
         } 
     }
-    
     public int getNewIdTW(){
         if (daftarTempatWisata.size()==0) return 1; 
         else{
@@ -281,8 +276,7 @@ public class Application {
             int lastNoId = Integer.parseInt(lastNumId); 
             return lastNoId+1;
         } 
-    }
-    
+    }    
     public int getNewIdPW(){
         if (daftarPaketWisata.size()==0) return 1; 
         else{
@@ -293,6 +287,7 @@ public class Application {
         } 
     }
     
+    //untuk list didalam table paket wisata
     public List<TempatWisata> loadLsTWPW(String idPW){
         return db.loadLsTWPW(idPW);
     }

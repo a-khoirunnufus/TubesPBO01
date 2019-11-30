@@ -1,10 +1,10 @@
 package model;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PaketWisata {
     private String id;
-    private static int sidPW = 1;
     private String nama;
     private double harga;
     private List<TourGuide> listGuide;
@@ -12,19 +12,15 @@ public class PaketWisata {
     private Date tglBerangkat, tglPulang;  
     
      public PaketWisata(String id,String nama, double harga, Date tglBerangkat, Date tglPulang){
-        this.id = "PW-"+sidPW;
+        this.id = id;
         this.nama = nama;
         this.harga = harga;
         listGuide = new ArrayList<>();
         listTujuan = new ArrayList<>();
         this.tglBerangkat = tglBerangkat;
         this.tglPulang = tglPulang;
-        sidPW++;
     }
-     
-    public static int getSidPW(){
-        return sidPW;
-    }  
+       
     public void setId(String id) {
         this.id = id;
     }

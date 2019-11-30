@@ -5,7 +5,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import model.TempatWisata;
 
-public class tbModLsTW extends AbstractTableModel{
+public class tbModTempatWisata extends AbstractTableModel{
     
     List<TempatWisata> list = new ArrayList<>();
     private final String[] header = {"Id","Nama","Rating","Alamat"};
@@ -38,8 +38,13 @@ public class tbModLsTW extends AbstractTableModel{
         }
     }
     
-    public void add(List<TempatWisata> listTW){
-        list = listTW;
+    public void addOneRow(TempatWisata tw){
+        list.add(tw);
+        fireTableDataChanged();
+    }
+    
+    public void updateTable(List<TempatWisata> listTw){
+        list = listTw;
         fireTableDataChanged();
     }
     

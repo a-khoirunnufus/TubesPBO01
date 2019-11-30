@@ -7,7 +7,7 @@ package view;
 
 import javax.swing.JFrame;
 import javax.swing.JTable;
-import tableModel.tbModLsTW;
+import tableModel.tbModTempatWisata;
 
 /**
  *

@@ -42,10 +42,15 @@ public class Database {
         }  
     }
     
-    //Coba yahya
     public void saveTourGuide(TourGuide t){ 
         try{
-            String query="insert into tourguide values ('"+t.getId()+"','"+t.getNama()+"','"+t.getJenisKelamin()+"','"+t.getUmur()+"','"+t.getAlamat()+"','"+t.getKontak()+"');";
+            String query="insert into tourguide values ('"
+                    +t.getId()+"','"
+                    +t.getNama()+"','"
+                    +t.getJenisKelamin()+"','"
+                    +t.getUmur()+"','"
+                    +t.getAlamat()+"','"
+                    +t.getKontak()+"');";
             Statement s = con.createStatement(); 
             s.execute(query); 
             System.out.println("Saving success.");
@@ -53,12 +58,16 @@ public class Database {
             System.out.println("Saving error.");
         } 
     }
-     public void saveTempatWisata(TempatWisata  tw){ 
+     public void saveTempatWisata(TempatWisata tw){ 
         try{
-            String query="insert into tempatwisata values ('"+tw.getId()+"','"+tw.getNama()+"','"+tw.getAlamat()+"','"+tw.getRating( )+"');";
-            System.out.println("id"+tw.getRating());
-            Statement s=con.createStatement(); 
-            s.execute(query); 
+            String query = "insert into tempatwisata values ('"
+                    +tw.getId()+"','"
+                    +tw.getNama()+"','"
+                    +tw.getRating( )+"','"
+                    +tw.getAlamat()+"');";
+            Statement s=con.createStatement();
+            s.execute(query);
+            
             System.out.println("Saving success.");
         } catch(SQLException se){ 
             System.out.println("Saving error.");
@@ -86,7 +95,7 @@ public class Database {
         return idBaru;
     }
     public int getNewIdTGPW() throws SQLException{
-        String query = "select count(id_TGPW) from tourguidedipaketwisata;";
+        String query = "select count(idTGPW) from tourguidedipaketwisata;";
         Statement s = con.createStatement();
         ResultSet rs=s.executeQuery(query);
         int idBaru = 0;
@@ -97,6 +106,7 @@ public class Database {
     }
     
     public void savePaketWisata(PaketWisata pw) throws SQLException{
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String[] idTw = new String[pw.getListTujuan().size()];
         for(int i = 0; i< pw.getListTujuan().size(); i++){
             idTw[i] = pw.getListTujuan().get(i).getId();
@@ -109,23 +119,21 @@ public class Database {
         String idTGPW = String.valueOf(getNewIdTGPW()+1);
   
         try{
-            String query="insert into paketwisata values ('"+pw.getId()+"','"+pw.getNama()+"','"+pw.getHarga( )+"','"+pw.getTglBerangkat()+"','"+pw.getTglPulang()+"');";
+            String query="insert into paketwisata values ('"+pw.getId()+"','"+pw.getNama()+"','"+pw.getHarga( )+"','"+format.format(pw.getTglBerangkat())+"','"+format.format(pw.getTglPulang())+"');";
             Statement s=con.createStatement();           
             s.execute(query);
             //insert ke table tempatwisatadipaketwisata
             for(TempatWisata tw: pw.getListTujuan()){
                 query = "insert into tempatwisatadipaketwisata values ('TWPW-"+idTWPW+"','"+pw.getId()+"','"+tw.getId()+"');";               
                 s.execute(query);
-                idTWPW = String.valueOf(Integer.parseInt(idTWPW)+1);
-                
+                idTWPW = String.valueOf(Integer.parseInt(idTWPW)+1);               
             }
             //insert ke table tourguidedipaketwisata
             for(TourGuide tg: pw.getListGuide()){
                 query = "insert into tourguidedipaketwisata values ('TGPW-"+idTGPW+"','"+pw.getId()+"','"+tg.getId()+"');";
                 s.execute(query);
                 idTGPW = String.valueOf(Integer.parseInt(idTGPW)+1);
-            }
-            
+            }           
             System.out.println("Saving success.");
         } catch(SQLException se){ 
             System.out.println("Saving error.");
@@ -182,9 +190,9 @@ public class Database {
             String id=rs.getString(1);
             
             String name=rs.getString(2);
-            String alamat=rs.getString(3);
-            int rating = Integer.parseInt(rs.getString(4));
-            tw = new TempatWisata(id,name,alamat,rating);
+            String alamat=rs.getString(4);
+            int rating = Integer.parseInt(rs.getString(3));
+            tw = new TempatWisata(id,name,rating,alamat);
             tempatwisatas.add(tw);
         }
         return tempatwisatas;
@@ -306,7 +314,12 @@ public void deleteTempatWisata(TempatWisata tw){
 public void updateTourGuide(TourGuide tg){
     try{
                
-        String query="update tourguide set namaTG = '"+tg.getNama()+"', jenisKelaminTG = '"+tg.getJenisKelamin()+"', umurTG = '"+tg.getUmur( )+"', alamatTG = '"+tg.getAlamat()+"',kontakTG = '"+tg.getKontak()+"' where idTG = '"+tg.getId()+"';";
+        String query="update tourguide set namaTG = '"+tg.getNama()
+                +"', jenisKelaminTG = '"+tg.getJenisKelamin()
+                +"', umurTG = '"+tg.getUmur( )
+                +"', alamatTG = '"+tg.getAlamat()
+                +"',kontakTG = '"+tg.getKontak()
+                +"' where idTG = '"+tg.getId()+"';";
             
         Statement s=con.createStatement(); 
         s.execute(query); 
@@ -317,10 +330,32 @@ public void updateTourGuide(TourGuide tg){
         } 
 }
 
+public void updatePaketWisata(PaketWisata pw){
+    try{               
+        String query="update paketWisata set namaPW = '"+pw.getNama()
+                +"', hargaPW = '"+pw.getHarga()
+                +"', tglBerangkatPW = '"+format.format(pw.getTglBerangkat())
+                +"', tglPulangPW = '"+format.format(pw.getTglPulang())
+                +"' where idPW = '"+pw.getId()+"';";
+        System.out.println("query : "+query);
+        Statement s=con.createStatement(); 
+        s.execute(query);
+        //query menambahkan list tujuan
+//        query = "update tempatWisataDiPaketWisata set idTW = '"+pw.
+        System.out.println("update success.");
+    } catch(SQLException se){ 
+        System.out.println("update error.");
+    }
+}
+
 public void updateCustomer(Customer c){
-    try{
-               
-        String query="update Customer set namaCs = '"+c.getNama()+"', jenisKelaminCs = '"+c.getJenisKelamin()+"', umurCs = '"+c.getUmur( )+"', alamatCs = '"+c.getAlamat()+"',kontakCs = '"+c.getKontak()+"' where idCs = '"+c.getId()+"';";
+    try{           
+        String query="update Customer set namaCs = '"+c.getNama()
+                +"', jenisKelaminCs = '"+c.getJenisKelamin()
+                +"', umurCs = '"+c.getUmur( )
+                +"', alamatCs = '"+c.getAlamat()
+                +"',kontakCs = '"+c.getKontak()
+                +"' where idCs = '"+c.getId()+"';";
             
         Statement s=con.createStatement(); 
         s.execute(query); 
@@ -328,11 +363,11 @@ public void updateCustomer(Customer c){
             System.out.println("update success.");
         } catch(SQLException se){ 
             System.out.println("update error.");
-        } 
+    } 
 }
 public void updateTempatWisata(TempatWisata tw){
     try{
-            String query="update tempatwisata set namaTW = '"+tw.getNama()+"', alamatTW = '"+tw.getAlamat()+"', ratingTW = '"+tw.getRating( )+"' where idTW = '"+tw.getId()+"';";
+            String query="update tempatwisata set namaTW = '"+tw.getNama()+"', ratingTW = '"+tw.getRating( )+"', alamatTW = '"+tw.getAlamat()+"' where idTW = '"+tw.getId()+"';";
             Statement s=con.createStatement(); 
             s.execute(query); 
             System.out.println("update success.");

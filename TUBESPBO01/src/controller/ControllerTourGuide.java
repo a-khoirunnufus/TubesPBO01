@@ -39,8 +39,8 @@ public class ControllerTourGuide {
                 PaketWisata pw = model.getPaketWisata(inLs.get(0));
                 Customer cs = model.getCustomer(inLs.get(1));
                 row[0] = pw.getNama();
-                row[1] = pw.getTglBerangkat();
-                row[2] = pw.getTglPulang();
+//                row[1] = pw.getTglBerangkat();
+//                row[2] = pw.getTglPulang();
                 row[3] = cs.getNama();
                 tbModel.addRow(row);         
             }

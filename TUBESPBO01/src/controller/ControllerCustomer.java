@@ -29,16 +29,14 @@ public class ControllerCustomer {
     public ControllerCustomer(Application model, GUICustomer viewCs){
         this.viewCs = viewCs;
         this.model = model;
-        viewCs.getTfIdReg().setText("C-"+Customer.getSidC());
-        viewCs.getTfIdPsnPsn().setText("P-"+Pemesanan.getSidP());
     }
     
     public void registReg(){        
-        model.inputCustomer(new Customer(viewCs.getTfNamaReg(),viewCs.getRbJKReg(),Integer.parseInt(viewCs.getTfUmurReg()),viewCs.getTfAlamatReg(),viewCs.getTfKontakReg()));
-        System.out.println("jumlah customer : "+model.getDaftarCs().size());
-        model.viewCustomer();
-        JOptionPane.showMessageDialog(viewCs, "Data Berhasil Ditambahkan!");
-        viewCs.resetViewReg();
+//        model.inputCustomer(new Customer(viewCs.getTfNamaReg(),viewCs.getRbJKReg(),Integer.parseInt(viewCs.getTfUmurReg()),viewCs.getTfAlamatReg(),viewCs.getTfKontakReg()));
+//        System.out.println("jumlah customer : "+model.getDaftarCs().size());
+//        model.viewCustomer();
+//        JOptionPane.showMessageDialog(viewCs, "Data Berhasil Ditambahkan!");
+//        viewCs.resetViewReg();
     }
     
     public void pesanPsn(){
@@ -51,7 +49,7 @@ public class ControllerCustomer {
                 listPWPsn.add(model.getPaketWisatabyName(nmPW.toString()));
             }
                         
-            cs.createPemesanan(listPWPsn, tHarga, viewCs.getTfTglPesanPsn());
+            //cs.createPemesanan(listPWPsn, tHarga, viewCs.getTfTglPesanPsn());
             
             JOptionPane.showMessageDialog(viewCs, "Data Berhasil Ditambahkan!");
         }else{
@@ -130,9 +128,9 @@ public class ControllerCustomer {
             for(TourGuide tg: model.getDaftarPW().get(j).getListGuide()){
                 row[4] += tg.getNama()+", ";
             }
-            row[5] = model.getDaftarPW().get(j).getTglBerangkat();
-            row[6] = model.getDaftarPW().get(j).getTglPulang();
-            tbModel.addRow(row);
+//            row[5] = model.getDaftarPW().get(j).getTglBerangkat();
+//            row[6] = model.getDaftarPW().get(j).getTglPulang();
+//            tbModel.addRow(row);
             
             viewCs.getTbLPW().setRowHeight(j, 16);
         }

@@ -786,7 +786,7 @@ public class GUICustomer extends javax.swing.JFrame {
         return tfKontakReg.getText();
     }
     public void resetViewReg(){
-        tfIdReg.setText("C-"+Customer.getSidC());
+//        tfIdReg.setText("C-"+Customer.getSidC());
         tfNamaReg.setText("");
         bgJKReg.clearSelection();
         tfUmurReg.setText("");

@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import controller.*;
 import java.awt.event.MouseAdapter;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
@@ -19,6 +20,7 @@ import javax.swing.JList;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 import model.*;
 
@@ -30,23 +32,14 @@ public class GUIAdmin extends javax.swing.JFrame {
     private ControllerAdmin ctrlAdm;
     private Application model;
     
-    public GUIAdmin(ControllerMainMenu ctrlMM, Application model) {
+    public GUIAdmin(ControllerMainMenu ctrlMM, Application model) throws ParseException {
         initComponents();
         this.ctrlMM = ctrlMM;
         ctrlAdm = new ControllerAdmin(model, this);
         this.model = model;
         
-    }
+    }   
     
-    //coba yahya
-
-    public GUIAdmin() {
-        initComponents();
-    }
-
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,7 +90,8 @@ public class GUIAdmin extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         tfIdInputTW = new javax.swing.JTextField();
         tfNamaInputTW = new javax.swing.JTextField();
-        tfAlamatInputTW = new javax.swing.JTextField();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        taAlamatInputTW = new javax.swing.JTextArea();
         jPanel10 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         btnEditTW = new javax.swing.JButton();
@@ -207,6 +201,11 @@ public class GUIAdmin extends javax.swing.JFrame {
         jLabel7.setText("Kontak :");
 
         btnInputTG.setText("Input");
+        btnInputTG.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInputTGMouseClicked(evt);
+            }
+        });
         btnInputTG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInputTGActionPerformed(evt);
@@ -461,6 +460,11 @@ public class GUIAdmin extends javax.swing.JFrame {
         jLabel26.setText("Alamat :");
 
         btnInputTW.setText("Input");
+        btnInputTW.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInputTWMouseClicked(evt);
+            }
+        });
         btnInputTW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInputTWActionPerformed(evt);
@@ -471,6 +475,10 @@ public class GUIAdmin extends javax.swing.JFrame {
 
         tfIdInputTW.setEditable(false);
 
+        taAlamatInputTW.setColumns(20);
+        taAlamatInputTW.setRows(5);
+        jScrollPane11.setViewportView(taAlamatInputTW);
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -478,20 +486,21 @@ public class GUIAdmin extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel23)
-                            .addComponent(jLabel26)
-                            .addComponent(jLabel34))
-                        .addGap(49, 49, 49)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(tfAlamatInputTW, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfNamaInputTW, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfIdInputTW, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(slRatingInputTW, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))
-                    .addComponent(btnInputTW))
-                .addContainerGap(45, Short.MAX_VALUE))
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel26)
+                    .addComponent(jLabel34))
+                .addGap(58, 58, 58)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(tfNamaInputTW, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(tfIdInputTW, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(slRatingInputTW, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addComponent(btnInputTW)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -504,20 +513,17 @@ public class GUIAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(tfNamaInputTW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(tfAlamatInputTW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(slRatingInputTW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel34)
-                        .addGap(18, 18, 18)))
+                    .addComponent(jLabel34)
+                    .addComponent(slRatingInputTW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26))
+                .addGap(18, 18, 18)
                 .addComponent(btnInputTW)
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addGap(122, 122, 122))
         );
 
         jTabbedPane3.addTab("Input", jPanel9);
@@ -669,6 +675,11 @@ public class GUIAdmin extends javax.swing.JFrame {
         jTabbedPane3.addTab("Delete", jPanel11);
 
         btnUpdateTW.setText("Update ");
+        btnUpdateTW.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpdateTWMouseClicked(evt);
+            }
+        });
         btnUpdateTW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateTWActionPerformed(evt);
@@ -739,6 +750,11 @@ public class GUIAdmin extends javax.swing.JFrame {
         jLabel11.setText("Harga :");
 
         btnInputPW.setText("Input");
+        btnInputPW.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInputPWMouseClicked(evt);
+            }
+        });
         btnInputPW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInputPWActionPerformed(evt);
@@ -1020,6 +1036,11 @@ public class GUIAdmin extends javax.swing.JFrame {
         jTabbedPane1.addTab("Delete", jPanel8);
 
         btnRefreshPW.setText("Refresh");
+        btnRefreshPW.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRefreshPWMouseClicked(evt);
+            }
+        });
         btnRefreshPW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshPWActionPerformed(evt);
@@ -1108,27 +1129,23 @@ public class GUIAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_rbPerempuanTGActionPerformed
 
     private void btnInputTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInputTGActionPerformed
-        ctrlAdm.inputTG();
+        
     }//GEN-LAST:event_btnInputTGActionPerformed
 
     private void btnInputPWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInputPWActionPerformed
-        try {
-            ctrlAdm.inputPW();
-        } catch (SQLException ex) {
-            Logger.getLogger(GUIAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }//GEN-LAST:event_btnInputPWActionPerformed
 
     private void btnEditPWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditPWActionPerformed
-        ctrlAdm.editPW();
+        
     }//GEN-LAST:event_btnEditPWActionPerformed
 
     private void btnInputTWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInputTWActionPerformed
-        ctrlAdm.inputTW();
+
     }//GEN-LAST:event_btnInputTWActionPerformed
 
     private void btnEditTWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditTWActionPerformed
-        ctrlAdm.editTW();
+       
     }//GEN-LAST:event_btnEditTWActionPerformed
 
     private void btnBMMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBMMActionPerformed
@@ -1140,13 +1157,12 @@ public class GUIAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_pCustomerMouseClicked
 
     private void btnRefreshCsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshCsActionPerformed
-        ctrlAdm.updateViewCs();
-        ctrlAdm.updateTableCS();
+        
         
     }//GEN-LAST:event_btnRefreshCsActionPerformed
 
     private void btnRefreshRPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshRPActionPerformed
-        ctrlAdm.updateViewRP();
+        
     }//GEN-LAST:event_btnRefreshRPActionPerformed
 
     private void tfIdSearchEditTWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdSearchEditTWActionPerformed
@@ -1162,8 +1178,7 @@ public class GUIAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchDeleteTWActionPerformed
 
     private void btnDeleteTWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTWActionPerformed
-        ctrlAdm.deleteTW();
-        
+               
     }//GEN-LAST:event_btnDeleteTWActionPerformed
 
     private void btnRefreshTWInputPWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshTWInputPWActionPerformed
@@ -1172,7 +1187,7 @@ public class GUIAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRefreshTWInputPWActionPerformed
 
     private void btnSearchEditPWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchEditPWActionPerformed
-        ctrlAdm.searchIdEditPW();
+        
     }//GEN-LAST:event_btnSearchEditPWActionPerformed
 
     private void btnSearchDeletePWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchDeletePWActionPerformed
@@ -1184,7 +1199,7 @@ public class GUIAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeletePWActionPerformed
 
     private void btnUpdateTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTGActionPerformed
-        ctrlAdm.updateTableTG();
+        
     }//GEN-LAST:event_btnUpdateTGActionPerformed
 
     private void tfIdTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdTGActionPerformed
@@ -1192,21 +1207,36 @@ public class GUIAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_tfIdTGActionPerformed
 
     private void btnUpdateTWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTWActionPerformed
-        ctrlAdm.updateTableTW();
+        
     }//GEN-LAST:event_btnUpdateTWActionPerformed
 
     private void btnRefreshPWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshPWActionPerformed
-        updateTablePW();
+        
     }//GEN-LAST:event_btnRefreshPWActionPerformed
+
+    private void btnInputTGMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInputTGMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInputTGMouseClicked
+
+    private void btnInputTWMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInputTWMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInputTWMouseClicked
+
+    private void btnUpdateTWMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateTWMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateTWMouseClicked
+
+    private void btnInputPWMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInputPWMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInputPWMouseClicked
+
+    private void btnRefreshPWMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRefreshPWMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRefreshPWMouseClicked
 
   
     
     //TOUR GUIDE
-    //setter
-       public void setTourguideId (int id) {
-       tfIdTG.setText("T-"+id);
-   }
-   
     //GETTER
     public JTextField getTfIdTG(){
         return tfIdTG;
@@ -1242,19 +1272,13 @@ public class GUIAdmin extends javax.swing.JFrame {
     public JTable getTbViewTGTG(){
         return tbViewTGTG;
     }
-
     public JButton getBtnInputTG() {
         return btnInputTG;
+    }   
+    public JButton getBtnUpdateTG(){
+        return btnUpdateTG;
     }
-    
-    public void resetViewTG(){
-        tfIdTG.setText("TG-"+TourGuide.getSidTG());
-        tfNamaTG.setText("");
-        bgJKTG.clearSelection();
-        tfUmurTG.setText("");
-        tfAlamatTG.setText("");
-        tfKontakTG.setText("");
-    }
+
     
     //CUSTOMER
     //GETTTER
@@ -1276,12 +1300,15 @@ public class GUIAdmin extends javax.swing.JFrame {
     public JTextField getTfNamaInputTW(){
         return tfNamaInputTW;
     }
-    public JTextField getTfAlamatInputTW(){
-        return tfAlamatInputTW;
+    public JTextArea getTaAlamatInputTW(){
+        return taAlamatInputTW;
     }
     public JSlider getSlRatingInputTW(){
         return slRatingInputTW;
-    }    
+    } 
+    public JButton getBtnInputTW(){
+        return btnInputTW;
+    }
     //EDIT
     public JTextField getTfIdSearchEditTW(){
         return tfIdSearchEditTW;
@@ -1294,7 +1321,13 @@ public class GUIAdmin extends javax.swing.JFrame {
     }
     public JSlider getSlRatingEditTW(){
         return slRatingEditTW;
-    }    
+    }
+    public JButton getBtnSearchEditTW(){
+        return btnSearchEditTW;
+    }
+    public JButton getBtnEditTW(){
+        return btnEditTW;
+    }
     //DELETE
     public JTextField getTfIdSearchDeleteTW(){
         return tfIdSearchDeleteTW;
@@ -1305,40 +1338,15 @@ public class GUIAdmin extends javax.swing.JFrame {
     public JTable getTBViewTW(){
         return tbViewTW;
     }
+    public JButton getBtnSearchDeleteTW(){
+        return btnSearchDeleteTW;
+    }
+    public JButton getBtnDeleteTW(){
+        return btnDeleteTW;
+    }
     //VIEW
-    public void resetViewInputTW(){
-        tfIdInputTW.setText("TW-"+TempatWisata.getSidTW());
-        tfNamaInputTW.setText("");
-        tfAlamatInputTW.setText("");
-        slRatingInputTW.setValue(0);
-        DefaultTableModel tbModel = (DefaultTableModel) tbViewTW.getModel();
-        tbModel.setRowCount(0);
-    }
-    public void resetViewEditTW(){
-        tfIdSearchEditTW.setText("TW-"+TempatWisata.getSidTW());
-        tfNamaEditTW.setText("");
-        tfAlamatEditTW.setText("");
-        slRatingEditTW.setValue(0);
-        DefaultTableModel tbModel = (DefaultTableModel) tbViewTW.getModel();
-        tbModel.setRowCount(0);
-    }
-    public void resetViewDeleteTW(){
-        tfIdSearchDeleteTW.setText("");
-        DefaultTableModel tbModelDel = (DefaultTableModel) tbViewDeleteTW.getModel();
-        tbModelDel.setRowCount(0);
-        DefaultTableModel tbModel = (DefaultTableModel) tbViewTW.getModel();
-        tbModel.setRowCount(0);
-    }
-    public void updateTableTW(){
-        DefaultTableModel tbModel = (DefaultTableModel) tbViewTW.getModel();
-        String[] row = new String[4];
-        for(int j = 0; j<model.getDaftarTW().size(); j++){
-            row[0] = model.getDaftarTW().get(j).getId();
-            row[1] = model.getDaftarTW().get(j).getNama();
-            row[2] = model.getDaftarTW().get(j).getAlamat();
-            row[3] = Integer.toString(model.getDaftarTW().get(j).getRating());
-            tbModel.addRow(row);           
-        }
+    public JButton getBtnUpdateTW(){
+        return btnUpdateTW;
     }
     
     //PAKET WISATA
@@ -1367,6 +1375,9 @@ public class GUIAdmin extends javax.swing.JFrame {
     public JTable getTBViewPW(){
         return tbViewPW;
     }
+    public JButton getBtnInputPW(){
+        return btnInputPW;
+    }
     
     //EDIT
     public JTextField getTfIdSearchEditPW(){
@@ -1390,6 +1401,12 @@ public class GUIAdmin extends javax.swing.JFrame {
     public JList getLsTGEditPW(){
         return lsTGEditPW;
     }
+    public JButton getBtnSearchEditPW(){
+        return btnSearchEditPW;
+    }
+    public JButton getBtnEditPW(){
+        return btnEditPW;
+    }
     //DELETE
     public JTextField getTfIdSearchDeletePW(){
         return tfIdSearchDeletePW;
@@ -1397,69 +1414,60 @@ public class GUIAdmin extends javax.swing.JFrame {
     public JTable getTbViewDeletePW(){
         return tbViewDeletePW;
     }
-    //VIEW
-    public void resetViewInputPW(){
-        tfIdInputPW.setText("PW-"+PaketWisata.getSidPW());
-        tfNamaInputPW.setText("");
-        tfHargaInputPW.setText("");
-        tfTglBInputPW.setText("");
-        tfTglPInputPW.setText("");
-        lsTWInputPW.clearSelection();
-        lsTGInputPW.clearSelection();
-        DefaultTableModel tbModel = (DefaultTableModel) tbViewPW.getModel();
-        tbModel.setRowCount(0);
+    
+// VIEW
+    public JButton getBtnRefreshPW(){
+        return btnRefreshPW;
     }
-    public void resetViewEditPW(){
-        tfIdSearchEditPW.setText("");
-        tfNamaEditPW.setText("");
-        tfHargaEditPW.setText("");
-        tfTglBEditPW.setText("");
-        tfTglPEditPW.setText("");
-        lsTWEditPW.clearSelection();
-        lsTGEditPW.clearSelection();
-        DefaultTableModel tbModel = (DefaultTableModel) tbViewPW.getModel();
-        tbModel.setRowCount(0);
+
+//    public void resetViewDeletePW(){
+//        tfIdSearchDeletePW.setText("");
+//        DefaultTableModel tbModelDel = (DefaultTableModel) tbViewDeletePW.getModel();
+//        tbModelDel.setRowCount(0);
+//        DefaultTableModel tbModel = (DefaultTableModel) tbViewPW.getModel();
+//        tbModel.setRowCount(0);
+//    }
+//    public void updateTablePW(){
+//        DefaultTableModel tbModel = (DefaultTableModel) tbViewPW.getModel();
+//        String[] row = new String[7];
+//        for(int j = 0; j<model.getDaftarPW().size(); j++){
+//            row[0] = model.getDaftarPW().get(j).getId();
+//            row[1] = model.getDaftarPW().get(j).getNama();
+//            row[2] = Double.toString(model.getDaftarPW().get(j).getHarga());
+//            row[3] = "";
+//            for(TempatWisata tw: model.getDaftarPW().get(j).getListTujuan()){
+//                row[3] += tw.getNama()+", ";
+//            }
+//            row[4] = "";
+//            for(TourGuide tg: model.getDaftarPW().get(j).getListGuide()){
+//                row[4] += tg.getNama()+", ";
+//            }
+//            row[5] = model.getDaftarPW().get(j).getTglBerangkat();
+//            row[6] = model.getDaftarPW().get(j).getTglPulang();
+//            tbModel.addRow(row);
+//            tbViewPW.setRowHeight(j, 20);
+//        }
+//        
+//    }
+    
+    
+
+    
+    public void addMouseListener(MouseAdapter ma){
+        btnInputTG.addMouseListener(ma);
+        btnUpdateTG.addMouseListener(ma);
+        btnInputTW.addMouseListener(ma);
+        btnUpdateTW.addMouseListener(ma);
+        btnSearchEditTW.addMouseListener(ma);
+        btnEditTW.addMouseListener(ma);
+        btnSearchDeleteTW.addMouseListener(ma);
+        btnDeleteTW.addMouseListener(ma);
+        btnInputPW.addMouseListener(ma);
+        btnRefreshPW.addMouseListener(ma);
+        btnSearchEditPW.addMouseListener(ma);
+        btnEditPW.addMouseListener(ma);
     }
-    public void resetViewDeletePW(){
-        tfIdSearchDeletePW.setText("");
-        DefaultTableModel tbModelDel = (DefaultTableModel) tbViewDeletePW.getModel();
-        tbModelDel.setRowCount(0);
-        DefaultTableModel tbModel = (DefaultTableModel) tbViewPW.getModel();
-        tbModel.setRowCount(0);
-    }
-    public void updateTablePW(){
-        DefaultTableModel tbModel = (DefaultTableModel) tbViewPW.getModel();
-        String[] row = new String[7];
-        for(int j = 0; j<model.getDaftarPW().size(); j++){
-            row[0] = model.getDaftarPW().get(j).getId();
-            row[1] = model.getDaftarPW().get(j).getNama();
-            row[2] = Double.toString(model.getDaftarPW().get(j).getHarga());
-            row[3] = "";
-            for(TempatWisata tw: model.getDaftarPW().get(j).getListTujuan()){
-                row[3] += tw.getNama()+", ";
-            }
-            row[4] = "";
-            for(TourGuide tg: model.getDaftarPW().get(j).getListGuide()){
-                row[4] += tg.getNama()+", ";
-            }
-            row[5] = model.getDaftarPW().get(j).getTglBerangkat();
-            row[6] = model.getDaftarPW().get(j).getTglPulang();
-            tbModel.addRow(row);
-            tbViewPW.setRowHeight(j, 20);
-        }
-        
-    }
-      public String getTourGuideId(){
-        return tfIdTG.getText(); 
-   }
-    //yahyacoba
-    public void addActionListener (ActionListener a1) {
-       btnInputTG.addActionListener(a1);
-   }
-   
-   public void addMouseAdabter (MouseAdapter ma) {
-       tbViewTGTG.addMouseListener(ma);
-   }
+
 
 
     
@@ -1523,6 +1531,7 @@ public class GUIAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1547,6 +1556,7 @@ public class GUIAdmin extends javax.swing.JFrame {
     private javax.swing.JSlider slRatingEditTW;
     private javax.swing.JSlider slRatingInputTW;
     private javax.swing.JScrollPane spTbViewTGTG;
+    private javax.swing.JTextArea taAlamatInputTW;
     private javax.swing.JTable tbViewCs;
     private javax.swing.JTable tbViewDeletePW;
     private javax.swing.JTable tbViewDeleteTW;
@@ -1555,7 +1565,6 @@ public class GUIAdmin extends javax.swing.JFrame {
     private javax.swing.JTable tbViewTGTG;
     private javax.swing.JTable tbViewTW;
     private javax.swing.JTextField tfAlamatEditTW;
-    private javax.swing.JTextField tfAlamatInputTW;
     private javax.swing.JTextField tfAlamatTG;
     private javax.swing.JTextField tfHargaEditPW;
     private javax.swing.JTextField tfHargaInputPW;

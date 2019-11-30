@@ -6,6 +6,7 @@
 package model;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
 /**
  *
  * @author Lenovo
@@ -41,7 +42,7 @@ public class Pemesanan {
     public void setTotalHarga(double totalHarga) {
         this.totalHarga = totalHarga;
     }
-    public void setTglPesan(String tglPesan) {
+    public void setTglPesan(Date tglPesan) {
         this.tglPesan = tglPesan;
     }
     public String getId() {
@@ -53,7 +54,7 @@ public class Pemesanan {
     public double getTotalHarga() {
         return totalHarga;
     }
-    public String getTglPesan() {
+    public Date getTglPesan() {
         return tglPesan;
     }
     

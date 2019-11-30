@@ -16,12 +16,11 @@ public class TempatWisata {
     private String alamat;
     private int rating;
     
-    public TempatWisata(String nama, String alamat, int rating){
-        this.id = "TW-"+sidTW;
+    public TempatWisata(String id, String nama,int rating, String alamat){
+        this.id = id;
         this.nama = nama;
         this.alamat = alamat;
         this.rating = rating;
-        sidTW++;
     }
     
     public TempatWisata(String id,String nama, String alamat, int rating){
@@ -30,10 +29,6 @@ public class TempatWisata {
         this.alamat = alamat;
         this.rating = rating;
         sidTW++;
-    }
-    
-    public static int getSidTW(){
-        return sidTW;
     }
 
     public String getId() {

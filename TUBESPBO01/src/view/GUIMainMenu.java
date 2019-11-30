@@ -5,6 +5,9 @@
  */
 package view;
 import controller.ControllerMainMenu;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Application;
 import model.Database;
 /**
@@ -16,7 +19,7 @@ public class GUIMainMenu extends javax.swing.JFrame {
     private ControllerMainMenu ctrlMM;
     private Application model = new Application();
     
-    public GUIMainMenu() {
+    public GUIMainMenu() throws ParseException {
         initComponents();
         ctrlMM = new ControllerMainMenu(model, this);
 //        model.loadOneTourGuideById("TG-1");
@@ -230,8 +233,6 @@ public class GUIMainMenu extends javax.swing.JFrame {
 
     private void btnViewAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllActionPerformed
         // TODO add your handling code here:
-        model.viewTourGuide();
-        System.out.println("JLAN]");
     }//GEN-LAST:event_btnViewAllActionPerformed
 
     /**
@@ -264,7 +265,11 @@ public class GUIMainMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIMainMenu().setVisible(true);
+                try {
+                    new GUIMainMenu().setVisible(true);
+                } catch (ParseException ex) {
+                    Logger.getLogger(GUIMainMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

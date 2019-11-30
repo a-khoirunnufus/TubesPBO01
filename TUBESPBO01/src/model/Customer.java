@@ -6,40 +6,26 @@
 package model;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
 /**
  *
  * @author Lenovo
  */
 public class Customer extends Person{
-    private static int sidC = 1;
     private List<Pemesanan> listPesanan;
     
-    public Customer(String nama, String jenisKelamin, int umur,
+    public Customer(String id, String nama, String jenisKelamin, int umur,
                   String alamat, String kontak){
-        super("C-"+sidC,nama,jenisKelamin,umur,
+        super(id,nama,jenisKelamin,umur,
                   alamat,kontak);
         listPesanan = new ArrayList<>();
-        sidC++;
     }
     
-    public Customer(String id,String nama, String jenisKelamin, int umur,
-                  String alamat, String kontak){
-        super("C-"+sidC,nama,jenisKelamin,umur,
-                  alamat,kontak);
-        listPesanan = new ArrayList<>();
-        sidC++;
-    }
-    
-    public static int getSidC(){
-        return sidC;
-    }
-
     public List<Pemesanan> getListPesanan() {
         return listPesanan;
     }
-    
-    
-    public void createPemesanan(List<PaketWisata> lsPw, double tHarga, String tglPesan){
+       
+    public void createPemesanan(List<PaketWisata> lsPw, double tHarga, Date tglPesan){
         Pemesanan psn = new Pemesanan(lsPw, tHarga, tglPesan);
  
         listPesanan.add(psn);
