@@ -15,8 +15,8 @@ import model.TourGuide;
  * @author Lenovo
  */
 public class tbModPenugasanTG extends AbstractTableModel {
-    List<TourGuide> list = new ArrayList<>();
-    private final String[] header = {"PaketWi","Nama","Gender","Umur","Alamat","Kontak"};
+    List<String[]> list = new ArrayList<>();
+    private final String[] header = {"Paket Wisata","Tanggal Berangkat","Tanggal Pulang","Customer"};
     
     
     @Override
@@ -36,25 +36,18 @@ public class tbModPenugasanTG extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        TourGuide tg = list.get(rowIndex);
+        String[] row = list.get(rowIndex);
         switch(columnIndex){
-            case 0 : return tg.getId();
-            case 1 : return tg.getNama();
-            case 2 : return tg.getJenisKelamin();
-            case 3 : return tg.getUmur();
-            case 4 : return tg.getKontak();
-            case 5 : return tg.getAlamat();
+            case 0 : return row[0];
+            case 1 : return row[1];
+            case 2 : return row[2];
+            case 3 : return "Lihat Data";
             default : return null;
         }
     }
     
-    public void addOneRow(TourGuide tg){
-        list.add(tg);
-        fireTableRowsInserted(list.size()-1, list.size()-1);
-    }
-    
-    public void updateTable(List<TourGuide> listTg){
-        list = listTg;
+    public void updateTable(List<String[]> listPngs){
+        list = listPngs;
         fireTableDataChanged();
     }
     

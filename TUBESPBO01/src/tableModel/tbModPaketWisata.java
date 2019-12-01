@@ -40,11 +40,13 @@ public class tbModPaketWisata extends AbstractTableModel{
             default : return null;
         }
     }
-    
-    public void addOneRow(PaketWisata pw){
-        list.add(pw);
-        fireTableRowsDeleted(list.size()-1, list.size()-1);
-    }
+//tidak terpakai sementara    
+//    public void addOneRow(PaketWisata pw){
+//        System.out.println("ukuran list table pw : "+list.size());
+//        list.add(pw);
+//        System.out.println("ukuran list table pw : "+list.size());
+//        fireTableDataChanged();
+//    }
     
     public void updateTable(List<PaketWisata> listPw){
         list = listPw;

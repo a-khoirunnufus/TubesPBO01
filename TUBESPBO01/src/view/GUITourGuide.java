@@ -12,6 +12,7 @@ import controller.*;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import model.*;
 /**
@@ -63,8 +64,9 @@ public class GUITourGuide extends javax.swing.JFrame {
         btnSearchUDP = new javax.swing.JButton();
         tfNamaUDP = new javax.swing.JTextField();
         tfUmurUDP = new javax.swing.JTextField();
-        tfAlamatUDP = new javax.swing.JTextField();
         tfKontakUDP = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        taAlamatUDP = new javax.swing.JTextArea();
         btnBMM = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -175,6 +177,10 @@ public class GUITourGuide extends javax.swing.JFrame {
             }
         });
 
+        taAlamatUDP.setColumns(20);
+        taAlamatUDP.setRows(5);
+        jScrollPane2.setViewportView(taAlamatUDP);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -182,7 +188,6 @@ public class GUITourGuide extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEditUDP)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -203,8 +208,9 @@ public class GUITourGuide extends javax.swing.JFrame {
                                 .addComponent(btnSearchUDP))
                             .addComponent(tfNamaUDP)
                             .addComponent(tfUmurUDP)
-                            .addComponent(tfAlamatUDP)
-                            .addComponent(tfKontakUDP))))
+                            .addComponent(tfKontakUDP)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnEditUDP))
                 .addContainerGap(471, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -228,17 +234,17 @@ public class GUITourGuide extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(tfUmurUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(tfAlamatUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(tfKontakUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(btnEditUDP)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addGap(56, 56, 56))
         );
 
         jTabbedPane1.addTab("Ubah Data Pribadi", jPanel2);
@@ -273,7 +279,7 @@ public class GUITourGuide extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(btnBMM))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
@@ -289,7 +295,7 @@ public class GUITourGuide extends javax.swing.JFrame {
     }//GEN-LAST:event_rbPerempuanUDPActionPerformed
 
     private void btnEditUDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditUDPActionPerformed
-        ctrlTG.editTourGuide();
+        
     }//GEN-LAST:event_btnEditUDPActionPerformed
 
     private void btnBMMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBMMActionPerformed
@@ -297,11 +303,11 @@ public class GUITourGuide extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBMMActionPerformed
 
     private void btnSearchUDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUDPActionPerformed
-        ctrlTG.searchIdUDP();
+        
     }//GEN-LAST:event_btnSearchUDPActionPerformed
 
     private void btnSearchIdTGPNGSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchIdTGPNGSActionPerformed
-        ctrlTG.searchIdTGPNGS();
+        
     }//GEN-LAST:event_btnSearchIdTGPNGSActionPerformed
 
     //PAKET WISATA YANG DITUGASKAN
@@ -311,6 +317,9 @@ public class GUITourGuide extends javax.swing.JFrame {
     }
     public JTable getTbViewPNGS(){
         return tbViewPNGS;
+    }
+    public JButton getBtnSearchIdTGPNGS(){
+        return btnSearchIdTGPNGS;
     }
     
     //UBAH DATA PRIBADI
@@ -333,19 +342,24 @@ public class GUITourGuide extends javax.swing.JFrame {
     public JTextField getTfUmurUDP(){
         return tfUmurUDP;
     }
-    public JTextField getTfAlamatUDP(){
-        return tfAlamatUDP;
+    public JTextArea getTaAlamatUDP(){
+        return taAlamatUDP;
     }
     public JTextField getTfKontakUDP(){
         return tfKontakUDP;
     }
-    public void resetViewUDP(){
-        tfIdSearchTGUDP.setText("");
-        tfNamaUDP.setText("");
-        bgJKUDP.clearSelection();
-        tfUmurUDP.setText("");
-        tfAlamatUDP.setText("");
-        tfKontakUDP.setText("");
+    public JButton getBtnSearchUDP(){
+        return btnSearchUDP;
+    }
+    public JButton getBtnEditUDP(){
+        return btnEditUDP;
+    }
+    
+    public void addMouseListener(MouseAdapter ma){
+        btnSearchUDP.addMouseListener(ma);
+        btnEditUDP.addMouseListener(ma);
+        btnSearchIdTGPNGS.addMouseListener(ma);
+        tbViewPNGS.addMouseListener(ma);
     }
 
 
@@ -366,12 +380,13 @@ public class GUITourGuide extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel pPenugasan;
     private javax.swing.JRadioButton rbLakiUDP;
     private javax.swing.JRadioButton rbPerempuanUDP;
+    private javax.swing.JTextArea taAlamatUDP;
     private javax.swing.JTable tbViewPNGS;
-    private javax.swing.JTextField tfAlamatUDP;
     private javax.swing.JTextField tfIdSearchTGPNGS;
     private javax.swing.JTextField tfIdSearchTGUDP;
     private javax.swing.JTextField tfKontakUDP;

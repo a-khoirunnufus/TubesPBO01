@@ -15,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class tbModRekapPemesanan extends AbstractTableModel{
     
-    List list = new ArrayList();
+    List<String[]> list = new ArrayList();
     private final String[] header = {"Id Pemesanan","Customer","Paket Wisata","Tanggal Pesan"};
         
     @Override
@@ -35,10 +35,17 @@ public class tbModRekapPemesanan extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return null;
+        String[] row = list.get(rowIndex);
+        switch(columnIndex){
+            case 0 : return row[0];
+            case 1 : return row[1];
+            case 2 : return row[2];
+            case 3 : return row[3];
+            default : return null;
+        }
     }
     
-    public void add(List list){
+    public void updateTable(List list){
         this.list = list;
         fireTableDataChanged();
     }

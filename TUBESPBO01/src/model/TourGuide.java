@@ -8,8 +8,8 @@ import java.util.Date;
  */
 public class TourGuide extends Person { 
     public TourGuide(String id,String nama, String jenisKelamin, int umur,
-                  String alamat, String kontak){
-        super(id,nama,jenisKelamin,umur,alamat,kontak);
+                    String kontak,String alamat){
+        super(id,nama,jenisKelamin,umur,kontak,alamat);
         
     }
     

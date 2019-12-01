@@ -14,10 +14,8 @@ import java.util.Date;
 public class Customer extends Person{
     private List<Pemesanan> listPesanan;
     
-    public Customer(String id, String nama, String jenisKelamin, int umur,
-                  String alamat, String kontak){
-        super(id,nama,jenisKelamin,umur,
-                  alamat,kontak);
+    public Customer(String id, String nama, String jenisKelamin, int umur,String kontak, String alamat){
+        super(id,nama,jenisKelamin,umur,kontak,alamat);
         listPesanan = new ArrayList<>();
     }
     
@@ -25,9 +23,7 @@ public class Customer extends Person{
         return listPesanan;
     }
        
-    public void createPemesanan(List<PaketWisata> lsPw, double tHarga, Date tglPesan){
-        Pemesanan psn = new Pemesanan(lsPw, tHarga, tglPesan);
- 
-        listPesanan.add(psn);
+    public void createPemesanan(Pemesanan psn){
+        listPesanan.add(psn);        
     }
 }

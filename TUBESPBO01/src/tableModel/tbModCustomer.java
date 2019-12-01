@@ -41,13 +41,9 @@ public class tbModCustomer extends AbstractTableModel{
         }
     }
     
-    public void add(List<Customer> listCs){
+    public void updateTable(List<Customer> listCs){
         list = listCs;
         fireTableDataChanged();
-    }
-    
-    public void update(){
-        
     }
     
 }

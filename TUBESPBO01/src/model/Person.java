@@ -14,17 +14,17 @@ public abstract class Person {
     private String nama;
     private String jenisKelamin;
     private int umur;
+    private String kontak;    
     private String alamat;
-    private String kontak;
     
     public Person(String id, String nama, String jenisKelamin, int umur,
-                  String alamat, String kontak){
+                  String kontak, String alamat){
         this.id = id;
         this.nama = nama;
         this.jenisKelamin = jenisKelamin;
         this.umur = umur;
-        this.alamat = alamat;
         this.kontak = kontak;
+        this.alamat = alamat;
     }
     
     //SETTER

@@ -6,14 +6,18 @@ package view;
 import controller.ControllerCustomer;
 import controller.ControllerMainMenu;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.sql.SQLException;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import model.*;
 
@@ -29,7 +33,7 @@ public class GUICustomer extends javax.swing.JFrame {
     private ControllerMainMenu ctrlMM;
     private ControllerCustomer ctrlCs;
     
-    public GUICustomer(ControllerMainMenu ctrlMM, Application model) {
+    public GUICustomer(ControllerMainMenu ctrlMM, Application model) throws SQLException {
         initComponents();
         this.ctrlMM = ctrlMM;
         ctrlCs = new ControllerCustomer(model, this);
@@ -51,18 +55,19 @@ public class GUICustomer extends javax.swing.JFrame {
         pRegistrasi = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         btnRegistrasiReg = new javax.swing.JButton();
-        tfNamaReg = new java.awt.TextField();
-        tfUmurReg = new java.awt.TextField();
-        tfAlamatReg = new java.awt.TextField();
         rbLakiReg = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
         rbPerempuanReg = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        tfKontakReg = new java.awt.TextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         tfIdReg = new javax.swing.JTextField();
+        tfNamaReg = new javax.swing.JTextField();
+        tfUmurReg = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taAlamatReg = new javax.swing.JTextArea();
+        tfKontakReg = new javax.swing.JTextField();
         pPemesanan = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         tfIdPsnPsn = new javax.swing.JTextField();
@@ -74,10 +79,10 @@ public class GUICustomer extends javax.swing.JFrame {
         tfTglPesanPsn = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         tfIdCsPsn = new javax.swing.JTextField();
-        btnRefreshPsn = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         tfTotalHargaPsn = new javax.swing.JTextField();
         btnGetTHargaPsn = new javax.swing.JButton();
+        btnSearchIdCsPsn = new javax.swing.JButton();
         pUbahDataPribadi = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btnUpdateUDP = new javax.swing.JButton();
@@ -92,8 +97,9 @@ public class GUICustomer extends javax.swing.JFrame {
         btnCariIdCsUDP = new javax.swing.JButton();
         tfNamaUDP = new javax.swing.JTextField();
         tfUmurUDP = new javax.swing.JTextField();
-        tfAlamatUDP = new javax.swing.JTextField();
         tfKontakUDP = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        taAlamatUDP = new javax.swing.JTextArea();
         pLihatPaketWisata = new javax.swing.JPanel();
         spTabelLPW = new javax.swing.JScrollPane();
         tbLPW = new javax.swing.JTable();
@@ -116,6 +122,11 @@ public class GUICustomer extends javax.swing.JFrame {
         jLabel3.setText("Nama :");
 
         btnRegistrasiReg.setText("Registrasi");
+        btnRegistrasiReg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegistrasiRegMouseClicked(evt);
+            }
+        });
         btnRegistrasiReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrasiRegActionPerformed(evt);
@@ -155,6 +166,10 @@ public class GUICustomer extends javax.swing.JFrame {
             }
         });
 
+        taAlamatReg.setColumns(20);
+        taAlamatReg.setRows(5);
+        jScrollPane1.setViewportView(taAlamatReg);
+
         javax.swing.GroupLayout pRegistrasiLayout = new javax.swing.GroupLayout(pRegistrasi);
         pRegistrasi.setLayout(pRegistrasiLayout);
         pRegistrasiLayout.setHorizontalGroup(
@@ -163,35 +178,32 @@ public class GUICustomer extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pRegistrasiLayout.createSequentialGroup()
-                        .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRegistrasiReg)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel8))
+                        .addComponent(jLabel11)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pRegistrasiLayout.createSequentialGroup()
+                    .addGroup(pRegistrasiLayout.createSequentialGroup()
                         .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
                         .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tfNamaReg, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                                .addComponent(tfUmurReg)
+                                .addComponent(tfNamaReg)
+                                .addComponent(tfIdReg, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                                 .addGroup(pRegistrasiLayout.createSequentialGroup()
-                                    .addGap(2, 2, 2)
                                     .addComponent(rbLakiReg)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(rbPerempuanReg))
-                                .addComponent(tfIdReg))
-                            .addGroup(pRegistrasiLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(tfUmurReg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfKontakReg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfAlamatReg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(298, 298, 298))))
+                                .addComponent(tfKontakReg))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(298, 298, 298))
+                    .addGroup(pRegistrasiLayout.createSequentialGroup()
+                        .addComponent(btnRegistrasiReg)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         pRegistrasiLayout.setVerticalGroup(
             pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,32 +212,33 @@ public class GUICustomer extends javax.swing.JFrame {
                 .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(tfIdReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
+                .addGap(12, 12, 12)
+                .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(tfNamaReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(rbPerempuanReg)
+                    .addComponent(rbLakiReg))
+                .addGap(11, 11, 11)
+                .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(tfUmurReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tfKontakReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(19, 19, 19)
                 .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfNamaReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pRegistrasiLayout.createSequentialGroup()
-                        .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(rbPerempuanReg)
-                            .addComponent(rbLakiReg))
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel11)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pRegistrasiLayout.createSequentialGroup()
-                        .addComponent(tfUmurReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfAlamatReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(pRegistrasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tfKontakReg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnRegistrasiReg)
-                .addContainerGap(109, Short.MAX_VALUE))
+                    .addGroup(pRegistrasiLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 111, Short.MAX_VALUE))
+                    .addGroup(pRegistrasiLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRegistrasiReg)
+                        .addGap(32, 32, 32))))
         );
 
         jTabbedPane1.addTab("Registrasi", pRegistrasi);
@@ -260,13 +273,6 @@ public class GUICustomer extends javax.swing.JFrame {
             }
         });
 
-        btnRefreshPsn.setText("refresh");
-        btnRefreshPsn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshPsnActionPerformed(evt);
-            }
-        });
-
         jLabel16.setText("Total Harga");
 
         tfTotalHargaPsn.setEditable(false);
@@ -277,6 +283,8 @@ public class GUICustomer extends javax.swing.JFrame {
                 btnGetTHargaPsnActionPerformed(evt);
             }
         });
+
+        btnSearchIdCsPsn.setText("Search");
 
         javax.swing.GroupLayout pPemesananLayout = new javax.swing.GroupLayout(pPemesanan);
         pPemesanan.setLayout(pPemesananLayout);
@@ -297,7 +305,7 @@ public class GUICustomer extends javax.swing.JFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                             .addComponent(tfIdCsPsn))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRefreshPsn))
+                        .addComponent(btnSearchIdCsPsn))
                     .addGroup(pPemesananLayout.createSequentialGroup()
                         .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17)
@@ -313,10 +321,11 @@ public class GUICustomer extends javax.swing.JFrame {
         pPemesananLayout.setVerticalGroup(
             pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pPemesananLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addGap(10, 10, 10)
                 .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(tfIdCsPsn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfIdCsPsn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearchIdCsPsn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
@@ -324,8 +333,7 @@ public class GUICustomer extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRefreshPsn))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(pPemesananLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
@@ -337,7 +345,7 @@ public class GUICustomer extends javax.swing.JFrame {
                     .addComponent(tfTglPesanPsn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnPesanPsn)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pemesanan", pPemesanan);
@@ -390,6 +398,16 @@ public class GUICustomer extends javax.swing.JFrame {
             }
         });
 
+        tfKontakUDP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfKontakUDPActionPerformed(evt);
+            }
+        });
+
+        taAlamatUDP.setColumns(20);
+        taAlamatUDP.setRows(5);
+        jScrollPane3.setViewportView(taAlamatUDP);
+
         javax.swing.GroupLayout pUbahDataPribadiLayout = new javax.swing.GroupLayout(pUbahDataPribadi);
         pUbahDataPribadi.setLayout(pUbahDataPribadiLayout);
         pUbahDataPribadiLayout.setHorizontalGroup(
@@ -402,36 +420,33 @@ public class GUICustomer extends javax.swing.JFrame {
                         .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(49, 49, 49)
                         .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pUbahDataPribadiLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rbLakiUDP)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rbPerempuanUDP))
                             .addGroup(pUbahDataPribadiLayout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(tfNamaUDP)
-                                    .addComponent(tfIdCsUDP, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
+                                .addGap(1, 1, 1)
+                                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(tfNamaUDP)
+                                        .addComponent(tfUmurUDP, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfKontakUDP, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(tfIdCsUDP))
+                                .addGap(30, 30, 30)
                                 .addComponent(btnCariIdCsUDP))))
-                    .addGroup(pUbahDataPribadiLayout.createSequentialGroup()
-                        .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(37, 37, 37)
-                        .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfUmurUDP)
-                            .addComponent(tfAlamatUDP)
-                            .addComponent(tfKontakUDP, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))))
-                .addContainerGap(327, Short.MAX_VALUE))
+                    .addComponent(jLabel7))
+                .addContainerGap(284, Short.MAX_VALUE))
         );
         pUbahDataPribadiLayout.setVerticalGroup(
             pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pUbahDataPribadiLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(tfIdCsUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -449,17 +464,17 @@ public class GUICustomer extends javax.swing.JFrame {
                 .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(tfUmurUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(tfAlamatUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(tfKontakUDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addGap(13, 13, 13)
+                .addGroup(pUbahDataPribadiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(btnUpdateUDP)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
 
         jTabbedPane1.addTab("Ubah Data Pribadi", pUbahDataPribadi);
@@ -516,7 +531,7 @@ public class GUICustomer extends javax.swing.JFrame {
                 .addComponent(spTabelLPW, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRefreshLPW)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Lihat Paket Wisata", pLihatPaketWisata);
@@ -573,7 +588,7 @@ public class GUICustomer extends javax.swing.JFrame {
                 .addComponent(spTabelLTG, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRefreshLTG)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Lihat Tour Guide", pLihatTourGuide);
@@ -630,7 +645,7 @@ public class GUICustomer extends javax.swing.JFrame {
                 .addComponent(spTabelLTW, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRefreshLTW)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Lihat Tempat Wisata", pLihatTempatWisata);
@@ -674,7 +689,7 @@ public class GUICustomer extends javax.swing.JFrame {
 
     private void btnUpdateUDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUDPActionPerformed
         // TODO add your handling code here:
-        ctrlCs.updateUDP();
+        
     }//GEN-LAST:event_btnUpdateUDPActionPerformed
 
     private void rbLakiUDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLakiUDPActionPerformed
@@ -687,7 +702,7 @@ public class GUICustomer extends javax.swing.JFrame {
 
     private void btnRegistrasiRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrasiRegActionPerformed
         //if error JOptionPane.showMessageDialog(null, "Hello!");
-        ctrlCs.registReg();
+        
     }//GEN-LAST:event_btnRegistrasiRegActionPerformed
 
     private void rbLakiRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLakiRegActionPerformed
@@ -704,7 +719,7 @@ public class GUICustomer extends javax.swing.JFrame {
 
     private void btnPesanPsnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesanPsnActionPerformed
         // TODO add your handling code here:
-        ctrlCs.pesanPsn();
+        
     }//GEN-LAST:event_btnPesanPsnActionPerformed
 
     private void tfIdCsPsnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdCsPsnActionPerformed
@@ -717,7 +732,7 @@ public class GUICustomer extends javax.swing.JFrame {
 
     private void btnCariIdCsUDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariIdCsUDPActionPerformed
         // TODO add your handling code here:
-        ctrlCs.cariIdCsUDP();
+        
     }//GEN-LAST:event_btnCariIdCsUDPActionPerformed
 
     private void tfNamaUDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNamaUDPActionPerformed
@@ -728,83 +743,65 @@ public class GUICustomer extends javax.swing.JFrame {
         ctrlMM.toMainMenu();
     }//GEN-LAST:event_btnBMMActionPerformed
 
-    private void btnRefreshPsnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshPsnActionPerformed
-        ctrlCs.refreshPsn();
-    }//GEN-LAST:event_btnRefreshPsnActionPerformed
-
     private void btnGetTHargaPsnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetTHargaPsnActionPerformed
-        ctrlCs.getHargaTotalPsn();
+        
     }//GEN-LAST:event_btnGetTHargaPsnActionPerformed
 
     private void btnRefreshLPWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshLPWActionPerformed
-        ctrlCs.refreshTbLPW();
+        
     }//GEN-LAST:event_btnRefreshLPWActionPerformed
 
     private void btnRefreshLTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshLTGActionPerformed
-        ctrlCs.refreshTbLTG();
+        
     }//GEN-LAST:event_btnRefreshLTGActionPerformed
 
     private void btnRefreshLTWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshLTWActionPerformed
-        ctrlCs.refreshTbLTW();
+        
     }//GEN-LAST:event_btnRefreshLTWActionPerformed
+
+    private void btnRegistrasiRegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrasiRegMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrasiRegMouseClicked
+
+    private void tfKontakUDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfKontakUDPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfKontakUDPActionPerformed
     
     //TAB REGISTRASI
-    //SETTER
-    public void setTfNamaReg (String nama){
-        tfNamaReg.setText(nama);
-    }
-    public void setTfUmurReg (String umur){
-        tfUmurReg.setText(umur);
-    }
-    public void setTfAlamatReg (String alamat){
-        tfAlamatReg.setText(alamat);
-    }
-    public void setTfKontakReg (String kontak){
-        tfKontakReg.setText(kontak);
-    }
     //GETTER
     public JTextField getTfIdReg (){
         return tfIdReg;
     }
-    public String getTfNamaReg (){
-        return tfNamaReg.getText();
+    public JTextField getTfNamaReg (){
+        return tfNamaReg;
     }
-    public String getRbJKReg(){
+    public String getJKReg(){
         if(rbLakiReg.isSelected()){
             return "Laki-Laki";
         }else{
             return "Perempuan";
         }
     }
-    public String getTfUmurReg (){
-        return tfUmurReg.getText();
+    public ButtonGroup getBgJKReg(){
+        return bgJKReg;
     }
-    public String getTfAlamatReg (){
-        return tfAlamatReg.getText();
+    public JTextField getTfUmurReg (){
+        return tfUmurReg;
     }
-    public String getTfKontakReg (){
-        return tfKontakReg.getText();
+    public JTextField getTfKontakReg (){
+        return tfKontakReg;
     }
-    public void resetViewReg(){
-//        tfIdReg.setText("C-"+Customer.getSidC());
-        tfNamaReg.setText("");
-        bgJKReg.clearSelection();
-        tfUmurReg.setText("");
-        tfAlamatReg.setText("");
-        tfKontakReg.setText("");
+    public JTextArea getTaAlamatReg (){
+        return taAlamatReg;
+    }
+    public JButton getBtnRegistrasiReg(){
+        return btnRegistrasiReg;
     }
     
     //TAB PEMESANAN
-    //SETTER
-    public void setLsPaketWisataPsn (String[] list){
-        lsPaketWisataPsn.setListData(list);
-    }
-    public void setTfTgllPesanPsn(String tglPesan){
-        tfTglPesanPsn.setText(tglPesan);
-    }
     //GETTER
-    public String getTfIdCsPsn(){
-        return tfIdCsPsn.getText();
+    public JTextField getTfIdCsPsn(){
+        return tfIdCsPsn;
     }
     public JTextField getTfIdPsnPsn (){
         return tfIdPsnPsn;
@@ -815,39 +812,24 @@ public class GUICustomer extends javax.swing.JFrame {
     public JTextField getTfTotalHargaPsn(){
         return tfTotalHargaPsn;
     }
-    public String getTfTglPesanPsn(){
-        return tfTglPesanPsn.getText();
+    public JTextField getTfTglPesanPsn(){
+        return tfTglPesanPsn;
     }
-    public void resetViewPsn(){
-        tfIdCsPsn.setText("");
-        tfIdPsnPsn.setText("P-"+Pemesanan.getSidP());
-        lsPaketWisataPsn.clearSelection();
-        tfTglPesanPsn.setText("");
-        tfTotalHargaPsn.setText("");
+    public JButton getBtnSearchIdCsPsn(){
+        return btnSearchIdCsPsn;
+    }
+    public JButton getBtnGetTHargaPsn(){
+        return btnGetTHargaPsn;
+    }
+    public JButton getBtnPesanPsn(){
+        return btnPesanPsn;
     }
 
     
     //TAB UBAH DATA PRIBADI
-    //SETTER
-    public void setTfIdCsUDP (String id){
-        tfIdCsUDP.setText("C-"+id);
-    }
-    public void setTfNamaUDP (String nama){
-        tfNamaUDP.setText(nama);
-    }
-    public void setTfUmurUDP (String umur){
-        tfUmurUDP.setText(umur);
-    }
-    public void setTfAlamatUDP (String alamat){
-        tfAlamatUDP.setText(alamat);
-    }
-    public void setTfKontakUDP (String kontak){
-        tfKontakUDP.setText(kontak);
-    }
     //GETTER
-
-    public String getTfIdCsUDP (){
-        return tfIdCsUDP.getText();
+    public JTextField getTfIdCsUDP (){
+        return tfIdCsUDP;
     }
     public JTextField getTfNamaUDP (){
         return tfNamaUDP;
@@ -861,40 +843,71 @@ public class GUICustomer extends javax.swing.JFrame {
     public ButtonGroup getBgJKUDP(){
         return bgJKUDP;
     }
+    public String getJKUDP(){
+        if(rbLakiUDP.isSelected()){
+            return "Laki-Laki";
+        }else{
+            return "Perempuan";
+        }
+    }
     public JTextField getTfUmurUDP (){
         return tfUmurUDP;
     }
-    public JTextField getTfAlamatUDP (){
-        return tfAlamatUDP;
+    public JTextArea getTaAlamatUDP (){
+        return taAlamatUDP;
     }
     public JTextField getTfKontakUDP (){
         return tfKontakUDP;
     }
-    public void resetViewUDP(){
-        tfIdCsUDP.setText("");
-        tfNamaUDP.setText("");
-        bgJKUDP.clearSelection();
-        tfUmurUDP.setText("");
-        tfAlamatUDP.setText("");
-        tfKontakUDP.setText("");
+    public JButton getBtnCariIdCsUDP(){
+        return btnCariIdCsUDP;
     }
+    public JButton getBtnUpdateUDP(){
+        return btnUpdateUDP;
+    }
+    
+    
+    
+    
+    
     
     //TAB LIHAT PAKET WISATA
     //GETTER
     public JTable getTbLPW (){
         return tbLPW;
     }
-    
+    public JButton getBtnRefreshLPW(){
+        return btnRefreshLPW;
+    }
     //TAB LIHAT TOUR GUIDE
     //GETTER
     public JTable getTbLTG (){
         return tbLTG;
+    }
+    public JButton getBtnRefreshLTG(){
+        return btnRefreshLTG;
     }
     
     //TAB LIHAT TEMPAT WISATA
     //GETTER
     public JTable getTbLTW (){
         return tbLTW;
+    }
+    public JButton getBtnRefreshLTW(){
+        return btnRefreshLTW;
+    }
+    
+    public void addMouseListener(MouseAdapter ma){
+        btnRegistrasiReg.addMouseListener(ma);
+        btnSearchIdCsPsn.addMouseListener(ma);
+        btnPesanPsn.addMouseListener(ma);
+        btnGetTHargaPsn.addMouseListener(ma);
+        btnCariIdCsUDP.addMouseListener(ma);
+        btnUpdateUDP.addMouseListener(ma);
+        btnRefreshLPW.addMouseListener(ma);
+        btnRefreshLTG.addMouseListener(ma);
+        btnRefreshLTW.addMouseListener(ma);
+        tbLPW.addMouseListener(ma);                
     }
     
     
@@ -908,8 +921,8 @@ public class GUICustomer extends javax.swing.JFrame {
     private javax.swing.JButton btnRefreshLPW;
     private javax.swing.JButton btnRefreshLTG;
     private javax.swing.JButton btnRefreshLTW;
-    private javax.swing.JButton btnRefreshPsn;
     private javax.swing.JButton btnRegistrasiReg;
+    private javax.swing.JButton btnSearchIdCsPsn;
     private javax.swing.JButton btnUpdateUDP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -929,7 +942,9 @@ public class GUICustomer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JList<String> lsPaketWisataPsn;
     private javax.swing.JPanel pLihatPaketWisata;
@@ -945,22 +960,22 @@ public class GUICustomer extends javax.swing.JFrame {
     private javax.swing.JScrollPane spTabelLPW;
     private javax.swing.JScrollPane spTabelLTG;
     private javax.swing.JScrollPane spTabelLTW;
+    private javax.swing.JTextArea taAlamatReg;
+    private javax.swing.JTextArea taAlamatUDP;
     private javax.swing.JTable tbLPW;
     private javax.swing.JTable tbLTG;
     private javax.swing.JTable tbLTW;
-    private java.awt.TextField tfAlamatReg;
-    private javax.swing.JTextField tfAlamatUDP;
     private javax.swing.JTextField tfIdCsPsn;
     private javax.swing.JTextField tfIdCsUDP;
     private javax.swing.JTextField tfIdPsnPsn;
     private javax.swing.JTextField tfIdReg;
-    private java.awt.TextField tfKontakReg;
+    private javax.swing.JTextField tfKontakReg;
     private javax.swing.JTextField tfKontakUDP;
-    private java.awt.TextField tfNamaReg;
+    private javax.swing.JTextField tfNamaReg;
     private javax.swing.JTextField tfNamaUDP;
     private javax.swing.JTextField tfTglPesanPsn;
     private javax.swing.JTextField tfTotalHargaPsn;
-    private java.awt.TextField tfUmurReg;
+    private javax.swing.JTextField tfUmurReg;
     private javax.swing.JTextField tfUmurUDP;
     // End of variables declaration//GEN-END:variables
 }

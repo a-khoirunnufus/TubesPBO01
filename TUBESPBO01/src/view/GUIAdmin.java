@@ -1191,11 +1191,11 @@ public class GUIAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchEditPWActionPerformed
 
     private void btnSearchDeletePWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchDeletePWActionPerformed
-        ctrlAdm.searchIdDeletePW();
+        
     }//GEN-LAST:event_btnSearchDeletePWActionPerformed
 
     private void btnDeletePWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePWActionPerformed
-        ctrlAdm.deletePW();
+        
     }//GEN-LAST:event_btnDeletePWActionPerformed
 
     private void btnUpdateTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTGActionPerformed
@@ -1285,11 +1285,17 @@ public class GUIAdmin extends javax.swing.JFrame {
     public JTable getTbViewCs(){
         return tbViewCs;
     }
+    public JButton getBtnRefreshCs(){
+        return btnRefreshCs;
+    }
     
     //REKAP PEMESANAN
     //GETTER
     public JTable getTbViewRP(){
         return tbViewRP;
+    }
+    public JButton getBtnRefreshRP(){
+        return btnRefreshRP;
     }
     
     //TEMPAT WISATA
@@ -1414,19 +1420,18 @@ public class GUIAdmin extends javax.swing.JFrame {
     public JTable getTbViewDeletePW(){
         return tbViewDeletePW;
     }
-    
-// VIEW
+    //VIEW
+    public JButton getBtnSearchDeletePW(){
+        return btnSearchDeletePW;
+    }
+    public JButton getBtnDeletePW(){
+        return btnDeletePW;
+    }
     public JButton getBtnRefreshPW(){
         return btnRefreshPW;
     }
 
-//    public void resetViewDeletePW(){
-//        tfIdSearchDeletePW.setText("");
-//        DefaultTableModel tbModelDel = (DefaultTableModel) tbViewDeletePW.getModel();
-//        tbModelDel.setRowCount(0);
-//        DefaultTableModel tbModel = (DefaultTableModel) tbViewPW.getModel();
-//        tbModel.setRowCount(0);
-//    }
+
 //    public void updateTablePW(){
 //        DefaultTableModel tbModel = (DefaultTableModel) tbViewPW.getModel();
 //        String[] row = new String[7];
@@ -1466,6 +1471,11 @@ public class GUIAdmin extends javax.swing.JFrame {
         btnRefreshPW.addMouseListener(ma);
         btnSearchEditPW.addMouseListener(ma);
         btnEditPW.addMouseListener(ma);
+        btnSearchDeletePW.addMouseListener(ma);
+        btnDeletePW.addMouseListener(ma);
+        tbViewPW.addMouseListener(ma);
+        btnRefreshCs.addMouseListener(ma);
+        btnRefreshRP.addMouseListener(ma);
     }
 
 

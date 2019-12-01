@@ -13,22 +13,17 @@ import java.util.Date;
  */
 public class Pemesanan {
     private String id;
-    private static int sidP = 1;
     private List<PaketWisata> listPaket;
     private double totalHarga;
     private Date tglPesan; //BUAT OBJEK DATE
 
-    public Pemesanan(List<PaketWisata> lsPw, double tHarga, Date tglPesan) {
-        this.id = "P-"+sidP;
+    public Pemesanan(String id, List<PaketWisata> lsPw, double tHarga, Date tglPesan) {
+        this.id = id;
         this.listPaket = lsPw;
         this.totalHarga = tHarga;
         this.tglPesan = tglPesan;
-        sidP++;
     }
     
-    public static int getSidP(){
-        return sidP;
-    }
     public void addPaketWisata (PaketWisata pw){//DIBUAT DILUAR
         listPaket.add(pw);
     }

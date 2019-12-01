@@ -19,12 +19,7 @@ public class Application {
     private List<PaketWisata> daftarPaketWisata;
     private List<TempatWisata> daftarTempatWisata;
     
-//baru
     Database db;
-//    List <Customer> daftarCustumerList;
-//    Database db;
-//    List <TourGuide> daftarTourguideList;
-//    Database db;
     
     public Application(){
         daftarCustomer = new ArrayList<>();
@@ -32,7 +27,6 @@ public class Application {
         daftarPaketWisata = new ArrayList<>();
         daftarTempatWisata = new ArrayList<>();
         
-//baru
         db = new Database(this); 
         db.connect();
     }
@@ -54,7 +48,7 @@ public class Application {
         tg.setUmur(umur);
         tg.setAlamat(alamat);
         tg.setKontak(kontak);
-         db.updateTourGuide(tg);
+        db.updateTourGuide(tg);
     }   
     public TourGuide getTourGuide(String id){
         System.out.println("jalan");
@@ -82,11 +76,17 @@ public class Application {
         return tg;
     }
     public List<TourGuide> getDaftarTG(){
-        return daftarTourGuide;
-        
-        
+        return daftarTourGuide;  
+    }
+    public List<String[]> searchPenugasan(TourGuide tg){
+        return db.searchPenugasan(tg);
+    }
+    public List<Customer> searchCustomerDiPenugasan(TourGuide tg,PaketWisata pw){
+        return db.searchCustomerDiPenugasan(tg,pw);
     }
     
+
+
     //CUSTOMER
     public List<Customer> getDaftarCs(){
         return daftarCustomer;
@@ -94,32 +94,18 @@ public class Application {
     }
     public void inputCustomer(Customer c){
         daftarCustomer.add(c);
-        //baru
-//        daftarCustomer.add(c);
         db.saveCustomer(c);
         
     }
-     public void loadAllCustomer(){ 
+    public void loadAllCustomer(){ 
         daftarCustomer=db.loadAllCustomer();
     }
-    public void viewCustomer(){
-        for(Customer c: daftarCustomer){
-            System.out.println("Id : "+c.getId());
-            System.out.println("Nama : "+c.getNama());
-            System.out.println("Jenis Kelamin : "+c.getJenisKelamin());
-            System.out.println("Tanggal Lahir : "+c.getUmur());
-            System.out.println("Alamat : "+c.getAlamat());
-            System.out.println("Kontak : "+c.getKontak());
-            System.out.print("\n");
-        }
-    }
-    public void editCustomer(Customer cs, String nama,String jk, int umur, String alamat, String kontak){
+    public void editCustomer(Customer cs, String nama,String jk, int umur, String kontak, String alamat){
         cs.setNama(nama);
         cs.setJenisKelamin(jk);
         cs.setUmur(umur);
         cs.setAlamat(alamat);
-        cs.setKontak(kontak);
-        
+        cs.setKontak(kontak);     
         db.updateCustomer(cs);
     }
     public Customer getCustomer(String id){
@@ -134,6 +120,13 @@ public class Application {
         return cs;
     }
     
+    
+    //REKAP PEMESANAN
+    public List<String[]> getListRP() throws SQLException{
+        return db.getListRP();
+    }
+    
+    
     //PAKET WISATA
     public List<PaketWisata> getDaftarPW(){
         return daftarPaketWisata;
@@ -144,6 +137,10 @@ public class Application {
     public void inputPaketWisata(PaketWisata pw) throws SQLException{
         daftarPaketWisata.add(pw);
         db.savePaketWisata(pw);
+    }
+    public void deletePaketWisata(PaketWisata pw){
+        daftarPaketWisata.remove(pw);
+        db.deletePaketWisata(pw);
     }
     public void viewPaketWisata(){
         for(PaketWisata pw: daftarPaketWisata){
@@ -237,8 +234,9 @@ public class Application {
         while ((i < daftarTourGuide.size()) && (daftarTourGuide.get(i).getId()!= id)) {            
             i++;
         }
-        return db.loadOneTourGuideById(id).toString();
-    }
+        return null;
+        //return db.loadOneTourGuideById(id).toString();
+        }
      public String[] getTourguideListId() {
         String[] listId = new String[daftarTourGuide.size()];
         for (int i = 0; i < daftarTourGuide.size(); i++) {
@@ -249,11 +247,11 @@ public class Application {
     
     //Mendapatkan id baru
     public int getNewIdCs(){
-        if (daftarTourGuide.size()==0){ 
+        if (daftarCustomer.size()==0){ 
             return 1;
         }else{
-            String lastId = daftarTourGuide.get(daftarTourGuide.size()-1).getId(); 
-            String lastNumId=lastId.substring(2);
+            String lastId = daftarCustomer.get(daftarCustomer.size()-1).getId(); 
+            String lastNumId = lastId.substring(2);
             int lastNoId = Integer.parseInt(lastNumId); 
             return lastNoId+1;
         }
@@ -287,9 +285,26 @@ public class Application {
         } 
     }
     
-    //untuk list didalam table paket wisata
+    
+    
+    
+    //PEMESANAN
+    public int getNewIdPsn() throws SQLException{
+        return db.getNewIdPsn();
+    }
+    public void createPemesananCs(Customer Cs, String id, List<PaketWisata> lsPw, double tHarga, Date tglPesan){
+        Pemesanan psn = new Pemesanan(id, lsPw, tHarga, tglPesan);
+        Cs.createPemesanan(psn);
+        db.inputPemesanan(Cs,psn);
+    }
+    
+    //untuk list tempat wisata didalam table paket wisata
     public List<TempatWisata> loadLsTWPW(String idPW){
         return db.loadLsTWPW(idPW);
+    }
+    //untuk list tour guide di dalam table paket wisata
+    public List<TourGuide> loadLsTGPW(String idPW){
+        return db.loadLsTGPW(idPW);
     }
 
   

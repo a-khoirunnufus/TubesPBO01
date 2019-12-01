@@ -19,8 +19,8 @@ public class TempatWisata {
     public TempatWisata(String id, String nama,int rating, String alamat){
         this.id = id;
         this.nama = nama;
-        this.alamat = alamat;
         this.rating = rating;
+        this.alamat = alamat;
     }
     
     public TempatWisata(String id,String nama, String alamat, int rating){

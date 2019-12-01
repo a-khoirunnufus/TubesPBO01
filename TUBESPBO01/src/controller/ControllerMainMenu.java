@@ -1,5 +1,6 @@
 package controller;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import view.*;
 import model.*;
@@ -11,7 +12,7 @@ public class ControllerMainMenu {
     private GUITourGuide viewTG;
     private GUICustomer viewCs;
     
-    public ControllerMainMenu(Application model, GUIMainMenu viewMM) throws ParseException{
+    public ControllerMainMenu(Application model, GUIMainMenu viewMM) throws ParseException, SQLException{
         this.model = model;
         this.viewMM = viewMM;
         viewTG = new GUITourGuide(this,model);
