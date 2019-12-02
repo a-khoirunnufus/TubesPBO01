@@ -36,6 +36,7 @@ public class Database {
         }  
     }
     
+    //TOUR GUIDE
     public void saveTourGuide(TourGuide t){ 
         try{
             String query="insert into tourguide values ('"
@@ -43,8 +44,8 @@ public class Database {
                     +t.getNama()+"','"
                     +t.getJenisKelamin()+"','"
                     +t.getUmur()+"','"
-                    +t.getAlamat()+"','"
-                    +t.getKontak()+"');";
+                    +t.getKontak()+"','"
+                    +t.getAlamat()+"');";
             Statement s = con.createStatement(); 
             s.execute(query); 
             System.out.println("Saving success.");
@@ -52,6 +53,34 @@ public class Database {
             System.out.println("Saving error.");
         } 
     }
+
+    public List<String[]> getJadwalTG(TourGuide tg){ 
+        try{
+            List<String[]> listJTG = new ArrayList<>();
+            String[] row;
+            String query="select tglBerangkatPW, tglPulangPW \n" +
+                        "from paketwisata " +
+                        "join tourguidedipaketwisata " +
+                        "using (idPW) " +
+                        "join tourguide " +
+                        "using (idTG) " +
+                        "where idTG = '"+tg.getId()+"';";
+            Statement s = con.createStatement(); 
+            ResultSet rs = s.executeQuery(query);
+            while(rs.next()){
+                row = new String[2];
+                row[0] = rs.getString(1);
+                row[1] = rs.getString(2);
+                listJTG.add(row);
+            }
+            System.out.println("get success.");
+            return listJTG;
+        } catch(SQLException se){ 
+            System.out.println("get error.");
+            return null;
+        }
+    }
+    
     public void saveTempatWisata(TempatWisata tw){ 
         try{
             String query = "insert into tempatwisata values ('"
@@ -131,6 +160,17 @@ public class Database {
             System.out.println("Saving error.");
         } 
     }
+    
+    public void clearListGuide(PaketWisata pw){
+        try{
+            String query = "delete from tourguidedipaketwisata where idPW = '"+pw.getId()+"';";
+            Statement s=con.createStatement(); 
+            s.execute(query);
+            System.out.println("clear succes");
+        }catch(SQLException se){
+            System.out.println("clear error");
+        }
+    }
    
     public List<TourGuide> loadAllTourGuide(){ 
     try{
@@ -144,9 +184,9 @@ public class Database {
             String name=rs.getString(2);
             String jeniskelamin=rs.getString(3);
             int umur = Integer.parseInt(rs.getString(4));
-            String alamat = rs.getString(5);
-            String kontak = rs.getString(6);
-            t = new TourGuide(id,name,jeniskelamin,umur,alamat,kontak);
+            String kontak = rs.getString(5);
+            String alamat = rs.getString(6);
+            t = new TourGuide(id,name,jeniskelamin,umur,kontak,alamat);
             tourguides.add(t);
         }
         return tourguides;
@@ -185,9 +225,9 @@ public class Database {
             String name=rs.getString(2);
             String jeniskelamin=rs.getString(3);
             int umur = Integer.parseInt(rs.getString(4));
-            String alamat = rs.getString(5);
-            String kontak = rs.getString(6);
-            c = new Customer(id,name,jeniskelamin,umur,alamat,kontak);
+            String kontak = rs.getString(5);
+            String alamat = rs.getString(6);
+            c = new Customer(id,name,jeniskelamin,umur,kontak,alamat);
             customers.add(c);
         }
         return customers;
@@ -274,8 +314,8 @@ public class Database {
             String query="update tourguide set namaTG = '"+tg.getNama()
                     +"', jenisKelaminTG = '"+tg.getJenisKelamin()
                     +"', umurTG = '"+tg.getUmur( )
+                    +"', kontakTG = '"+tg.getKontak()
                     +"', alamatTG = '"+tg.getAlamat()
-                    +"',kontakTG = '"+tg.getKontak()
                     +"' where idTG = '"+tg.getId()+"';";
 
             Statement s=con.createStatement(); 
@@ -325,9 +365,9 @@ public class Database {
         try{           
             String query="update Customer set namaCs = '"+c.getNama()
                     +"', jenisKelaminCs = '"+c.getJenisKelamin()
-                    +"', umurCs = '"+c.getUmur( )
+                    +"', umurCs = '"+c.getUmur()
+                    +"', kontakCs = '"+c.getKontak()
                     +"', alamatCs = '"+c.getAlamat()
-                    +"',kontakCs = '"+c.getKontak()
                     +"' where idCs = '"+c.getId()+"';";
 
             Statement s=con.createStatement(); 

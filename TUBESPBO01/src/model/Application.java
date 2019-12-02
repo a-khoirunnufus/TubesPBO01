@@ -36,13 +36,21 @@ public class Application {
         daftarTourGuide.add(tg);
         db.saveTourGuide(tg);        
     }
+    
+    public List<String[]> getJadwalTG(TourGuide tg){
+        return db.getJadwalTG(tg);
+    }
+    
+    public void clearListGuide(PaketWisata pw){
+        db.clearListGuide(pw);
+    }
 
     public List<TourGuide> loadAllTourguide(){ 
         daftarTourGuide=db.loadAllTourGuide();
         return daftarTourGuide;
     } 
     
-    public void editTourGuide(TourGuide tg, String nama, String jk, int umur, String alamat, String kontak){
+    public void editTourGuide(TourGuide tg, String nama, String jk, int umur, String kontak, String alamat){
         tg.setNama(nama);
         tg.setJenisKelamin(jk);
         tg.setUmur(umur);

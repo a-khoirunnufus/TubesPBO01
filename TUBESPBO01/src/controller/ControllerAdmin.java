@@ -21,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javax.print.attribute.Size2DSyntax.MM;
+import methodFungsional.dt;
 
 //table model
 import tableModel.tbModCustomer;
@@ -84,6 +85,7 @@ public class ControllerAdmin extends MouseAdapter{//extends MouseAdapter impleme
         tbModRP = new tbModRekapPemesanan();
         viewAdm.getTbViewRP().setModel(tbModRP);
         
+        //inisialisasi id pada textfield
         viewAdm.getTfIdTG().setText("TG-"+model.getNewIdTG());
         viewAdm.getTfIdInputPW().setText("PW-"+model.getNewIdPW());
         viewAdm.getTfIdInputTW().setText("TW-"+model.getNewIdTW());
@@ -97,7 +99,7 @@ public class ControllerAdmin extends MouseAdapter{//extends MouseAdapter impleme
         Object source = e.getSource();       
     //Input TG
         if(source.equals(viewAdm.getBtnInputTG())){
-            TourGuide tg = new TourGuide(viewAdm.getTfIdTG().getText(),viewAdm.getTfNamaTG().getText(),viewAdm.getRbJKTG(),Integer.parseInt(viewAdm.getTfUmurTG().getText()),viewAdm.getTfAlamatTG().getText(),viewAdm.getTfKontakTG().getText());
+            TourGuide tg = new TourGuide(viewAdm.getTfIdTG().getText(),viewAdm.getTfNamaTG().getText(),viewAdm.getRbJKTG(),Integer.parseInt(viewAdm.getTfUmurTG().getText()),viewAdm.getTfKontakTG().getText(),viewAdm.getTfAlamatTG().getText());
             model.inputTourGuide(tg);
             tbModTG.updateTable(model.getDaftarTG());
             JOptionPane.showMessageDialog(viewAdm, "Data berhasil di input");
@@ -149,7 +151,7 @@ public class ControllerAdmin extends MouseAdapter{//extends MouseAdapter impleme
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             PaketWisata pw = null;
             try {
-                pw = new PaketWisata(viewAdm.getTfIdInputPW().getText(),viewAdm.getTfNamaInputPW().getText(),Double.parseDouble(viewAdm.getTfHargaInputPW().getText()),format.parse(viewAdm.getTfTglBInputPW().getText()),format.parse(viewAdm.getTfTglPInputPW().getText()));
+                pw = new PaketWisata(viewAdm.getTfIdInputPW().getText(),viewAdm.getTfNamaInputPW().getText(),Double.parseDouble(viewAdm.getTfHargaInputPW().getText()),format.parse(dt.ubahPosisi2(viewAdm.getTfTglBInputPW().getText())),format.parse(dt.ubahPosisi2(viewAdm.getTfTglPInputPW().getText())));
             } catch (ParseException ex) {
                 Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -159,21 +161,40 @@ public class ControllerAdmin extends MouseAdapter{//extends MouseAdapter impleme
                 pw.addTempatWisata(model.getTempatWisatabyName(nmTW.toString()));
             }
             //menambahkan tour guide
+            boolean isBentrok = false;
+            List<String[]> listJTG = new ArrayList<>();
+            TourGuide tg;
             List listTGInput = viewAdm.getLsTGInputPW().getSelectedValuesList();
             for(Object nmTG: listTGInput){
-                pw.assignTourGuide(model.getTourGuidebyName(nmTG.toString()));
+                tg = model.getTourGuidebyName(nmTG.toString());
+                listJTG = model.getJadwalTG(tg);
+                for(String[] row: listJTG){
+                    try {
+                        if(dt.isBentrok(pw.getTglBerangkat(),pw.getTglPulang(), format.parse(row[0]), format.parse(row[1]))){
+                           JOptionPane.showMessageDialog(viewAdm, "jadwal tour guide bentrok : "+tg.getNama());
+                           isBentrok = true;
+                           return;
+                        }
+                    } catch (ParseException ex) {
+                        Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if(!isBentrok)
+                pw.assignTourGuide(tg);
             }
             
-            try {
-                model.inputPaketWisata(pw);                
-            } catch (SQLException ex) {
-                Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            tbModPW.updateTable(model.getDaftarPW());
+            if(!isBentrok){
+                try {
+                    model.inputPaketWisata(pw);                
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
-            JOptionPane.showMessageDialog(viewAdm, "Data Berhasil Diinput");
-            resetViewInputPW();
+                tbModPW.updateTable(model.getDaftarPW());
+
+                JOptionPane.showMessageDialog(viewAdm, "Data Berhasil Diinput");
+                resetViewInputPW();
+            }
         }
     //Update Table PW
         else if(source.equals(viewAdm.getBtnRefreshPW())){
@@ -188,6 +209,7 @@ public class ControllerAdmin extends MouseAdapter{//extends MouseAdapter impleme
             PaketWisata pw = model.getPaketWisata(viewAdm.getTfIdSearchEditPW().getText());
             
             pw.getListGuide().clear();
+            model.clearListGuide(pw);
             pw.getListTujuan().clear();
             //menambahkan tempat wisata
             List listTWEdit = viewAdm.getLsTWEditPW().getSelectedValuesList();
@@ -195,13 +217,35 @@ public class ControllerAdmin extends MouseAdapter{//extends MouseAdapter impleme
                 pw.addTempatWisata(model.getTempatWisatabyName(nmTW.toString()));
             }
             //menambahkan tour guide
+            boolean isBentrok = false;
+            List<String[]> listJTG = new ArrayList<>();
+            TourGuide tg;
+            List<TourGuide> listTGBaru = new ArrayList<>();
             List listTGEdit = viewAdm.getLsTGEditPW().getSelectedValuesList();
             for(Object nmTG: listTGEdit){
-                pw.assignTourGuide(model.getTourGuidebyName(nmTG.toString()));
+                tg = model.getTourGuidebyName(nmTG.toString());
+                listJTG = model.getJadwalTG(tg);
+                for(String[] row: listJTG){
+                    try {
+                        System.out.println(pw.getTglBerangkat()+","+pw.getTglPulang()+" - "+ format.parse(row[0])+","+format.parse(row[1]));
+                        if(dt.isBentrok(format.parse(dt.ubahPosisi2(viewAdm.getTfTglBEditPW().getText())),format.parse(dt.ubahPosisi2(viewAdm.getTfTglPEditPW().getText())), format.parse(row[0]), format.parse(row[1]))){
+                           JOptionPane.showMessageDialog(viewAdm, "jadwal tour guide bentrok : "+tg.getNama());
+                           isBentrok = true;
+                           return;
+                        }
+                    } catch (ParseException ex) {
+                        Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if(!isBentrok)
+                listTGBaru.add(tg);
             }
             
+            System.out.println("jalan bosss");
+            pw.setListGuide(listTGBaru);
+            
             try {
-                model.editPaketWisata(pw,viewAdm.getTfNamaEditPW().getText(),Double.parseDouble(viewAdm.getTfHargaEditPW().getText()),format.parse(viewAdm.getTfTglBEditPW().getText()),format.parse(viewAdm.getTfTglPEditPW().getText()));
+                model.editPaketWisata(pw,viewAdm.getTfNamaEditPW().getText(),Double.parseDouble(viewAdm.getTfHargaEditPW().getText()),format.parse(dt.ubahPosisi2(viewAdm.getTfTglBEditPW().getText())),format.parse(dt.ubahPosisi2(viewAdm.getTfTglPEditPW().getText())));
             } catch (ParseException ex) {
                 Logger.getLogger(ControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -341,8 +385,8 @@ public class ControllerAdmin extends MouseAdapter{//extends MouseAdapter impleme
         if(pw != null){
             viewAdm.getTfNamaEditPW().setText(pw.getNama());
             viewAdm.getTfHargaEditPW().setText(Double.toString(pw.getHarga()));
-            viewAdm.getTfTglBEditPW().setText(format.format(pw.getTglBerangkat()));
-            viewAdm.getTfTglPEditPW().setText(format.format(pw.getTglPulang()));
+            viewAdm.getTfTglBEditPW().setText(dt.ubahPosisi(format.format(pw.getTglBerangkat())));
+            viewAdm.getTfTglPEditPW().setText(dt.ubahPosisi(format.format(pw.getTglPulang())));
             
             //update list tw
             String[] listTw = new String[model.getDaftarTW().size()];
@@ -420,48 +464,4 @@ public class ControllerAdmin extends MouseAdapter{//extends MouseAdapter impleme
         tbModelDel.setRowCount(0);
     }
     
-
-
-    
-  //COBA YAHYA
-// GUIAdmin view;
-//  Application model;
-//    
-//    public ControllerAdmin() {
-//        view = new GUIAdmin();
-//        model = new Application();
-//        view.addActionListener(this);
-//        view.addMouseAdabter(this);
-//        view.setVisible(true);
-//        model.loadTourguide(); 
-//        view.setTourguideId(model.newId());
-//        view.resetViewTG();
-//    }
-//
-//    @Override
-//    public void actionPerformed(ActionEvent ae) {
-//        Object source = ae.getSource();
-//        
-//        if (source.equals(view.getBtnInputTG())) {
-//            try{
-//                String name = view.getTfNamaTG();
-//                String jeniskelamin = view.getRbJKTG();
-//                String umur = view.getTfUmurTG();
-//                String alamat = view.getTfAlamatTG();
-//                String kontak = view.getTfKontakTG();
-//                String id=view.getTfIdTG();
-//                
-//              
-//            TourGuide  t = new TourGuide(id,name,jeniskelamin,umur,alamat,kontak);
-//                model.inputTourGuide(t);
-//
-//            }catch(Exception e){
-//                System.out.println(e);
-//            }
-//        view.resetViewTG();
-//        //view.setToyId(Toy.getSid());
-//        model.loadTourguide(); 
-//        view.setTourguideId (model.newId());
-//        }  
-//    }
 }  

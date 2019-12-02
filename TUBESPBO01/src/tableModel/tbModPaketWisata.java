@@ -1,8 +1,11 @@
 package tableModel;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
+import methodFungsional.dt;
 import model.PaketWisata;
 
 public class tbModPaketWisata extends AbstractTableModel{
@@ -10,6 +13,7 @@ public class tbModPaketWisata extends AbstractTableModel{
     List<PaketWisata> list = new ArrayList<>();
     private final String[] header = {"Id","Nama","Harga","List Tujuan","List Guide","Tanggal Berangkat","Tanggal Pulang"};
     
+    DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     
     @Override
     public int getRowCount() {
@@ -34,19 +38,12 @@ public class tbModPaketWisata extends AbstractTableModel{
             case 1 : return pw.getNama();
             case 2 : return pw.getHarga();
             case 3 : return "Lihat Data";
-            case 4 : return "Lihat Data";
-            case 5 : return pw.getTglBerangkat();
-            case 6 : return pw.getTglPulang();
+            case 4 : return "Lihat Data";    
+            case 5 : return dt.ubahPosisi(format.format(pw.getTglBerangkat()));
+            case 6 : return dt.ubahPosisi(format.format(pw.getTglPulang()));
             default : return null;
         }
     }
-//tidak terpakai sementara    
-//    public void addOneRow(PaketWisata pw){
-//        System.out.println("ukuran list table pw : "+list.size());
-//        list.add(pw);
-//        System.out.println("ukuran list table pw : "+list.size());
-//        fireTableDataChanged();
-//    }
     
     public void updateTable(List<PaketWisata> listPw){
         list = listPw;

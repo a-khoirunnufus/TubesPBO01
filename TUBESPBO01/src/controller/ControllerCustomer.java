@@ -19,6 +19,7 @@ import model.Application;
 import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import methodFungsional.dt;
 import model.Customer;
 import model.PaketWisata;
 import view.GUICustomer;
@@ -124,7 +125,7 @@ public class ControllerCustomer extends MouseAdapter{
                 }
                 
                 try {
-                    model.createPemesananCs(cs,viewCs.getTfIdPsnPsn().getText(),listPWPsn, tHarga, format.parse(viewCs.getTfTglPesanPsn().getText()));
+                    model.createPemesananCs(cs,viewCs.getTfIdPsnPsn().getText(),listPWPsn, tHarga, format.parse(dt.ubahPosisi2(viewCs.getTfTglPesanPsn().getText())));
                 } catch (ParseException ex) {
                     Logger.getLogger(ControllerCustomer.class.getName()).log(Level.SEVERE, null, ex);
                 }

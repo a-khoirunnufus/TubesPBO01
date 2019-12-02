@@ -5,9 +5,15 @@
  */
 package tableModel;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
+import methodFungsional.dt;
 
 /**
  *
@@ -17,7 +23,9 @@ public class tbModRekapPemesanan extends AbstractTableModel{
     
     List<String[]> list = new ArrayList();
     private final String[] header = {"Id Pemesanan","Customer","Paket Wisata","Tanggal Pesan"};
-        
+    
+    private DateFormat format = new SimpleDateFormat("yyyy-WW-dd");
+    
     @Override
     public int getRowCount() {
         return list.size();
@@ -40,7 +48,7 @@ public class tbModRekapPemesanan extends AbstractTableModel{
             case 0 : return row[0];
             case 1 : return row[1];
             case 2 : return row[2];
-            case 3 : return row[3];
+            case 3 : return dt.ubahPosisi(row[3]);
             default : return null;
         }
     }

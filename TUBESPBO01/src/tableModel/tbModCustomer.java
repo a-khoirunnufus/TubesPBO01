@@ -9,7 +9,7 @@ import model.Customer;
 public class tbModCustomer extends AbstractTableModel{
     
     List<Customer> list = new ArrayList<>();
-    private final String[] header = {"Id","Nama","Gender","Umur","Alamat","Kontak"};
+    private final String[] header = {"Id","Nama","Gender","Umur","Kontak","Alamat"};
     
     
     @Override

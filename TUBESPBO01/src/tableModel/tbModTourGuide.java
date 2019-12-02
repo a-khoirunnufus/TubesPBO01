@@ -9,7 +9,7 @@ import model.TourGuide;
 public class tbModTourGuide extends AbstractTableModel{
     
     List<TourGuide> list = new ArrayList<>();
-    private final String[] header = {"Id","Nama","Gender","Umur","Alamat","Kontak"};
+    private final String[] header = {"Id","Nama","Gender","Umur","Kontak","Alamat"};
     
     
     @Override
